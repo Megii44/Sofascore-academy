@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.homework_2.MainActivity
 import com.example.homework_2.R
+import com.example.homework_2.model.Product
 import com.example.homework_2.viewmodels.ProductsViewModel
 
 class ProductsFragment : Fragment() {
@@ -17,24 +18,12 @@ class ProductsFragment : Fragment() {
     }
 
     private lateinit var viewModel: ProductsViewModel
-    private val mainActivity = requireActivity() as MainActivity
+    private lateinit var products: ArrayList<Product>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_products, container, false)
-
-        displayProducts()
-
-        return view
-    }
-
-    fun displayProducts() {
-        val products = mainActivity.getAllProducts()
-
-        for(p in products) {
-
-        }
+        return inflater.inflate(R.layout.fragment_products, container, false)
     }
 }

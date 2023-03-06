@@ -1,6 +1,5 @@
 package com.example.homework_2.ui.home
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,9 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
-import com.example.homework_2.MainActivity
 import com.example.homework_2.R
 import com.example.homework_2.model.Product
 import com.example.homework_2.viewmodels.AddProductViewModel
@@ -22,7 +18,6 @@ class AddProductFragment : Fragment() {
     }
 
     private lateinit var viewModel: AddProductViewModel
-    private val mainActivity = requireActivity() as MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +44,7 @@ class AddProductFragment : Fragment() {
                 productType, style, color, material,
                 size, price)
 
-            mainActivity.addProduct(newProduct)
+            viewModel.addProduct(product = newProduct)
 
             // Reset the input fields
             view.findViewById<EditText>(R.id.editTextName).text.clear()
