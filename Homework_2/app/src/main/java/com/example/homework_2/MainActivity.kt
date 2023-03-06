@@ -2,18 +2,16 @@ package com.example.homework_2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.example.homework_2.adapter.ViewPagerAdapter
-import com.example.homework_2.model.Product
+import com.example.homework_2.model.ProductsUIState
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager2: ViewPager2
     private lateinit var adapter: ViewPagerAdapter
-
-    private var products: ArrayList<Product> = ArrayList()
+    private lateinit var products: Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,14 +49,5 @@ class MainActivity : AppCompatActivity() {
                 tabLayout.selectTab(tabLayout.getTabAt(position))
             }
         }))
-    }
-
-    fun addProduct(product: Product) {
-        products.add(product)
-        Toast.makeText(this, R.string.productAdded, Toast.LENGTH_SHORT).show()
-    }
-
-    fun getAllProducts(): ArrayList<Product> {
-        return products
     }
 }

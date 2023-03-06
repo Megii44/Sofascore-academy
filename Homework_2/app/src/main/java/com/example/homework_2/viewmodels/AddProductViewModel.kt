@@ -1,6 +1,5 @@
 package com.example.homework_2.viewmodels
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.homework_2.model.Product
 import com.example.homework_2.model.ProductsUIState

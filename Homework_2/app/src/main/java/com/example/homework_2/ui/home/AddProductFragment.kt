@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.lifecycle.ViewModelProvider
 import com.example.homework_2.R
 import com.example.homework_2.model.Product
 import com.example.homework_2.viewmodels.AddProductViewModel
@@ -24,6 +25,9 @@ class AddProductFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_add_product, container, false)
+
+        // Initialize the ViewModel
+        viewModel = ViewModelProvider(this)[AddProductViewModel::class.java]
 
         val submitButton = view.findViewById<Button>(R.id.btn_submit)
 
