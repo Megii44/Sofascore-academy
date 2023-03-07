@@ -7,18 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
+import androidx.core.view.children
 import androidx.lifecycle.ViewModelProvider
 import com.example.homework_2.R
 import com.example.homework_2.model.Product
-import com.example.homework_2.viewmodels.AddProductViewModel
+import com.example.homework_2.viewmodels.ProductsViewModel
 
 class AddProductFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = AddProductFragment()
-    }
-
-    private lateinit var viewModel: AddProductViewModel
+    private lateinit var viewModel: ProductsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,9 +25,10 @@ class AddProductFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_add_product, container, false)
 
         // Initialize the ViewModel
-        viewModel = ViewModelProvider(this)[AddProductViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[ProductsViewModel::class.java]
 
         val submitButton = view.findViewById<Button>(R.id.btn_submit)
+        val formContainer = view.findViewById<LinearLayout>(R.id.form_container)
 
         submitButton.setOnClickListener {
             val name = view.findViewById<EditText>(R.id.editTextName).text.toString()
@@ -43,7 +42,6 @@ class AddProductFragment : Fragment() {
             val size = view.findViewById<EditText>(R.id.editTextSize).text.toString()
             val price = view.findViewById<EditText>(R.id.editTextPrice).text.toString()
 
-
             val newProduct = Product(name, description, brand, category,
                 productType, style, color, material,
                 size, price)
@@ -51,16 +49,9 @@ class AddProductFragment : Fragment() {
             viewModel.addProduct(product = newProduct)
 
             // Reset the input fields
-            view.findViewById<EditText>(R.id.editTextName).text.clear()
-            view.findViewById<EditText>(R.id.editTextDescription).text.clear()
-            view.findViewById<EditText>(R.id.editTextBrand).text.clear()
-            view.findViewById<EditText>(R.id.editTextCategory).text.clear()
-            view.findViewById<EditText>(R.id.editTextProductType).text.clear()
-            view.findViewById<EditText>(R.id.editTextStyle).text.clear()
-            view.findViewById<EditText>(R.id.editTextColor).text.clear()
-            view.findViewById<EditText>(R.id.editTextMaterial).text.clear()
-            view.findViewById<EditText>(R.id.editTextSize).text.clear()
-            view.findViewById<EditText>(R.id.editTextPrice).text.clear()
+            formContainer.children.filterIsInstance<EditText>().forEach {
+                it.text.clear()
+            }
         }
 
         return view

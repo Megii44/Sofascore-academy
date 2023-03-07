@@ -1,42 +1,18 @@
 package com.example.homework_2.viewmodels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.homework_2.model.Product
 
 class ProductsViewModel : ViewModel() {
 
-    // Get a list of products
-    fun getProducts(): ArrayList<Product> {
-        val products = ArrayList<Product>()
+    private val _products = MutableLiveData<ArrayList<Product>>()
+    val products: LiveData<ArrayList<Product>> = _products
 
-        val dress = Product(
-            "Pretty in pink dress",
-            "Sparkly pink dress",
-            "Oh Polly",
-            "Dress",
-            "Mini dress",
-            "A cut",
-            "pink",
-            "cotton",
-            "xs",
-            "50 euro"
-        )
-
-        val boots = Product(
-            "Cowboy boots",
-            "Knee high black cowboy boots",
-            "Zapatos",
-            "Shoes",
-            "Boots",
-            "Cowboy",
-            "black",
-            "leather",
-            "39",
-            "90 euro"
-        )
-        products.add(dress)
-        products.add(boots)
-
-        return products
+    fun addProduct(product:Product) {
+        val productList = products.value ?: ArrayList()
+        productList.add(product)
+        _products.value = productList
     }
 }

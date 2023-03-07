@@ -3,4 +3,16 @@
     <string name="home">HOME</string>
     <string name="products">PRODUCTS</string>
     <string name="productAdded">Product added</string>
+    <string name="item">ITEM</string>
+    <string name="product">PRODUCT</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="brand">Brand</string>
+    <string name="category">Category</string>
+    <string name="productType">Product type</string>
+    <string name="style">Style</string>
+    <string name="color">Color</string>
+    <string name="material">Material</string>
+    <string name="size">Size</string>
+    <string name="price">Price</string>
 </resources>
