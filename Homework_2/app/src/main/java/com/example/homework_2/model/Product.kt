@@ -12,5 +12,9 @@ class Product(
     var size: String,
     var price: String
 ) {
-    // Getteri i setteri
+    override fun toString(): String {
+        return "Name=$name\nDescription=$description\nBrand=$brand\n" +
+                "Category=$category\nProduct type=$productType\nStyle=$style\n" +
+                "Color=$color\nMaterial=$material\nSize=$size\nPrice=$price\n"
+    }
 }

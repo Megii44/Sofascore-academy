@@ -34,19 +34,7 @@ class ProductsFragment : Fragment() {
             productsContainer.removeAllViews()
             products.forEach { product ->
                 val textView = TextView(context)
-                textView.text = buildString {
-                    append("ITEM \n")
-                    append("Name = ${product.name}\n")
-                    append("Description = ${product.description}\n")
-                    append("Brand = ${product.brand}\n")
-                    append("Category = ${product.category}\n")
-                    append("Product type = ${product.productType}\n")
-                    append("Style = ${product.style}\n")
-                    append("Color = ${product.color}\n")
-                    append("Material = ${product.material}\n")
-                    append("Size = ${product.size}\n")
-                    append("Price = ${product.price}\n")
-                }
+                textView.text = product.toString()
                 productsContainer.addView(textView)
             }
         }
