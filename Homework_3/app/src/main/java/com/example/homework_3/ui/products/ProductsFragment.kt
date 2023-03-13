@@ -12,10 +12,13 @@ import androidx.lifecycle.Observer
 import com.example.homework_3.model.Product
 import com.example.homework_3.viewmodels.ProductsViewModel
 import com.example.homework_3.R
+import com.example.homework_3.databinding.FragmentAddProductBinding
+import com.example.homework_3.databinding.FragmentProductsBinding
 
 class ProductsFragment : Fragment() {
 
     private lateinit var viewModel: ProductsViewModel
+    private lateinit var binding: FragmentProductsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -6,17 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import androidx.lifecycle.ViewModelProvider
 import com.example.homework_3.model.Product
 import com.example.homework_3.viewmodels.ProductsViewModel
 import com.example.homework_3.R
+import com.example.homework_3.databinding.FragmentAddProductBinding
 import com.example.homework_3.enum.SizeEnum
 
 class AddProductFragment : Fragment() {
 
     private lateinit var viewModel: ProductsViewModel
+    private lateinit var binding: FragmentAddProductBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,12 +25,14 @@ class AddProductFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_add_product, container, false)
 
+        binding = FragmentAddProductBinding.inflate(layoutInflater)
+
         // Initialize the ViewModel
         viewModel = ViewModelProvider(requireActivity())[ProductsViewModel::class.java]
 
         val sizes = SizeEnum.getValues()
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, sizes)
-        val sizeSpinner = view.findViewById<Spinner>(R.id.size_spinner)
+        val sizeSpinner = binding.sizeSpinner
         sizeSpinner.adapter = adapter
 
         sizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -42,26 +45,18 @@ class AddProductFragment : Fragment() {
             }
         }
 
-        val submitButton = view.findViewById<Button>(R.id.btn_submit)
-        val formContainer = view.findViewById<ConstraintLayout>(R.id.form_container)
+        val submitButton = binding.btnSubmit
+        val formContainer = binding.formContainer
 
         submitButton.setOnClickListener {
-            val name = view.findViewById<EditText>(R.id.name_edit_text).text.toString()
-            val description = view.findViewById<EditText>(R.id.description_edit_text).text.toString()
-            val brand = view.findViewById<EditText>(R.id.brand_edit_text).text.toString()
-            val category = view.findViewById<EditText>(R.id.category_edit_text).text.toString()
-            val productType = view.findViewById<EditText>(R.id.product_type_edit_text).text.toString()
-            val style = view.findViewById<EditText>(R.id.style_edit_text).text.toString()
-            val color = view.findViewById<EditText>(R.id.color_edit_text).text.toString()
-            val selectedRadioButtonId = view.findViewById<RadioGroup>(R.id.material_radio_group).checkedRadioButtonId
+            val selectedRadioButtonId = binding.materialRadioGroup.id
             val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)
-            val material = selectedRadioButton.text.toString()
             val size = sizeSpinner.selectedItem.toString()
-            val price = view.findViewById<EditText>(R.id.price_edit_text).text.toString()
 
-            val newProduct = Product(name, description, brand, category,
-                productType, style, color, material,
-                size, price)
+            val newProduct = Product(binding.nameEditText.text.toString(), binding.descriptionEditText.text.toString(), binding.brandEditText.text.toString(),
+                binding.categoryEditText.text.toString(), binding.productTypeEditText.text.toString(), binding.styleEditText.text.toString(),
+                binding.colorEditText.text.toString(), selectedRadioButton.toString() ,
+                size, binding.priceEditText.toString())
 
             viewModel.addProduct(product = newProduct)
 
