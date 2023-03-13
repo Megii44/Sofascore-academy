@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="100dp"
         tools:layout_editor_absoluteX="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingBottom="100dp"
             android:padding="16dp">
 
             <TextView
@@ -144,7 +144,7 @@
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/product_type_text_view"
                 tools:ignore="VisualLintTextFieldSize"
-                tools:layout_editor_absoluteX="16dp" />
+                tools:layout_editor_absoluteX="31dp" />
 
             <TextView
                 android:id="@+id/style_text_view"
@@ -181,7 +181,8 @@
                 android:text="@string/color"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/style_edit_text" />
+                app:layout_constraintTop_toBottomOf="@+id/style_edit_text"
+                tools:layout_editor_absoluteX="16dp" />
 
             <EditText
                 android:id="@+id/color_edit_text"
@@ -208,19 +209,33 @@
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/color_edit_text" />
 
-            <EditText
-                android:id="@+id/material_edit_text"
+            <RadioGroup
+                android:id="@+id/material_radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:background="@drawable/edit_text_background"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColor="@color/black"
-                android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/material_text_view"
-                tools:ignore="VisualLintTextFieldSize"
-                tools:layout_editor_absoluteX="16dp" />
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cotton" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/leather" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jeans" />
+
+            </RadioGroup>
+
 
             <TextView
                 android:id="@+id/size_text_view"
@@ -231,7 +246,7 @@
                 android:text="@string/size"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/material_edit_text" />
+                app:layout_constraintTop_toBottomOf="@+id/material_radio_group" />
 
             <EditText
                 android:id="@+id/size_edit_text"

@@ -16,4 +16,7 @@
     <string name="size">Size</string>
     <string name="price">Price</string>
     <string name="submit">Submit</string>
+    <string name="cotton">Cotton</string>
+    <string name="leather">Leather</string>
+    <string name="jeans">Jeans</string>
 </resources>
