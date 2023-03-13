@@ -30,45 +30,62 @@ class AddProductFragment : Fragment() {
         // Initialize the ViewModel
         viewModel = ViewModelProvider(requireActivity())[ProductsViewModel::class.java]
 
-        // Initialize the sizes dropdown list
+        // Initialize the sizes dropdown list with Array adapter
         val sizes = SizeEnum.getValues()
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, sizes)
         val sizeSpinner = binding.sizeSpinner
         sizeSpinner.adapter = adapter
 
-        sizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                // Do something when an item is selected
+        binding.btnSubmit.setOnClickListener {
+            var isValid = true
+            // Validate all fields
+            binding.formContainer.children.filterIsInstance<EditText>().forEach {
+                if (!validate(it.text.toString())) {
+                    it.error = "This field is required"
+                    isValid = false
+                }
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do something when nothing is selected
+            // Validate radio button
+            if (binding.materialRadioGroup.checkedRadioButtonId == -1) {
+                binding.materialRadioGroup.requestFocus()
+                Toast.makeText(requireContext(), "Please select a material", Toast.LENGTH_SHORT).show()
+                isValid = false
             }
-        }
 
-        val submitButton = binding.btnSubmit
-        val formContainer = binding.formContainer
+            if(isValid) {
+                val selectedRadioButtonId = binding.materialRadioGroup.checkedRadioButtonId
+                val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)?.text.toString()
+                val size = sizeSpinner.selectedItem.toString()
 
-        submitButton.setOnClickListener {
-            val selectedRadioButtonId = binding.materialRadioGroup.checkedRadioButtonId
-            val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)?.text.toString()
-            val size = sizeSpinner.selectedItem.toString()
+                val newProduct = Product(binding.nameEditText.text.toString(), binding.descriptionEditText.text.toString(), binding.brandEditText.text.toString(),
+                    binding.categoryEditText.text.toString(), binding.productTypeEditText.text.toString(), binding.styleEditText.text.toString(),
+                    binding.colorEditText.text.toString(),
+                    selectedRadioButton ,
+                    size, binding.priceEditText.text.toString())
 
-            val newProduct = Product(binding.nameEditText.text.toString(), binding.descriptionEditText.text.toString(), binding.brandEditText.text.toString(),
-                binding.categoryEditText.text.toString(), binding.productTypeEditText.text.toString(), binding.styleEditText.text.toString(),
-                binding.colorEditText.text.toString(),
-                selectedRadioButton ,
-                size, binding.priceEditText.text.toString())
+                viewModel.addProduct(product = newProduct)
 
-            viewModel.addProduct(product = newProduct)
+                // Reset the input fields
+                binding.formContainer.children.filterIsInstance<EditText>().forEach {
+                    it.text.clear()
+                }
 
-            // Reset the input fields
-            formContainer.children.filterIsInstance<EditText>().forEach {
-                it.text.clear()
+                // Reset radio buttons
+                binding.materialRadioGroup.clearCheck()
+
+                // Reset spinners
+                binding.sizeSpinner.setSelection(-1)
             }
         }
 
         return view
     }
 
+    private fun validate(str: String?): Boolean {
+        if (str == null || str.isEmpty()) {
+            return false
+        }
+        return true
+    }
 }
