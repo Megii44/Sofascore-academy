@@ -7,5 +7,11 @@ enum class SizeEnum {
     M,
     L,
     XL,
-    XXL
+    XXL;
+
+    companion object {
+        fun getValues(): Array<String> {
+            return values().map { it.name }.toTypedArray()
+        }
+    }
 }

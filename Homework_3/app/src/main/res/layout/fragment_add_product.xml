@@ -236,7 +236,6 @@
 
             </RadioGroup>
 
-
             <TextView
                 android:id="@+id/size_text_view"
                 android:layout_width="match_parent"
@@ -248,19 +247,18 @@
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/material_radio_group" />
 
-            <EditText
-                android:id="@+id/size_edit_text"
+            <Spinner
+                android:id="@+id/size_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
                 android:background="@drawable/edit_text_background"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:minHeight="48dp"
                 app:layout_constraintTop_toBottomOf="@+id/size_text_view"
-                tools:ignore="TextFields,VisualLintTextFieldSize"
-                tools:layout_editor_absoluteX="16dp" />
+
+                />
 
             <TextView
                 android:id="@+id/price_text_view"
@@ -271,7 +269,7 @@
                 android:text="@string/price"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@+id/size_edit_text" />
+                app:layout_constraintTop_toBottomOf="@+id/size_spinner" />
 
             <EditText
                 android:id="@+id/price_edit_text"
