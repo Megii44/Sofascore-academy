@@ -28,15 +28,18 @@ class ProductsFragment : Fragment() {
 
         val productsContainer = binding.productsContainer
 
+        // Create an ArrayAdapter
+        val emptyList = ArrayList<Product>()
+        val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, emptyList)
+
+        // Set the adapter to the ListView
+        productsContainer.adapter = arrayAdapter
+
         // Products observer which updates the UI
         val productsObserver = Observer<ArrayList<Product>> { products ->
             // Update the UI when the product list changes
-
-            // Create an ArrayAdapter
-            val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, products)
-
-            // Set the adapter to the ListView
-            productsContainer.adapter = arrayAdapter
+            // Update the content of the array adapter
+            arrayAdapter.addAll(products)
         }
 
         // Observe the LiveData, passing in main activity as the LifecycleOwner and the observer.

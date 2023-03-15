@@ -1,5 +1,7 @@
 package com.example.homework_3.model
 
+import com.example.homework_3.enum.SizeEnum
+
 class Product(
     var name: String,
     var description: String,
@@ -9,7 +11,7 @@ class Product(
     var style: String,
     var color: String,
     var material: String,
-    var size: String,
+    var size: SizeEnum,
     var price: String
 ) {
     override fun toString(): String {

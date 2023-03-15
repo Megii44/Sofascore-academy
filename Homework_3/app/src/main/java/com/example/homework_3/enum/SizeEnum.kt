@@ -13,5 +13,19 @@ enum class SizeEnum {
         fun getValues(): Array<String> {
             return values().map { it.name }.toTypedArray()
         }
+
+        public fun fromStringToSizeEnum(str: String): SizeEnum {
+            return when (str) {
+                "XXS" -> SizeEnum.XXS
+                "XS" -> SizeEnum.XS
+                "S" -> SizeEnum.S
+                "M" -> SizeEnum.M
+                "L" -> SizeEnum.L
+                "XL" -> SizeEnum.XL
+                "XXL" -> SizeEnum.XXL
+                else -> SizeEnum.XXL
+            }
+        }
     }
+
 }

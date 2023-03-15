@@ -19,4 +19,6 @@
     <string name="cotton">Cotton</string>
     <string name="leather">Leather</string>
     <string name="jeans">Jeans</string>
+    <string name="material_err_msg">Please select a material</string>
+    <string name="required_field_err_msg">This field is required!</string>
 </resources>

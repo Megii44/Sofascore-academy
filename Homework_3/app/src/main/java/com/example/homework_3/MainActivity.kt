@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        tabLayout = findViewById(R.id.tabLayout)
-        viewPager2 = findViewById(R.id.viewPager2)
+        tabLayout = binding.tabLayout
+        viewPager2 = binding.viewPager2
 
         adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
 

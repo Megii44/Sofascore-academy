@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.view.children
 import androidx.lifecycle.ViewModelProvider
+import com.example.homework_3.R
 import com.example.homework_3.model.Product
 import com.example.homework_3.viewmodels.ProductsViewModel
 import com.example.homework_3.databinding.FragmentAddProductBinding
@@ -41,7 +42,7 @@ class AddProductFragment : Fragment() {
             // Validate all fields
             binding.formContainer.children.filterIsInstance<EditText>().forEach {
                 if (!validate(it.text.toString())) {
-                    it.error = "This field is required"
+                    it.error = R.string.required_field_err_msg.toString()
                     isValid = false
                 }
             }
@@ -49,19 +50,19 @@ class AddProductFragment : Fragment() {
             // Validate radio button
             if (binding.materialRadioGroup.checkedRadioButtonId == -1) {
                 binding.materialRadioGroup.requestFocus()
-                Toast.makeText(requireContext(), "Please select a material", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.material_err_msg.toString() , Toast.LENGTH_SHORT).show()
                 isValid = false
             }
 
             if(isValid) {
                 val selectedRadioButtonId = binding.materialRadioGroup.checkedRadioButtonId
                 val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)?.text.toString()
-                val size = sizeSpinner.selectedItem.toString()
+                val size = SizeEnum.fromStringToSizeEnum(sizeSpinner.selectedItem.toString())
 
                 val newProduct = Product(binding.nameEditText.text.toString(), binding.descriptionEditText.text.toString(), binding.brandEditText.text.toString(),
                     binding.categoryEditText.text.toString(), binding.productTypeEditText.text.toString(), binding.styleEditText.text.toString(),
                     binding.colorEditText.text.toString(),
-                    selectedRadioButton ,
+                    selectedRadioButton,
                     size, binding.priceEditText.text.toString())
 
                 viewModel.addProduct(product = newProduct)
