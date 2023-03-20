@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.view.children
+import androidx.core.view.descendants
 import androidx.lifecycle.ViewModelProvider
 import com.example.homework_3.R
 import com.example.homework_3.model.Product
 import com.example.homework_3.viewmodels.ProductsViewModel
 import com.example.homework_3.databinding.FragmentAddProductBinding
 import com.example.homework_3.enum.SizeEnum
+import com.example.homework_3.views.EditTextWithLabelView
 
 class AddProductFragment : Fragment() {
 
@@ -39,10 +40,9 @@ class AddProductFragment : Fragment() {
 
         binding.btnSubmit.setOnClickListener {
             var isValid = true
-            // Validate all fields
-            binding.formContainer.children.filterIsInstance<EditText>().forEach {
-                if (!validate(it.text.toString())) {
-                    it.error = R.string.required_field_err_msg.toString()
+            // Validate all edit text fields
+            binding.formContainer.descendants.filterIsInstance<EditTextWithLabelView>().forEach {
+                if (!it.validate()) {
                     isValid = false
                 }
             }
@@ -50,7 +50,7 @@ class AddProductFragment : Fragment() {
             // Validate radio button
             if (binding.materialRadioGroup.checkedRadioButtonId == -1) {
                 binding.materialRadioGroup.requestFocus()
-                Toast.makeText(requireContext(), R.string.material_err_msg.toString() , Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.material_error.toString() , Toast.LENGTH_SHORT).show()
                 isValid = false
             }
 
@@ -59,16 +59,16 @@ class AddProductFragment : Fragment() {
                 val selectedRadioButton = view.findViewById<RadioButton>(selectedRadioButtonId)?.text.toString()
                 val size = SizeEnum.fromStringToSizeEnum(sizeSpinner.selectedItem.toString())
 
-                val newProduct = Product(binding.nameEditText.text.toString(), binding.descriptionEditText.text.toString(), binding.brandEditText.text.toString(),
-                    binding.categoryEditText.text.toString(), binding.productTypeEditText.text.toString(), binding.styleEditText.text.toString(),
-                    binding.colorEditText.text.toString(),
-                    selectedRadioButton,
-                    size, binding.priceEditText.text.toString())
+                val newProduct = Product(binding.nameInput.getEditTextValue(), binding.descriptionInput.getEditTextValue(),
+                    binding.brandInput.getEditTextValue(), binding.categoryInput.getEditTextValue(),
+                    binding.productTypeInput.getEditTextValue(), binding.styleInput.getEditTextValue(),
+                    binding.colorInput.getEditTextValue(), selectedRadioButton,
+                    size, binding.priceInput.getEditTextValue())
 
                 viewModel.addProduct(product = newProduct)
 
                 // Reset the input fields
-                binding.formContainer.children.filterIsInstance<EditText>().forEach {
+                binding.formContainer.descendants.filterIsInstance<EditText>().forEach {
                     it.text.clear()
                 }
 
@@ -81,12 +81,5 @@ class AddProductFragment : Fragment() {
         }
 
         return view
-    }
-
-    private fun validate(str: String?): Boolean {
-        if (str == null || str.isEmpty()) {
-            return false
-        }
-        return true
     }
 }

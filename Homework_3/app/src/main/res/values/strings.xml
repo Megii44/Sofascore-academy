@@ -19,6 +19,14 @@
     <string name="cotton">Cotton</string>
     <string name="leather">Leather</string>
     <string name="jeans">Jeans</string>
-    <string name="material_err_msg">Please select a material</string>
-    <string name="required_field_err_msg">This field is required!</string>
+    <string name="name_error">Name field is required</string>
+    <string name="description_error">Description field is required</string>
+    <string name="brand_error">Brand field is required</string>
+    <string name="category_error">Category field is required</string>
+    <string name="product_type_error">Product type field is required</string>
+    <string name="style_error">Style field is required</string>
+    <string name="color_error">Color field is required</string>
+    <string name="material_error">Material field is required</string>
+    <string name="size_error">Size field is required</string>
+    <string name="price_error">Price field is required</string>
 </resources>
