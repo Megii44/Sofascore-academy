@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="EditTextWithLabelView">
+        <attr name="label" format="string"/>
+        <attr name="errorMsg" format="string"/>
+    </declare-styleable>
+</resources>
