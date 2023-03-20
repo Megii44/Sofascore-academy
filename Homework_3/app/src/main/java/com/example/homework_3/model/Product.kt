@@ -12,7 +12,8 @@ class Product(
     var color: String,
     var material: String,
     var size: SizeEnum,
-    var price: String
+    var price: String,
+    var productImageUrl: String,
 ) {
     override fun toString(): String {
         return "Name=$name\nDescription=$description\nBrand=$brand\n" +
