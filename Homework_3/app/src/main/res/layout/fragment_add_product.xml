@@ -158,6 +158,16 @@
                 tools:ignore="MissingConstraints"
             />
 
+            <com.example.homework_3.views.EditTextWithLabelView
+                android:id="@+id/product_image_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorMsg="@string/product_image_error"
+                app:label="@string/product_image"
+                app:layout_constraintTop_toBottomOf="@+id/price_input"
+                tools:ignore="MissingConstraints"
+            />
+
             <Button
                 android:id="@+id/btn_submit"
                 android:layout_width="130dp"
@@ -171,7 +181,7 @@
                 android:textColor="#ffffff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/price_input" />
+                app:layout_constraintTop_toBottomOf="@+id/product_image_input" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

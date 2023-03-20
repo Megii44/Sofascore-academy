@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Homework_2</string>
+    <string name="app_name">Clothing shop</string>
     <string name="home">HOME</string>
     <string name="products">PRODUCTS</string>
     <string name="productAdded">Product added</string>
@@ -15,6 +15,7 @@
     <string name="material">Material</string>
     <string name="size">Size</string>
     <string name="price">Price</string>
+    <string name="product_image">Product image url</string>
     <string name="submit">Submit</string>
     <string name="cotton">Cotton</string>
     <string name="leather">Leather</string>
@@ -29,4 +30,5 @@
     <string name="material_error">Material field is required</string>
     <string name="size_error">Size field is required</string>
     <string name="price_error">Price field is required</string>
+    <string name="product_image_error">Product image field is required</string>
 </resources>
