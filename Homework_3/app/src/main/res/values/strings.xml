@@ -31,4 +31,13 @@
     <string name="size_error">Size field is required</string>
     <string name="price_error">Price field is required</string>
     <string name="product_image_error">Product image field is required</string>
+
+    <string name="settings">Settings</string>
+
+    <!-- Theme Titles -->
+    <string name="choose_theme">Choose a theme</string>
+
+    <!-- Language Titles -->
+    <string name="choose_language">Choose a language</string>
+
 </resources>

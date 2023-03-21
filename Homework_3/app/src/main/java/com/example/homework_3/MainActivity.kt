@@ -34,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         productsTab.setText(R.string.products)
         tabLayout.addTab(productsTab)
 
+        val settingsTab = tabLayout.newTab()
+        productsTab.setIcon(R.drawable.ic_settings)
+        productsTab.setText(R.string.settings)
+        tabLayout.addTab(settingsTab)
+
         viewPager2.adapter = adapter
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
