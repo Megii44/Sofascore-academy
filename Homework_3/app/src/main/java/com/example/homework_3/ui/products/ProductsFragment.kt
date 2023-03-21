@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.homework_3.adapter.ProductsRecyclerAdapter
 import com.example.homework_3.viewmodels.ProductsViewModel
 import com.example.homework_3.databinding.FragmentProductsBinding
+import com.example.homework_3.model.Product
 
 class ProductsFragment : Fragment() {
 
@@ -23,6 +24,11 @@ class ProductsFragment : Fragment() {
         // Inflate the layout for this fragment and initialize the viewModel
         binding = FragmentProductsBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity())[ProductsViewModel::class.java]
+
+        // Create adapter for recycler view
+        val emptyList = ArrayList<Product>()
+        val adapter = ProductsRecyclerAdapter(requireContext(), emptyList)
+        binding.productsContainer.adapter = adapter
 
         // Products observer which updates the UI
         viewModel.products.observe(viewLifecycleOwner) { products ->

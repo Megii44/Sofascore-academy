@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homework_3.R
-import com.example.homework_3.databinding.FragmentProductsBinding
+import com.example.homework_3.databinding.FragmentAddProductBinding
 import com.example.homework_3.enum.SizeEnum
 import com.example.homework_3.model.Product
 
@@ -15,7 +15,7 @@ class ProductsRecyclerAdapter(private val context: Context, private val products
     RecyclerView.Adapter<ProductsRecyclerAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val binding = FragmentProductsBinding.bind(view)
+        val binding = FragmentAddProductBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -28,7 +28,6 @@ class ProductsRecyclerAdapter(private val context: Context, private val products
         holder.binding.root.backgroundTintList = ColorStateList.valueOf(
             when(product.size) {
                 SizeEnum.XXS -> context.getColor(R.color.purple_200)
-                SizeEnum.XXS -> context.getColor(R.color.purple_200)
                 SizeEnum.XS -> context.getColor(R.color.purple_200)
                 SizeEnum.S -> context.getColor(R.color.purple_200)
                 SizeEnum.M -> context.getColor(R.color.purple_200)
@@ -38,7 +37,14 @@ class ProductsRecyclerAdapter(private val context: Context, private val products
             }
         )
         holder.binding.apply {
-            //
+            nameInput.setEditTextValue(product.name)
+            descriptionInput.setEditTextValue(product.description)
+            brandInput.setEditTextValue(product.brand)
+            categoryInput.setEditTextValue(product.category)
+            productTypeInput.setEditTextValue(product.productType)
+            styleInput.setEditTextValue(product.style)
+            colorInput.setEditTextValue(product.color)
+            priceInput.setEditTextValue(product.price)
         }
     }
 
