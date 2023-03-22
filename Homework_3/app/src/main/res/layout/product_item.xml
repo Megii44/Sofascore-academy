@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:layout_margin="5dp"
-    android:background="@drawable/submit_button_bg">
+    android:background="@drawable/product_item_bg">
 
     <TextView
         android:id="@+id/product_name"
@@ -34,6 +34,7 @@
         android:id="@+id/product_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:textAppearance="?android:textAppearanceLarge"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/product_image"
