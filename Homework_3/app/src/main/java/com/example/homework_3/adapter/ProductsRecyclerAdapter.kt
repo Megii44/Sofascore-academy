@@ -40,13 +40,6 @@ class ProductsRecyclerAdapter(private val context: Context, private val products
         holder.binding.apply {
             productName.text = product.name
             productDescription.text = product.description
-            productBrand.text = product.brand
-            productCategory.text = product.category
-            productType.text = product.productType
-            productStyle.text = product.style
-            productColor.text = product.color
-            productMaterial.text = product.material
-            productSize.text = product.size.toString()
             productPrice.text = product.price
             productImage.load(product.productImageUrl)
         }
