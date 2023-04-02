@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.homework_5.databinding.FragmentSearchBinding
@@ -27,6 +28,9 @@ class SearchFragment : Fragment() {
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        val toolbar = binding.toolbarSearch // Find the toolbar by its ID
+        (activity as AppCompatActivity).setSupportActionBar(toolbar) // Set the toolbar as the action bar
 
         val textView: TextView = binding.textSearch
         searchViewModel.text.observe(viewLifecycleOwner) {

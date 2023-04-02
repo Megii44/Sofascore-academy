@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="color_primary">#3089FF</color>
+    <color name="darker_blue">#266BC6</color>
     <color name="color_secondary">#7055E9</color>
     <color name="on_color">#FFFFFF</color>
     <color name="neutrals_n_lv_1">#1C1F22</color>

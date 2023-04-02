@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.homework_5.databinding.FragmentSettingsBinding
@@ -27,6 +28,9 @@ class SettingsFragment : Fragment() {
 
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        val toolbar = binding.toolbarSettings // Find the toolbar by its ID
+        (activity as AppCompatActivity).setSupportActionBar(toolbar) // Set the toolbar as the action bar
 
         val textView: TextView = binding.textSettings
         settingsViewModel.text.observe(viewLifecycleOwner) {
