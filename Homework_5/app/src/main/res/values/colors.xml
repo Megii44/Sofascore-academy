@@ -24,5 +24,9 @@
     <color name="elevation_elevation2">#00000033</color>
     <color name="overlay">#1c1f2233</color>
     <color name="surface_none">#1e1d2500</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
 
 </resources>
