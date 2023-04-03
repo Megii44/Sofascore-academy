@@ -12,9 +12,9 @@
     <color name="darker_blue">#266BC6</color>
     <color name="color_secondary">#7055E9</color>
     <color name="on_color">#FFFFFF</color>
-    <color name="neutrals_n_lv_1">#1C1F22</color>
-    <color name="neutrals_n_lv_2">#1c1f2280</color>
-    <color name="neutrals_n_lv_3">#1c1f2240</color>
+    <color name="neutrals_n_lv_1">#1c1f22</color>
+    <color name="neutrals_n_lv_2">#801c1f22</color>
+    <color name="neutrals_n_lv_3">#401c1f22</color>
     <color name="surface_surface0">#EDF1F6</color>
     <color name="surface_surface1">#FFFFFFFF</color>
     <color name="surface_surface2">#e5e9ef66</color>

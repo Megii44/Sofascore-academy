@@ -1,7 +1,6 @@
 <resources>
-
-    <style name="Widget.Theme.Homework_5.MyView" parent="">
-        <item name="android:background">@color/gray_600</item>
-        <item name="exampleColor">@color/light_blue_600</item>
-    </style>
+    <style name="Widget.Theme.Homework_5.BaseCityInfoView" parent=""></style>
+    <style name="Widget.Theme.Homework_5.CityInfoOneLabelView" parent=""></style>
+    <style name="Widget.Theme.Homework_5.CityInfoTwoLabelsView" parent=""></style>
+    <style name="Widget.Theme.Homework_5.CityItemView" parent=""></style>
 </resources>

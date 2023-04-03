@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="CityInfoOneLabelView">
+        <attr name="label" format="string" />
+    </declare-styleable>
+</resources>
