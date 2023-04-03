@@ -10,9 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df29d69-2bc5-44e0-8f31-d3e929df3cca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/listed_info_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_listed_info_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/PopoverView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/SnackbarView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/TimeItemView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherMasterInfoView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/popover_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/sample_snackbar_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/time_item_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/weather_info_tile_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/weather_master_info_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_popover_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_snackbar_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_time_item_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_info_tile_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_master_info_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
@@ -64,6 +76,8 @@
     "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabelsView.kt_SELECTED": "CityInfoTwoLabelsView",
     "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityItemView.kt_SELECTED": "CityItemView",
     "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt_SELECTED": "ListedInfoView",
+    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/PopoverView.kt_SELECTED": "PopoverView",
+    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt_SELECTED": "WeatherInfoTileView",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
     "last_directory_selection": "C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/res/drawable",
