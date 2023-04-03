@@ -7,34 +7,55 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bg_round_edges_12_dp"
     android:padding="16dp"
-    android:paddingBottom="20dp">
+    android:paddingBottom="16dp">
 
     <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/HeadlineMediumNLv1Left"
+        android:id="@+id/date"
+        style="@style/HeadlineSmallNLv1Left"
+        android:layout_width="144dp"
+        android:layout_height="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="San Francisco" />
+        tools:text="Mon, March 15" />
+
+    <TextView
+        android:id="@+id/time"
+        style="@style/HeadlineSmallNLv1Left"
+        android:layout_width="144dp"
+        android:layout_height="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        tools:text="09:32 AM (CET)" />
+
+    <TextView
+        android:id="@+id/description"
+        style="@style/BodyMediumNLv2Left"
+        android:layout_width="144dp"
+        android:layout_height="20dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time"
+        tools:text="Light Rain" />
 
     <ImageView
-        android:id="@+id/star_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_star_0"
+        android:id="@+id/weather_icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@string/weather_c_icon"
+        android:src="@drawable/ic_weather_s"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/star_icon"/>
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="ImageContrastCheck" />
 
-    <com.example.homework_5.views.CityInfoTwoLabelsView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:city_info_two_labels_label1="label"
-        app:city_info_two_labels_label2="Label2"
-        app:city_info_two_labels_temperature="20"
-        app:city_info_two_labels_icon="@drawable/ic_weather_c"/>
+    <TextView
+        style="@style/DisplayExtraLargeNLv1Right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/weather_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="23°" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
