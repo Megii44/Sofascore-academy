@@ -26,10 +26,10 @@ class PopoverView(context: Context, attrs: AttributeSet) : ConstraintLayout(cont
             R.styleable.PopoverView, 0, 0
         ).apply {
             try {
-                title = getString(R.styleable.PopoverView_title)!!
-                description = getString(R.styleable.PopoverView_description)!!
-                buttonOneText = getString(R.styleable.PopoverView_buttonOneText)!!
-                buttonTwoText = getString(R.styleable.PopoverView_buttonTwoText)!!
+                title = getString(R.styleable.PopoverView_popover_title)!!
+                description = getString(R.styleable.PopoverView_popover_description)!!
+                buttonOneText = getString(R.styleable.PopoverView_popover_button_one_text)!!
+                buttonTwoText = getString(R.styleable.PopoverView_popover_button_two_text)!!
             } finally {
                 recycle()
             }

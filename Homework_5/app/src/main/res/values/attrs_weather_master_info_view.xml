@@ -1,5 +1,5 @@
 <resources>
     <declare-styleable name="WeatherMasterInfoView">
-        <attr name="title" format="string" />
+        <attr name="weather_master_info_title" format="string" />
     </declare-styleable>
 </resources>

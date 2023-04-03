@@ -26,11 +26,11 @@ class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout
             R.styleable.BaseCityInfoView, 0, 0
         ).apply {
             try {
-                date = getString(R.styleable.BaseCityInfoView_date)!!
-                time = getString(R.styleable.BaseCityInfoView_time)!!
-                description = getString(R.styleable.BaseCityInfoView_description)!!
-                temperature = R.styleable.BaseCityInfoView_temperature
-                icon = getString(R.styleable.BaseCityInfoView_icon)!!
+                date = getString(R.styleable.BaseCityInfoView_base_city_info_date)!!
+                time = getString(R.styleable.BaseCityInfoView_base_city_info_time)!!
+                description = getString(R.styleable.BaseCityInfoView_base_city_info_description)!!
+                temperature = R.styleable.BaseCityInfoView_base_city_info_temperature
+                icon = getString(R.styleable.BaseCityInfoView_base_city_info_icon)!!
             } finally {
                 recycle()
             }

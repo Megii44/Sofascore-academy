@@ -24,9 +24,9 @@ class CityInfoOneLabelView(context: Context, attrs: AttributeSet) : ConstraintLa
             R.styleable.CityInfoOneLabelView, 0, 0
         ).apply {
             try {
-                label = getString(R.styleable.CityInfoOneLabelView_label)!!
-                temperature = getString(R.styleable.CityInfoOneLabelView_temperature)!!
-                icon = getString(R.styleable.CityInfoOneLabelView_icon)!!
+                label = getString(R.styleable.CityInfoOneLabelView_city_info_one_label_label)!!
+                temperature = getString(R.styleable.CityInfoOneLabelView_city_info_one_label_temperature)!!
+                icon = getString(R.styleable.CityInfoOneLabelView_city_info_one_label_icon)!!
             } finally {
                 recycle()
             }

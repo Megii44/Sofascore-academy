@@ -22,7 +22,7 @@ class WeatherMasterInfoView(context: Context, attrs: AttributeSet) : ConstraintL
             R.styleable.WeatherMasterInfoView, 0, 0
         ).apply {
             try {
-                title = getString(R.styleable.WeatherMasterInfoView_title)!!
+                title = getString(R.styleable.WeatherMasterInfoView_weather_master_info_title)!!
             } finally {
                 recycle()
             }

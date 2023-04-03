@@ -25,10 +25,10 @@ class CityInfoTwoLabelsView(context: Context, attrs: AttributeSet) : ConstraintL
             R.styleable.CityInfoTwoLabelsView, 0, 0
         ).apply {
             try {
-                label1 = getString(R.styleable.CityInfoTwoLabelsView_label1)!!
-                label2 = getString(R.styleable.CityInfoTwoLabelsView_label2)!!
-                temperature = getString(R.styleable.CityInfoOneLabelView_temperature)!!
-                icon = getString(R.styleable.CityInfoTwoLabelsView_icon)!!
+                label1 = getString(R.styleable.CityInfoTwoLabelsView_city_info_two_labels_label1)!!
+                label2 = getString(R.styleable.CityInfoTwoLabelsView_city_info_two_labels_label2)!!
+                temperature = getString(R.styleable.CityInfoTwoLabelsView_city_info_two_labels_temperature)!!
+                icon = getString(R.styleable.CityInfoTwoLabelsView_city_info_two_labels_icon)!!
             } finally {
                 recycle()
             }

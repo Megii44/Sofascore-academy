@@ -11,24 +11,25 @@
   <component name="ChangeListManager">
     <list default="true" id="5df29d69-2bc5-44e0-8f31-d3e929df3cca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/CityInfoOneLabelView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/CityInfoOneLabelView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabelsView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabelsView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/PopoverView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/PopoverView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/SnackbarView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/SnackbarView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/TimeItemView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/TimeItemView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherMasterInfoView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherMasterInfoView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/base_city_info_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/base_city_info_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/city_info_one_label_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/city_info_one_label_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/popover_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/popover_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/snackbar_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/snackbar_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/time_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/time_item_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/weather_master_info_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/weather_master_info_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_base_city_info_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_base_city_info_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_city_info_one_label_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_city_info_one_label_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_city_info_two_labels_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_city_info_two_labels_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_city_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_city_item_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_listed_info_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_listed_info_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_popover_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_popover_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_snackbar_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_snackbar_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_time_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_time_item_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_info_tile_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_info_tile_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_master_info_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_master_info_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

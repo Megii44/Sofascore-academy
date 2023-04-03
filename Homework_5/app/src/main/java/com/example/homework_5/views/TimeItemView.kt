@@ -25,10 +25,10 @@ class TimeItemView(context: Context, attrs: AttributeSet) : ConstraintLayout(con
             R.styleable.TimeItemView, 0, 0
         ).apply {
             try {
-                hour = getString(R.styleable.TimeItemView_hour)!!
-                icon = getString(R.styleable.TimeItemView_icon)!!
-                temperature = getString(R.styleable.TimeItemView_temperature)!!
-                backgroundColor = getString(R.styleable.TimeItemView_backgroundColor)!!.toInt()
+                hour = getString(R.styleable.TimeItemView_time_item_hour)!!
+                icon = getString(R.styleable.TimeItemView_time_item_icon)!!
+                temperature = getString(R.styleable.TimeItemView_time_item_temperature)!!
+                backgroundColor = getString(R.styleable.TimeItemView_time_item_background_color)!!.toInt()
             } finally {
                 recycle()
             }

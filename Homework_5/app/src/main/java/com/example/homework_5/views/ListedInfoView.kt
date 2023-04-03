@@ -23,8 +23,8 @@ class ListedInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             R.styleable.ListedInfoView, 0, 0
         ).apply {
             try {
-                title = getString(R.styleable.ListedInfoView_title)!!
-                subtitle = getString(R.styleable.ListedInfoView_subtitle)!!
+                title = getString(R.styleable.ListedInfoView_listed_info_title)!!
+                subtitle = getString(R.styleable.ListedInfoView_listed_info_subtitle)!!
             } finally {
                 recycle()
             }

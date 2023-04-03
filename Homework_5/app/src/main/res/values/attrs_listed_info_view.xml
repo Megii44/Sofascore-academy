@@ -1,6 +1,6 @@
 <resources>
     <declare-styleable name="ListedInfoView">
-        <attr name="title" format="string" />
-        <attr name="subtitle" format="string" />
+        <attr name="listed_info_title" format="string" />
+        <attr name="listed_info_subtitle" format="string" />
     </declare-styleable>
 </resources>

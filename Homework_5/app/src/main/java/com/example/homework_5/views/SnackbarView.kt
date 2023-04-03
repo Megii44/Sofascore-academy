@@ -23,8 +23,8 @@ class SnackbarView(context: Context, attrs: AttributeSet) : ConstraintLayout(con
             R.styleable.SnackbarView, 0, 0
         ).apply {
             try {
-                text = getString(R.styleable.SnackbarView_backgroundColor)!!
-                backgroundColor = getString(R.styleable.SnackbarView_backgroundColor)!!.toInt()
+                text = getString(R.styleable.SnackbarView_snackbar_text)!!
+                backgroundColor = getString(R.styleable.SnackbarView_snackbar_background_color)!!.toInt()
             } finally {
                 recycle()
             }

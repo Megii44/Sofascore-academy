@@ -24,9 +24,9 @@ class WeatherInfoTileView(context: Context, attrs: AttributeSet) : ConstraintLay
             R.styleable.WeatherInfoTileView, 0, 0
         ).apply {
             try {
-                icon = getString(R.styleable.WeatherInfoTileView_icon)!!
-                title = getString(R.styleable.WeatherInfoTileView_title)!!
-                value = getString(R.styleable.WeatherInfoTileView_value)!!
+                icon = getString(R.styleable.WeatherInfoTileView_weather_info_tile_icon)!!
+                title = getString(R.styleable.WeatherInfoTileView_weather_info_tile_title)!!
+                value = getString(R.styleable.WeatherInfoTileView_weather_info_tile_value)!!
             } finally {
                 recycle()
             }
