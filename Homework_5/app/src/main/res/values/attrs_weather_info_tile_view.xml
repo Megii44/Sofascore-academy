@@ -1,8 +1,7 @@
 <resources>
     <declare-styleable name="WeatherInfoTileView">
-        <attr name="exampleString" format="string" />
-        <attr name="exampleDimension" format="dimension" />
-        <attr name="exampleColor" format="color" />
-        <attr name="exampleDrawable" format="color|reference" />
+        <attr name="icon" format="string" />
+        <attr name="title" format="string" />
+        <attr name="value" format="string" />
     </declare-styleable>
 </resources>

@@ -10,24 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df29d69-2bc5-44e0-8f31-d3e929df3cca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/PopoverView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/SnackbarView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/TimeItemView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherMasterInfoView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/popover_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/sample_snackbar_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/time_item_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/weather_info_tile_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/weather_master_info_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_popover_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_snackbar_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_time_item_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_info_tile_view.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_master_info_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/enums/WeatherEnum.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/model/Weather.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_wind.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/weather_info_tile_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/weather_info_tile_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_info_tile_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_weather_info_tile_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +34,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
+        <option value="Kotlin Enum" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -57,39 +49,41 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2NrluQal2Ybz0x3LXBkq0yYKqbC" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfo.kt_SELECTED": "BaseCityInfo",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt_SELECTED": "BaseCityInfoView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabel.kt_SELECTED": "CityInfoOneLabel",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabelView.kt_SELECTED": "CityInfoOneLabelView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabels.kt_SELECTED": "CityInfoTwoLabels",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabelsView.kt_SELECTED": "CityInfoTwoLabelsView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityItemView.kt_SELECTED": "CityItemView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt_SELECTED": "ListedInfoView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/PopoverView.kt_SELECTED": "PopoverView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt_SELECTED": "WeatherInfoTileView",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "last_directory_selection": "C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/res/drawable",
-    "last_opened_file_path": "C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfo.kt_SELECTED&quot;: &quot;BaseCityInfo&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt_SELECTED&quot;: &quot;BaseCityInfoView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabel.kt_SELECTED&quot;: &quot;CityInfoOneLabel&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabelView.kt_SELECTED&quot;: &quot;CityInfoOneLabelView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabels.kt_SELECTED&quot;: &quot;CityInfoTwoLabels&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabelsView.kt_SELECTED&quot;: &quot;CityInfoTwoLabelsView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityItemView.kt_SELECTED&quot;: &quot;CityItemView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt_SELECTED&quot;: &quot;ListedInfoView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/PopoverView.kt_SELECTED&quot;: &quot;PopoverView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt_SELECTED&quot;: &quot;WeatherInfoTileView&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/res/drawable&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5&quot;
   },
-  "keyToStringList": {
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt_ListedInfoView_DIMENSIONS": [
-      "1080",
-      "1920"
+  &quot;keyToStringList&quot;: {
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt_ListedInfoView_DIMENSIONS&quot;: [
+      &quot;1080&quot;,
+      &quot;1920&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="android.template.-1223283905">
       <recent name="com.example.homework_5.views" />
@@ -184,5 +178,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
