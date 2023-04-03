@@ -1,6 +1,13 @@
 <resources>
+
     <style name="Widget.Theme.Homework_5.BaseCityInfoView" parent=""></style>
+
     <style name="Widget.Theme.Homework_5.CityInfoOneLabelView" parent=""></style>
+
     <style name="Widget.Theme.Homework_5.CityInfoTwoLabelsView" parent=""></style>
+
     <style name="Widget.Theme.Homework_5.CityItemView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.ListedInfoView" parent=""></style>
+
 </resources>
