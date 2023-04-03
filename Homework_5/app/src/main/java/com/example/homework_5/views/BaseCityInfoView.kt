@@ -12,7 +12,11 @@ class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout
 
     private val binding: BaseCityInfoViewBinding
 
-    private val info: String
+    private val date: String
+    private val time: String
+    private val description: String
+    private val temperature: Int
+    private val icon: String
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.base_city_info_view, this, true)
@@ -22,7 +26,11 @@ class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout
             R.styleable.BaseCityInfoView, 0, 0
         ).apply {
             try {
-                info = getString(R.styleable.BaseCityInfoView_info)!!
+                date = getString(R.styleable.BaseCityInfoView_date)!!
+                time = getString(R.styleable.BaseCityInfoView_time)!!
+                description = getString(R.styleable.BaseCityInfoView_description)!!
+                temperature = R.styleable.BaseCityInfoView_temperature
+                icon = getString(R.styleable.BaseCityInfoView_icon)!!
             } finally {
                 recycle()
             }
