@@ -5,9 +5,7 @@
     android:id="@+id/city_info_two_labels"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_round_edges_12_dp"
-    android:padding="16dp"
-    android:paddingBottom="20dp">
+    android:background="@drawable/bg_round_edges_12_dp">
 
     <TextView
         android:id="@+id/coordinates_text"

@@ -10,6 +10,7 @@
     android:paddingBottom="20dp">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/HeadlineMediumNLv1Left"
@@ -25,5 +26,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/star_icon"/>
+
+    <com.example.homework_5.views.CityInfoTwoLabelsView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:label1="Labela"
+        app:label2="Label2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
 <resources>
     <declare-styleable name="CityInfoTwoLabelsView">
         <attr name="label1" format="string" />
-        <attr name="label2" format="integer" />
+        <attr name="label2" format="string" />
     </declare-styleable>
 </resources>
