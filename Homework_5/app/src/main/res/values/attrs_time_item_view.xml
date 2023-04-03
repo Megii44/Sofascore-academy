@@ -1,8 +1,8 @@
 <resources>
     <declare-styleable name="TimeItemView">
-        <attr name="exampleString" format="string" />
-        <attr name="exampleDimension" format="dimension" />
-        <attr name="exampleColor" format="color" />
-        <attr name="exampleDrawable" format="color|reference" />
+        <attr name="hour" format="string" />
+        <attr name="icon" format="string" />
+        <attr name="temperature" format="integer" />
+        <attr name="backgroundColor" format="color" />
     </declare-styleable>
 </resources>

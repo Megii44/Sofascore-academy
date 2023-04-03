@@ -1,5 +1,9 @@
 <resources>
     <declare-styleable name="BaseCityInfoView">
-        <attr name="info" format="string" />
+        <attr name="date" format="string" />
+        <attr name="time" format="string" />
+        <attr name="description" format="string" />
+        <attr name="temperature" format="integer" />
+        <attr name="icon" format="string" />
     </declare-styleable>
 </resources>

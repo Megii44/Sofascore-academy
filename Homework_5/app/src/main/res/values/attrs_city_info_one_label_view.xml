@@ -1,5 +1,7 @@
 <resources>
     <declare-styleable name="CityInfoOneLabelView">
         <attr name="label" format="string" />
+        <attr name="temperature" format="integer" />
+        <attr name="icon" format="string" />
     </declare-styleable>
 </resources>
