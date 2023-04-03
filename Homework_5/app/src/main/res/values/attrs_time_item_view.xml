@@ -2,7 +2,7 @@
     <declare-styleable name="TimeItemView">
         <attr name="hour" format="string" />
         <attr name="icon" format="string" />
-        <attr name="temperature" format="integer" />
+        <attr name="temperature" format="string" />
         <attr name="backgroundColor" format="color" />
     </declare-styleable>
 </resources>

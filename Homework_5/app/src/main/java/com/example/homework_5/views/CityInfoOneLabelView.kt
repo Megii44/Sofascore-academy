@@ -13,6 +13,8 @@ class CityInfoOneLabelView(context: Context, attrs: AttributeSet) : ConstraintLa
     private val binding: CityInfoOneLabelViewBinding
 
     private val label: String
+    private val temperature: String
+    private val icon: String
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.city_info_one_label_view, this, true)
@@ -23,6 +25,8 @@ class CityInfoOneLabelView(context: Context, attrs: AttributeSet) : ConstraintLa
         ).apply {
             try {
                 label = getString(R.styleable.CityInfoOneLabelView_label)!!
+                temperature = getString(R.styleable.CityInfoOneLabelView_temperature)!!
+                icon = getString(R.styleable.CityInfoOneLabelView_icon)!!
             } finally {
                 recycle()
             }

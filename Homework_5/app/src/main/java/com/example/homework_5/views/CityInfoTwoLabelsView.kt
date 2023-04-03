@@ -14,6 +14,8 @@ class CityInfoTwoLabelsView(context: Context, attrs: AttributeSet) : ConstraintL
 
     private val label1: String
     private val label2: String
+    private val temperature: String
+    private val icon: String
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.city_info_two_labels_view, this, true)
@@ -25,6 +27,8 @@ class CityInfoTwoLabelsView(context: Context, attrs: AttributeSet) : ConstraintL
             try {
                 label1 = getString(R.styleable.CityInfoTwoLabelsView_label1)!!
                 label2 = getString(R.styleable.CityInfoTwoLabelsView_label2)!!
+                temperature = getString(R.styleable.CityInfoOneLabelView_temperature)!!
+                icon = getString(R.styleable.CityInfoTwoLabelsView_icon)!!
             } finally {
                 recycle()
             }

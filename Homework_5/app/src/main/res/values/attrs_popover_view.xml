@@ -2,7 +2,7 @@
     <declare-styleable name="PopoverView">
         <attr name="title" format="string" />
         <attr name="description" format="dimension" />
-        <attr name="buttonOneText" format="color" />
-        <attr name="buttonTwoText" format="color|reference" />
+        <attr name="buttonOneText" format="string" />
+        <attr name="buttonTwoText" format="string" />
     </declare-styleable>
 </resources>

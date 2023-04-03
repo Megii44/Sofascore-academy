@@ -10,9 +10,14 @@
 
     <style name="Widget.Theme.Homework_5.ListedInfoView" parent=""></style>
 
-    <style name="Widget.Theme.Homework_5.MyView" parent="">
-        <item name="android:background">@color/gray_400</item>
-        <item name="exampleColor">@color/light_blue_400</item>
-    </style>
+    <style name="Widget.Theme.Homework_5.PopoverView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.SnackbarView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.TimeItemView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.WeatherInfoTileView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.WeatherMasterInfoView" parent=""></style>
 
 </resources>

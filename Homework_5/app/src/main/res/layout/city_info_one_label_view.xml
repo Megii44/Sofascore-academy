@@ -5,9 +5,7 @@
     android:id="@+id/city_info_two_labels"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_round_edges_12_dp"
-    android:padding="16dp"
-    android:paddingBottom="20dp">
+    android:background="@drawable/bg_round_edges_12_dp">
 
     <TextView
         android:id="@+id/coordinates_text"
@@ -19,18 +17,8 @@
         tools:ignore="TextContrastCheck"
         tools:text="37°47′N, 122°25′W" />
 
-    <TextView
-        android:id="@+id/distance_text"
-        style="@style/BodyMediumNLv2Left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/coordinates_text"
-        tools:ignore="TextContrastCheck"
-        tools:text="Distance: 8542 km" />
-
     <ImageView
-        android:id="@+id/weather_c_icon"
+        android:id="@+id/weather_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:contentDescription="@string/weather_c_icon"
@@ -40,12 +28,13 @@
         tools:ignore="ImageContrastCheck" />
 
     <TextView
+        android:id="@+id/temperature"
         style="@style/DisplayLargeNLv1Right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="20°"
         android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toStartOf="@id/weather_c_icon"
+        app:layout_constraintEnd_toStartOf="@id/weather_icon"
         app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
