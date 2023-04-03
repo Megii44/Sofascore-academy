@@ -65,7 +65,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:info="@string/title_search"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        app:base_city_info_date="200"
+        app:base_city_info_description="da"
+        app:base_city_info_icon="@string/recent"
+        app:base_city_info_temperature="20"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

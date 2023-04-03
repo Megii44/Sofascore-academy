@@ -29,13 +29,10 @@ class MyCitiesFragment : Fragment() {
         _binding = FragmentMyCitiesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val toolbar = binding.toolbarMyCities // Find the toolbar by its ID
+        val toolbar = binding.toolbar // Find the toolbar by its ID
         (activity as AppCompatActivity).setSupportActionBar(toolbar) // Set the toolbar as the action bar
 
-        val textView: TextView = binding.textMyCities
-        myCitiesViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
         return root
     }
 

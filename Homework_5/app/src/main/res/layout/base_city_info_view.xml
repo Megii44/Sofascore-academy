@@ -32,9 +32,9 @@
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:label1="Label"
-        app:label2="Label2"
-        app:temperature="20"
-        app:icon="@drawable/ic_weather_c"/>
+        app:city_info_two_labels_label1="label"
+        app:city_info_two_labels_label2="Label2"
+        app:city_info_two_labels_temperature="20"
+        app:city_info_two_labels_icon="@drawable/ic_weather_c"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

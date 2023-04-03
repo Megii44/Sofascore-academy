@@ -32,10 +32,7 @@ class SearchFragment : Fragment() {
         val toolbar = binding.toolbarSearch // Find the toolbar by its ID
         (activity as AppCompatActivity).setSupportActionBar(toolbar) // Set the toolbar as the action bar
 
-        val textView: TextView = binding.textSearch
-        searchViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
         return root
     }
 

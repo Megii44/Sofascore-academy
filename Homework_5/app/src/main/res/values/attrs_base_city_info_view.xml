@@ -3,7 +3,7 @@
         <attr name="base_city_info_date" format="string" />
         <attr name="base_city_info_time" format="string" />
         <attr name="base_city_info_description" format="string" />
-        <attr name="base_city_info_temperature" format="integer" />
+        <attr name="base_city_info_temperature" format="string" />
         <attr name="base_city_info_icon" format="string" />
     </declare-styleable>
 </resources>

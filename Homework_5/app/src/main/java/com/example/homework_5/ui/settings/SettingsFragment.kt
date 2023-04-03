@@ -29,13 +29,7 @@ class SettingsFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val toolbar = binding.toolbarSettings // Find the toolbar by its ID
-        (activity as AppCompatActivity).setSupportActionBar(toolbar) // Set the toolbar as the action bar
 
-        val textView: TextView = binding.textSettings
-        settingsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
