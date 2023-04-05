@@ -10,9 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df29d69-2bc5-44e0-8f31-d3e929df3cca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/ButtonView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/button_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_button_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/base_city_info_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/base_city_info_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +65,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfo.kt_SELECTED": "BaseCityInfo",
     "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt_SELECTED": "BaseCityInfoView",
+    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/Button.kt_SELECTED": "ListedInfoView",
+    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ButtonView.kt_SELECTED": "ListedInfoView",
     "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabel.kt_SELECTED": "CityInfoOneLabel",
     "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabelView.kt_SELECTED": "CityInfoOneLabelView",
     "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabels.kt_SELECTED": "CityInfoTwoLabels",
@@ -104,6 +109,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\OneDrive\Desktop\Magda\Sofascore\Sofascore-academy\Homework_5\app\src\main\res\values" />
       <recent name="C:\Users\Admin\OneDrive\Desktop\Magda\Sofascore\Sofascore-academy\Homework_5\app\src\main\res\drawable" />
+    </key>
+    <key name="android.template.1754205043">
+      <recent name="com.example.homework_5.views" />
     </key>
   </component>
   <component name="RunManager">

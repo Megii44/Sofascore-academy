@@ -20,4 +20,6 @@
 
     <style name="Widget.Theme.Homework_5.WeatherMasterInfoView" parent=""></style>
 
+    <style name="Widget.Theme.Homework_5.ButtonView" parent=""></style>
+
 </resources>
