@@ -8,4 +8,6 @@
     <string name="star_icon">Star icon</string>
     <string name="weather_c_icon">Weather icon</string>
     <string name="icon">Icon</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="ok_button">OK</string>
 </resources>
