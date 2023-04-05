@@ -1,40 +1,61 @@
 package com.example.homework_5.ui.settings
 
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.homework_5.databinding.FragmentSettingsBinding
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
+import com.example.homework_5.R
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private var _binding: FragmentSettingsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val settingsViewModel =
-            ViewModelProvider(this)[SettingsViewModel::class.java]
-
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-
-        return root
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.root_preferences, rootKey)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onResume() {
+        super.onResume()
+        preferenceScreen.sharedPreferences?.registerOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        preferenceScreen.sharedPreferences?.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        // Check if the theme preference has been changed and update the theme accordingly
+        if (key == "theme" || key == "Theme") {
+            updateTheme()
+        } else if (key == "language" || key == "Language") {
+            updateLanguage()
+        }
+    }
+    private fun updateTheme() {
+        // Retrieve the theme preference from the shared preferences
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+
+        // Set the appropriate theme based on the theme preference
+        when (sharedPreferences.getString("theme", "Light")) {
+            "Light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            "Dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+
+        // Recreate the activity to apply the new theme
+        requireActivity().recreate()
+    }
+
+    private fun updateLanguage() {
+        // Retrieve the theme preference from the shared preferences
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+
+        // Set the appropriate theme based on the theme preference
+        when (sharedPreferences.getString("theme", "Light")) {
+            "Light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            "Dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+
+        // Recreate the activity to apply the new language
+        requireActivity().recreate()
     }
 }

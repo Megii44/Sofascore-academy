@@ -1,0 +1,21 @@
+<resources>
+    <string-array name="theme_entries">
+        <item>@string/light</item>
+        <item>@string/dark</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>@string/light</item>
+        <item>@string/dark</item>
+    </string-array>
+
+    <string-array name="language_entries">
+        <item>@string/croatian</item>
+        <item>@string/english</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>@string/croatian</item>
+        <item>@string/english</item>
+    </string-array>
+</resources>

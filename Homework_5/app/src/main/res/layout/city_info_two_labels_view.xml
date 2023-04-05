@@ -28,10 +28,10 @@
         tools:text="Distance: 8542 km" />
 
     <ImageView
-        android:id="@+id/weather_c_icon"
+        android:id="@+id/weather_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:contentDescription="@string/weather_c_icon"
+        android:contentDescription="@string/weather_icon"
         android:src="@drawable/ic_weather_c"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         tools:text="20°"
         android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toStartOf="@id/weather_c_icon"
+        app:layout_constraintEnd_toStartOf="@id/weather_icon"
         app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
