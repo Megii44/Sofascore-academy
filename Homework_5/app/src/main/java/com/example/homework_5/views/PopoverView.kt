@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.homework_5.R
-import com.example.homework_5.databinding.CityInfoOneLabelViewBinding
 import com.example.homework_5.databinding.PopoverViewBinding
 
 
@@ -30,9 +29,30 @@ class PopoverView(context: Context, attrs: AttributeSet) : ConstraintLayout(cont
                 description = getString(R.styleable.PopoverView_popover_description)!!
                 buttonOneText = getString(R.styleable.PopoverView_popover_button_one_text)!!
                 buttonTwoText = getString(R.styleable.PopoverView_popover_button_two_text)!!
+
+                setTitle(title)
+                setDescription(description)
+                setButtonOneText(buttonOneText)
+                setButtonTwoText(buttonTwoText)
             } finally {
                 recycle()
             }
         }
+    }
+
+    private fun setTitle(text: String) {
+        binding.popoverTitle.text = text
+    }
+
+    private fun setDescription(description: String) {
+        binding.popoverDescription.text = description
+    }
+
+    private fun setButtonOneText(text: String) {
+        binding.buttonOne.text = text
+    }
+
+    private fun setButtonTwoText(text: String) {
+        binding.buttonTwo.text = text
     }
 }

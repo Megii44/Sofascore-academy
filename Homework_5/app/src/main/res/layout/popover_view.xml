@@ -1,68 +1,72 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="328dp"
-    android:layout_height="172dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
-    android:padding="16dp">
+    android:layout_width="328dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_edges_12_dp"
+    android:minWidth="328dp"
+    android:padding="16dp"
+    tools:ignore="TextSizeCheck">
 
     <TextView
         android:id="@+id/popoverTitle"
         style="@style/HeadlineMediumNLv1Left"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:text="Popover Title"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        tools:text="@string/popover_title"
+        android:paddingBottom="16dp"/>
 
     <TextView
         android:id="@+id/popoverDescription"
         style="@style/BodyMediumNLv1Left"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="This is popover placeholder text, lorem ipsum dolor sit amet."
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popoverTitle"
-        android:paddingTop="16dp"
-        android:paddingBottom="24dp" />
+        app:layout_constraintTop_toBottomOf="@id/popoverTitle"
+        tools:text="@string/popover_description" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/popoverDescription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="end"
-        >
+        android:orientation="horizontal"
+        android:paddingTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popoverDescription">
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/buttonOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_round_edges_12_dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:text="@string/cancel_button"
-            android:textSize="14sp"
-            android:background="@drawable/bg_round_edges_12_dp"
             android:textColor="@color/white"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:layout_marginRight="8dp"
-            />
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/buttonTwo"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/okButton"
+            android:id="@+id/buttonTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ok_button"
-            android:textSize="14sp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/bg_round_edges_12_dp"
-            android:textColor="@color/white"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:layout_marginLeft="8dp"
-            />
-    </LinearLayout>
+            android:text="@string/ok_button"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
