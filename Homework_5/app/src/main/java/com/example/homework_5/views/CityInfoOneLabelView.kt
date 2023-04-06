@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.net.toUri
 import com.example.homework_5.R
 import com.example.homework_5.databinding.CityInfoOneLabelViewBinding
 
@@ -27,9 +28,25 @@ class CityInfoOneLabelView(context: Context, attrs: AttributeSet) : ConstraintLa
                 label = getString(R.styleable.CityInfoOneLabelView_city_info_one_label_label)!!
                 temperature = getString(R.styleable.CityInfoOneLabelView_city_info_one_label_temperature)!!
                 icon = getString(R.styleable.CityInfoOneLabelView_city_info_one_label_icon)!!
+
+                setLabel(label)
+                setTemperature(temperature)
+                setIcon(icon)
             } finally {
                 recycle()
             }
         }
+    }
+
+    private fun setLabel(label: String) {
+        binding.labelText.text = label
+    }
+
+    private fun setTemperature(temperature: String) {
+        binding.temperature.text = temperature
+    }
+
+    private fun setIcon(icon: String) {
+        binding.weatherIcon.setImageURI(icon.toUri())
     }
 }

@@ -8,7 +8,7 @@
     android:background="@drawable/bg_round_edges_12_dp">
 
     <TextView
-        android:id="@+id/coordinates_text"
+        android:id="@+id/label_text"
         style="@style/BodyMediumNLv2Left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

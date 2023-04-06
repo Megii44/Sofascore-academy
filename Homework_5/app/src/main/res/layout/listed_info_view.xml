@@ -12,8 +12,8 @@
     <TextView
         android:id="@+id/title"
         style="@style/AssistiveNLv2Left"
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck"
@@ -22,8 +22,8 @@
     <TextView
         android:id="@+id/subtitle"
         style="@style/BodyLargeNLv1Left"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         tools:text="Super Cool Weather App"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"/>

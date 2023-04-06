@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.net.toUri
 import com.example.homework_5.R
 import com.example.homework_5.databinding.BaseCityInfoViewBinding
 
@@ -31,9 +32,35 @@ class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout
                 description = getString(R.styleable.BaseCityInfoView_base_city_info_description)!!
                 temperature = R.styleable.BaseCityInfoView_base_city_info_temperature
                 icon = getString(R.styleable.BaseCityInfoView_base_city_info_icon)!!
+
+                setDate(date)
+                setTime(time)
+                setDescription(description)
+                setTemperature(temperature)
+                setIcon(icon)
             } finally {
                 recycle()
             }
         }
+    }
+
+    private fun setDate(date: String) {
+        binding.date.text = date
+    }
+
+    private fun setTime(time: String) {
+        binding.time.text = time
+    }
+
+    private fun setDescription(description: String) {
+        binding.description.text = description
+    }
+
+    private fun setTemperature(temperature: Int) {
+        binding.temperature.text = temperature.toString()
+    }
+
+    private fun setIcon(icon: String) {
+        binding.weatherIcon.setImageURI(icon.toUri())
     }
 }

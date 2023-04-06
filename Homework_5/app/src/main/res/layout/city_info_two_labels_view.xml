@@ -8,7 +8,7 @@
     android:background="@drawable/bg_round_edges_12_dp">
 
     <TextView
-        android:id="@+id/coordinates_text"
+        android:id="@+id/label1"
         style="@style/BodyMediumNLv2Left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,12 +18,12 @@
         tools:text="37°47′N, 122°25′W" />
 
     <TextView
-        android:id="@+id/distance_text"
+        android:id="@+id/label2"
         style="@style/BodyMediumNLv2Left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/coordinates_text"
+        app:layout_constraintTop_toBottomOf="@id/label1"
         tools:ignore="TextContrastCheck"
         tools:text="Distance: 8542 km" />
 
@@ -38,6 +38,7 @@
         tools:ignore="ImageContrastCheck" />
 
     <TextView
+        android:id="@+id/temperature"
         style="@style/DisplayLargeNLv1Right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

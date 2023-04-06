@@ -25,9 +25,20 @@ class ListedInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout(c
             try {
                 title = getString(R.styleable.ListedInfoView_listed_info_title)!!
                 subtitle = getString(R.styleable.ListedInfoView_listed_info_subtitle)!!
+
+                setTitle(title)
+                setSubtitle(subtitle)
             } finally {
                 recycle()
             }
         }
+    }
+
+    private fun setTitle(title: String) {
+        binding.title.text = title
+    }
+
+    private fun setSubtitle(subtitle: String) {
+        binding.subtitle.text = subtitle
     }
 }
