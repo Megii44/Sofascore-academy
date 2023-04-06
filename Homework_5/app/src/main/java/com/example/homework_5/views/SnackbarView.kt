@@ -1,6 +1,7 @@
 package com.example.homework_5.views
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -24,10 +25,21 @@ class SnackbarView(context: Context, attrs: AttributeSet) : ConstraintLayout(con
         ).apply {
             try {
                 text = getString(R.styleable.SnackbarView_snackbar_text)!!
-                backgroundColor = getString(R.styleable.SnackbarView_snackbar_background_color)!!.toInt()
+                backgroundColor = getColor(R.styleable.SnackbarView_snackbar_background_color, 0)
+
+                setSnackbarText(text)
+                setSnackbarBackgroundColor(backgroundColor)
             } finally {
                 recycle()
             }
         }
+    }
+
+    private fun setSnackbarText(text: String) {
+        binding.snackbarText.text = text
+    }
+
+    private fun setSnackbarBackgroundColor(color: Int) {
+        binding.snackbar.backgroundTintList = ColorStateList.valueOf(color)
     }
 }

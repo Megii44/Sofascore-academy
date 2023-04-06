@@ -1,7 +1,36 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/snackbar"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_edges_12_dp"
+    android:backgroundTint="@color/status_success"
+    android:paddingStart="16dp"
+    android:paddingTop="18dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="18dp">
 
+    <TextView
+        android:id="@+id/snackbar_text"
+        style="@style/BodyMediumOnColorLeft"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        tools:text="This is snackbar message neutral." />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/ic_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/weather_icon"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck"
+        app:tint="@color/on_color"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
