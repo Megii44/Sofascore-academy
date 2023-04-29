@@ -22,4 +22,8 @@
 
     <style name="Widget.Theme.Homework_5.ButtonView" parent=""></style>
 
+    <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColorHint">@color/neutrals_n_lv_2</item>
+    </style>
+
 </resources>
