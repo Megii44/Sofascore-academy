@@ -1,13 +1,12 @@
 package com.example.homework_5.views
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.net.toUri
 import com.example.homework_5.R
 import com.example.homework_5.databinding.BaseCityInfoViewBinding
-
 
 class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
@@ -17,7 +16,7 @@ class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout
     private val time: String
     private val description: String
     private val temperature: Int
-    private val icon: String
+    private val icon: Drawable
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.base_city_info_view, this, true)
@@ -30,8 +29,8 @@ class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout
                 date = getString(R.styleable.BaseCityInfoView_base_city_info_date)!!
                 time = getString(R.styleable.BaseCityInfoView_base_city_info_time)!!
                 description = getString(R.styleable.BaseCityInfoView_base_city_info_description)!!
-                temperature = R.styleable.BaseCityInfoView_base_city_info_temperature
-                icon = getString(R.styleable.BaseCityInfoView_base_city_info_icon)!!
+                temperature = getInt(R.styleable.BaseCityInfoView_base_city_info_temperature, 0)
+                icon = getDrawable(R.styleable.BaseCityInfoView_base_city_info_icon)!!
 
                 setDate(date)
                 setTime(time)
@@ -60,7 +59,7 @@ class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout
         binding.temperature.text = temperature.toString()
     }
 
-    private fun setIcon(icon: String) {
-        binding.weatherIcon.setImageURI(icon.toUri())
+    private fun setIcon(icon: Drawable) {
+        binding.weatherIcon.setImageDrawable(icon)
     }
 }
