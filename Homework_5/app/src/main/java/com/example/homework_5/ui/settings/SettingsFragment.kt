@@ -43,13 +43,13 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         // Check if the theme preference has been changed and update the theme accordingly
         when (key) {
-            "theme", "Theme" -> {
+            "theme" -> {
                 updateTheme()
             }
-            "language", "Language" -> {
+            "language" -> {
                 updateLanguage()
             }
-            "units_type", "Units_type" -> {
+            "unit_type" -> {
                 updateUnitsSystem()
             }
         }
