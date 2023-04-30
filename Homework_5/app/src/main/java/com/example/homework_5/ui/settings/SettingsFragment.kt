@@ -2,12 +2,29 @@ package com.example.homework_5.ui.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.example.homework_5.R
+import com.example.homework_5.databinding.FragmentSettingsBinding
 
 class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private lateinit var binding: FragmentSettingsBinding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        val preferencesContainer = binding.preferencesContainer
+        val preferencesView = super.onCreateView(inflater, preferencesContainer, savedInstanceState)
+        preferencesContainer.addView(preferencesView)
+
+        return view
+    }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
@@ -25,10 +42,16 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         // Check if the theme preference has been changed and update the theme accordingly
-        if (key == "theme" || key == "Theme") {
-            updateTheme()
-        } else if (key == "language" || key == "Language") {
-            updateLanguage()
+        when (key) {
+            "theme", "Theme" -> {
+                updateTheme()
+            }
+            "language", "Language" -> {
+                updateLanguage()
+            }
+            "units_type", "Units_type" -> {
+                updateUnitsSystem()
+            }
         }
     }
     private fun updateTheme() {
@@ -56,6 +79,16 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
         }
 
         // Recreate the activity to apply the new language
+        requireActivity().recreate()
+    }
+
+    private fun updateUnitsSystem() {
+        // Retrieve the theme preference from the shared preferences
+        //val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+
+        // Set the appropriate units type based on the units type preference
+
+        // Recreate the activity to apply the new units system
         requireActivity().recreate()
     }
 }

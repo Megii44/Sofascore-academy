@@ -40,13 +40,26 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_settings">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_settings"
+        android:padding="16dp">
 
         <FrameLayout
-            android:id="@+id/settings"
+            android:id="@+id/preferences_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clear_buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.example.homework_5.views.ButtonView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </com.example.homework_5.views.ButtonView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

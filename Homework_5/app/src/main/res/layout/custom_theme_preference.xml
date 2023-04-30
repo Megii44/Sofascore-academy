@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/input_style"
+    android:layout_marginBottom="54dp">
+
+    <TextView
+        android:id="@+id/input_language_label"
+        style="@style/AssistiveSecondaryLeft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/theme"/>
+
+    <Spinner
+        android:id="@+id/preference_theme_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/theme_entries"
+        android:minHeight="48dp"
+        android:spinnerMode="dropdown" />
+
+</LinearLayout>
