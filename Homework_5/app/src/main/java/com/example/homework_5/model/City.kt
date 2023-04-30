@@ -1,5 +1,6 @@
 package com.example.homework_5.model
 
-data class AllCitiesResponse(
-    val data: ArrayList<City>
+data class City (
+    val id: Int,
+    val name: String,
 ) : java.io.Serializable
