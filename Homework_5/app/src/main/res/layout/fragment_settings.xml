@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface_surface0"
+    android:background="@color/white"
     tools:context=".ui.search.SearchFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -31,13 +31,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5"
-                tools:text="Settings" />
+                android:text="@string/settings" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/preferences_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_settings"
@@ -53,13 +54,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clear_buttons_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/preferences_layout">
 
         <com.example.homework_5.views.ButtonView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:id="@+id/clear_my_cities_list_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:text="@string/clear_cities_list"
+            app:disabled="false"
+            app:border_color="@color/status_error"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </com.example.homework_5.views.ButtonView>
+        <com.example.homework_5.views.ButtonView
+            android:id="@+id/clear_recent_search_list_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:text="@string/clear_recent_list"
+            app:disabled="false"
+            app:border_color="@color/status_error"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clear_my_cities_list_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
