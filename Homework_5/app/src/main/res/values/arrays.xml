@@ -19,12 +19,12 @@
         <item>@string/english</item>
     </string-array>
 
-    <string-array name="units_type_entries">
+    <string-array name="unit_type_entries">
         <item>@string/metric</item>
         <item>@string/imperial</item>
     </string-array>
 
-    <string-array name="units_type_values">
+    <string-array name="unit_type_values">
         <item>@string/metric</item>
         <item>@string/imperial</item>
     </string-array>

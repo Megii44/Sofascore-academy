@@ -106,4 +106,7 @@
 
     <string name="popover_title">Popover Title</string>
     <string name="popover_description">This is popover placeholder text, lorem ipsum dolor sit amet.</string>
+
+    <string name="about_short_text">Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis.</string>
+
 </resources>

@@ -21,4 +21,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory>
+
+        <Preference
+            app:key="unit_type"
+            app:title="@string/theme"
+            app:entries="@array/unit_type_entries"
+            app:entryValues="@array/unit_type_values"
+            app:useSimpleSummaryProvider="true"
+            app:layout="@layout/custom_unit_type_preference"/>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
