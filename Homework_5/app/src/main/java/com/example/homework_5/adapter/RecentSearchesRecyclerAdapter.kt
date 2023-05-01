@@ -14,8 +14,8 @@ import com.example.homework_5.model.CurrentLocationWeather
 
 class RecentSearchesRecyclerAdapter(
     private val context: Context,
-    private var recentSearchesList: MutableList<CurrentLocationWeather>
-
+    private var recentSearchesList: MutableList<CurrentLocationWeather>,
+    private val onItemClick: (CurrentLocationWeather) -> Unit
 ) : RecyclerView.Adapter<RecentSearchesRecyclerAdapter.RecentSearchViewHolder>() {
 
     class RecentSearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -46,7 +46,7 @@ class RecentSearchesRecyclerAdapter(
 
         // Add click listener to item view if necessary
         holder.itemView.setOnClickListener {
-            // Handle the click event, e.g., navigate to a new fragment or activity
+            onItemClick(recentSearch)
         }
     }
 

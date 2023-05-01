@@ -1,6 +1,6 @@
 <resources>
     <declare-styleable name="WeatherInfoTileView">
-        <attr name="weather_info_tile_icon" format="string" />
+        <attr name="weather_info_tile_icon" format="reference" />
         <attr name="weather_info_tile_title" format="string" />
         <attr name="weather_info_tile_value" format="string" />
     </declare-styleable>

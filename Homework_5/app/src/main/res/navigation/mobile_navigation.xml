@@ -9,7 +9,16 @@
         android:id="@+id/navigation_search"
         android:name="com.example.homework_5.ui.search.SearchFragment"
         tools:layout="@layout/fragment_search"
-        android:background="@color/color_primary"/>
+        android:background="@color/color_primary">
+        <action
+            android:id="@+id/action_searchFragment_to_cityFragment"
+            app:destination="@id/navigation_city" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_city"
+        android:name="com.example.homework_5.ui.city.CityActivity"
+        tools:layout="@layout/activity_city" />
 
     <fragment
         android:id="@+id/navigation_my_cities"
@@ -20,5 +29,4 @@
         android:id="@+id/navigation_settings"
         android:name="com.example.homework_5.ui.settings.SettingsFragment"
         tools:layout="@layout/fragment_settings" />
-
 </navigation>

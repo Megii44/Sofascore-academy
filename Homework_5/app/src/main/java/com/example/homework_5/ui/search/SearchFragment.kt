@@ -1,5 +1,7 @@
 package com.example.homework_5.ui.search
 
+import com.example.homework_5.ui.city.CityActivity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,6 +17,7 @@ import com.example.homework_5.databinding.FragmentSearchBinding
 import com.example.homework_5.model.CurrentLocationWeather
 import com.example.homework_5.networking.Network
 import com.example.homework_5.utils.getApiKey
+import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,14 +38,36 @@ class SearchFragment : Fragment() {
 
         // Create adapter for recycler view
         val emptyList = ArrayList<CurrentLocationWeather>()
-        val recyclerAdapter = RecentSearchesRecyclerAdapter(requireContext(), emptyList)
+        val recyclerAdapter = RecentSearchesRecyclerAdapter(requireContext(), emptyList) { selectedWeather ->
+            // Create an intent to start the new activity
+            val intent = Intent(requireContext(), CityActivity::class.java)
+
+            // Pass the clicked object's data to the new activity
+            intent.putExtra("weather", selectedWeather)
+
+            // Start the new activity
+            startActivity(intent)
+        }
+
         binding.recentSearchesContainer.adapter = recyclerAdapter
 
         // Recent searches observer which updates the UI
         viewModel.recentSearches.observe(viewLifecycleOwner) { currentWeather ->
             // Update the UI when the product list changes
             // Update the content of the array adapter
-            binding.recentSearchesContainer.adapter = RecentSearchesRecyclerAdapter(requireContext(), currentWeather)
+            binding.recentSearchesContainer.adapter = RecentSearchesRecyclerAdapter(requireContext(), currentWeather) { selectedWeather ->
+                // Create an intent to start the new activity
+                val intent = Intent(requireContext(), CityActivity::class.java)
+
+                // Convert the selectedWeather object to a JSON string
+                val cityWeatherJson = Gson().toJson(selectedWeather)
+
+                // Pass the JSON string to the new activity
+                intent.putExtra("cityWeather", cityWeatherJson)
+
+                // Start the new activity
+                startActivity(intent)
+            }
         }
 
         return root
@@ -121,6 +146,5 @@ class SearchFragment : Fragment() {
             }
         }
     }
-
 
 }

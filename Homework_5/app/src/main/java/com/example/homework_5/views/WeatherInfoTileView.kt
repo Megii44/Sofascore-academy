@@ -1,21 +1,20 @@
 package com.example.homework_5.views
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.net.toUri
 import com.example.homework_5.R
 import com.example.homework_5.databinding.WeatherInfoTileViewBinding
-
 
 class WeatherInfoTileView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
     private val binding: WeatherInfoTileViewBinding
 
-    private val icon: String
     private val title: String
     private val value: String
+    private val icon: Drawable
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.weather_info_tile_view, this, true)
@@ -25,28 +24,28 @@ class WeatherInfoTileView(context: Context, attrs: AttributeSet) : ConstraintLay
             R.styleable.WeatherInfoTileView, 0, 0
         ).apply {
             try {
-                icon = getString(R.styleable.WeatherInfoTileView_weather_info_tile_icon)!!
                 title = getString(R.styleable.WeatherInfoTileView_weather_info_tile_title)!!
                 value = getString(R.styleable.WeatherInfoTileView_weather_info_tile_value)!!
+                icon = getDrawable(R.styleable.WeatherInfoTileView_weather_info_tile_icon)!!
 
                 setTitle(title)
-                setIcon(icon)
                 setValue(value)
+                setIcon(icon)
             } finally {
                 recycle()
             }
         }
     }
 
-    private fun setTitle(title: String) {
-        binding.title.text = title
+    private fun setTitle(date: String) {
+        binding.title.text = date
     }
 
-    private fun setValue(value: String) {
-        binding.value.text = value
+    private fun setValue(time: String) {
+        binding.value.text = time
     }
 
-    private fun setIcon(icon: String) {
-        binding.icon.setImageURI(icon.toUri())
+    private fun setIcon(icon: Drawable) {
+        binding.icon.setImageDrawable(icon)
     }
 }
