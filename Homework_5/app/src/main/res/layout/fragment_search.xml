@@ -18,16 +18,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/on_color">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_view"
+        <AutoCompleteTextView
+            android:id="@+id/search_auto_complete_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
             android:background="@drawable/bg_round_edges_12_dp"
             app:queryHint="@string/search_hint"
             android:hint="@string/search_hint"
-            style="@style/CustomSearchView"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp"
+            android:paddingTop="14dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="14dp"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="24dp"
+            style="@style/CustomSearchView" />
 
     </androidx.appcompat.widget.Toolbar>
 

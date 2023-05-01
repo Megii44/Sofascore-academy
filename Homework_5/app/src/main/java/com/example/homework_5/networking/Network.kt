@@ -1,6 +1,5 @@
 package com.example.homework_5.networking
 
-import okhttp3.OkHttp
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -8,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Network {
     private val service: WeatherApiService
-    private val baseUrl = "https://www.weatherapi.com/"
+    private val baseUrl = "https://api.weatherapi.com/v1/"
 
     fun getService(): WeatherApiService {
         return service
