@@ -9,7 +9,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.homework_5.adapter.RecentSearchesRecyclerAdapter
 import com.example.homework_5.databinding.FragmentSearchBinding
+import com.example.homework_5.model.CurrentLocationWeather
 import com.example.homework_5.networking.Network
 import com.example.homework_5.utils.getApiKey
 import kotlinx.coroutines.CoroutineScope
@@ -19,6 +22,7 @@ import kotlinx.coroutines.launch
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
+    private lateinit var viewModel: SearchViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
@@ -26,6 +30,20 @@ class SearchFragment : Fragment() {
 
         val toolbar = binding.toolbarSearch // Find the toolbar by its ID
         (activity as AppCompatActivity).setSupportActionBar(toolbar) // Set the toolbar as the action bar
+
+        viewModel = ViewModelProvider(requireActivity())[SearchViewModel::class.java]
+
+        // Create adapter for recycler view
+        val emptyList = ArrayList<CurrentLocationWeather>()
+        val recyclerAdapter = RecentSearchesRecyclerAdapter(requireContext(), emptyList)
+        binding.recentSearchesContainer.adapter = recyclerAdapter
+
+        // Recent searches observer which updates the UI
+        viewModel.recentSearches.observe(viewLifecycleOwner) { currentWeather ->
+            // Update the UI when the product list changes
+            // Update the content of the array adapter
+            binding.recentSearchesContainer.adapter = RecentSearchesRecyclerAdapter(requireContext(), currentWeather)
+        }
 
         return root
     }
@@ -62,7 +80,13 @@ class SearchFragment : Fragment() {
 
         autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
             // Handle the selection of a suggestion from the dropdown list
-            print(position)
+            // Get the selected location name
+            val selectedLocation = adapter.getItem(position)
+
+            // Get the current weather for the selected location
+            if (selectedLocation != null) {
+                getCurrentWeatherForLocation(selectedLocation)
+            }
         }
     }
 
@@ -83,7 +107,20 @@ class SearchFragment : Fragment() {
         }
     }
 
+    private fun getCurrentWeatherForLocation(query: String) {
+        val apiKey = getApiKey()
 
+        CoroutineScope(Dispatchers.Main).launch {
+            val response = Network().getService().getCurrentWeatherForLocation(apiKey, query)
+            if (response.isSuccessful) {
+                val currentLocationWeatherResponse = response.body()
+                val currentLocationWeather = currentLocationWeatherResponse?.let { CurrentLocationWeather(location = it.location, current = it.current) }
+                viewModel.addRecentSearch(currentLocationWeather)
+            } else {
+                // Handle the API error call
+            }
+        }
+    }
 
 
 }

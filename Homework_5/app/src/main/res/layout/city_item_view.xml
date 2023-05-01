@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/base_city_info"
+    android:id="@+id/city_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_round_edges_12_dp"
@@ -27,14 +27,54 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/star_icon"/>
 
-    <com.example.homework_5.views.CityInfoTwoLabelsView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/city_info_two_labels"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_round_edges_12_dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:city_info_two_labels_label1="label"
-        app:city_info_two_labels_label2="Label2"
-        app:city_info_two_labels_temperature="20"
-        app:city_info_two_labels_icon="@drawable/ic_weather_c"/>
+        app:layout_constraintTop_toBottomOf="@id/star_icon">
+
+        <TextView
+            android:id="@+id/label1"
+            style="@style/BodyMediumNLv2Left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
+            tools:text="37°47′N, 122°25′W" />
+
+        <TextView
+            android:id="@+id/label2"
+            style="@style/BodyMediumNLv2Left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label1"
+            tools:ignore="TextContrastCheck"
+            tools:text="Distance: 8542 km" />
+
+        <ImageView
+            android:id="@+id/weather_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/weather_icon"
+            android:src="@drawable/ic_weather_c"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/temperature"
+            style="@style/DisplayLargeNLv1Right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="20°"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@id/weather_icon"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
