@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homework_5.databinding.ActivityCityBinding
+import com.example.homework_5.helpers.getFormattedDate
+import com.example.homework_5.helpers.getFormattedTime
 import com.example.homework_5.model.CurrentLocationWeather
 import com.example.homework_5.utils.getApiKey
 import com.google.gson.Gson
+import java.util.*
+
 class CityActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCityBinding
@@ -31,6 +35,16 @@ class CityActivity : AppCompatActivity() {
 
         // Set the title to the location's name
         binding.title.text = cityWeather.location.name
+
+        // Set values inside baseCityInfoView container
+        var baseCityInfoView = binding.baseCityInfoView
+        val now = Calendar.getInstance().time
+        val formattedDate = getFormattedDate(now)
+        val formattedTime = getFormattedTime(now)
+        baseCityInfoView.setDate(formattedDate)
+        baseCityInfoView.setTime(formattedTime)
+        //baseCityInfoView.setIcon(cityWeather.current.condition.icon)
+        baseCityInfoView.setDescription(cityWeather.current.condition.text)
 
         // Inflate the layout for this activity
         //val baseCityBinding = BaseCityInfoViewBinding.inflate(layoutInflater)

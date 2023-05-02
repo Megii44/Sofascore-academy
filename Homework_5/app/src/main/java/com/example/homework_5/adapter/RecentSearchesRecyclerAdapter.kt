@@ -35,7 +35,7 @@ class RecentSearchesRecyclerAdapter(
             // For example, set the location name in a TextView
             title.text = recentSearch.location.name
             label1.text = fromLatLonToDMS(recentSearch.location.lat, recentSearch.location.lon)
-            label2.text = R.string.distance.toString() + ": 8900" + "km"
+            label2.text = R.string.distance.toString() + ": 8542" + "km"
             temperature.text = recentSearch.current.temp_c.toString() + "°"
 
             // Load the weather icon from the URL using Glide

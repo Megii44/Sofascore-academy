@@ -43,23 +43,23 @@ class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout
         }
     }
 
-    private fun setDate(date: String) {
+    public fun setDate(date: String) {
         binding.date.text = date
     }
 
-    private fun setTime(time: String) {
+    public fun setTime(time: String) {
         binding.time.text = time
     }
 
-    private fun setDescription(description: String) {
+    public fun setDescription(description: String) {
         binding.description.text = description
     }
 
-    private fun setTemperature(temperature: Int) {
+    public fun setTemperature(temperature: Int) {
         binding.temperature.text = temperature.toString()
     }
 
-    private fun setIcon(icon: Drawable) {
+    public fun setIcon(icon: Drawable) {
         binding.weatherIcon.setImageDrawable(icon)
     }
 }

@@ -1,6 +1,9 @@
 package com.example.homework_5.helpers
 
 import com.example.homework_5.R
+import java.util.Date
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.abs
 
 fun fromLatLonToDMS(lat: Double, lon: Double): String {
@@ -30,4 +33,14 @@ fun fromWeatherCodeToDrawableIcon(code: Int): Int {
         1009 -> R.drawable.ic_weather_c
         else -> R.drawable.ic_weather_c
     }
+}
+
+fun getFormattedDate(date: Date): String {
+    val dateFormat = SimpleDateFormat("EEE, MMMM dd", Locale.getDefault())
+    return dateFormat.format(date)
+}
+
+fun getFormattedTime(time: Date): String {
+    val timeFormat = SimpleDateFormat("hh:mm a (z)", Locale.getDefault())
+    return timeFormat.format(time)
 }

@@ -10,28 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df29d69-2bc5-44e0-8f31-d3e929df3cca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/adapter/SequenceRecyclerAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/model/ForecastResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/ui/city/CityViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/model/CurrentWeatherResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/model/CurrentWeatherResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/networking/WeatherApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/networking/WeatherApiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/adapter/RecentSearchesRecyclerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/adapter/RecentSearchesRecyclerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/helpers/Converter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/helpers/FormatterHelper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/ui/city/CityActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/ui/city/CityActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/ui/search/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/ui/search/SearchFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/TimeItemView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/TimeItemView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_accuracy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_accuracy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_humidity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_humidity.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_pressure.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_pressure.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_thermostat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_thermostat.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_visibility.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_visibility.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_city.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_city.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/city_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/city_item_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/time_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/time_item_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/weather_info_tile_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/weather_info_tile_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs_time_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs_time_item_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,16 +226,6 @@
           <line>26</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/homework_5/adapter/RecentSearchesRecyclerAdapter.kt</url>
-          <line>25</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/homework_5/adapter/RecentSearchesRecyclerAdapter.kt</url>
-          <line>30</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/homework_5/views/TimeItemView.kt</url>
           <line>28</line>
@@ -260,18 +233,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/homework_5/ui/city/CityActivity.kt</url>
-          <line>22</line>
-          <option name="timeStamp" value="46" />
+          <line>23</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/homework_5/adapter/RecentSearchesRecyclerAdapter.kt</url>
-          <line>48</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/homework_5/ui/city/CityActivity.kt</url>
-          <line>19</line>
-          <option name="timeStamp" value="71" />
+          <line>41</line>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -282,7 +250,8 @@
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="AndroidRunConfigurationType">
-        <watch expression="exception" />
+        <watch expression="weatherIcon" language="kotlin" />
+        <watch expression="recentSearch.current.condition.icon" language="kotlin" />
       </configuration>
     </watches-manager>
   </component>
