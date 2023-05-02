@@ -62,4 +62,8 @@ class BaseCityInfoView(context: Context, attrs: AttributeSet) : ConstraintLayout
     public fun setIcon(icon: Drawable) {
         binding.weatherIcon.setImageDrawable(icon)
     }
+
+    public fun setIcon(icon: Int) {
+        binding.weatherIcon.setImageResource(icon)
+    }
 }

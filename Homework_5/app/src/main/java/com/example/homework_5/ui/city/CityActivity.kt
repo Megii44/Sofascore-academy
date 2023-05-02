@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.homework_5.databinding.ActivityCityBinding
 import com.example.homework_5.helpers.getFormattedDate
 import com.example.homework_5.helpers.getFormattedTime
+import com.example.homework_5.helpers.getWeatherIcon
 import com.example.homework_5.model.CurrentLocationWeather
 import com.example.homework_5.utils.getApiKey
 import com.google.gson.Gson
@@ -43,14 +44,9 @@ class CityActivity : AppCompatActivity() {
         val formattedTime = getFormattedTime(now)
         baseCityInfoView.setDate(formattedDate)
         baseCityInfoView.setTime(formattedTime)
-        //baseCityInfoView.setIcon(cityWeather.current.condition.icon)
+        val icon = getWeatherIcon(cityWeather.current.condition.code)
+        baseCityInfoView.setIcon(icon)
         baseCityInfoView.setDescription(cityWeather.current.condition.text)
-
-        // Inflate the layout for this activity
-        //val baseCityBinding = BaseCityInfoViewBinding.inflate(layoutInflater)
-        //baseCityBinding.date.text = Date().toString()
-        //baseCityBinding.description.text = cityWeather.current.condition.text
-        //baseCityBinding.temperature.text = cityWeather.current.temp_c.toString()
 
         // Initialize the ViewModel
         viewModel = ViewModelProvider(this)[CityViewModel::class.java]

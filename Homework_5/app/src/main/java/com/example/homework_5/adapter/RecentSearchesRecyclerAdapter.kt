@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.homework_5.R
 import com.example.homework_5.databinding.CityItemViewBinding
 import com.example.homework_5.helpers.fromLatLonToDMS
+import com.example.homework_5.helpers.getWeatherIcon
 import com.example.homework_5.model.CurrentLocationWeather
 
 class RecentSearchesRecyclerAdapter(
@@ -38,10 +38,8 @@ class RecentSearchesRecyclerAdapter(
             label2.text = R.string.distance.toString() + ": 8542" + "km"
             temperature.text = recentSearch.current.temp_c.toString() + "°"
 
-            // Load the weather icon from the URL using Glide
-            Glide.with(context)
-                .load(recentSearch.current.condition.icon)
-                .into(weatherIcon)
+            val icon = getWeatherIcon(recentSearch.current.condition.code)
+            weatherIcon.setImageResource(icon)
         }
 
         // Add click listener to item view if necessary
