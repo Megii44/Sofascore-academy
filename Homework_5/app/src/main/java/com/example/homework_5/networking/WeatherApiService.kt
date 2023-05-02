@@ -20,8 +20,8 @@ interface WeatherApiService {
         @Query("q") query: String
     ): Response<CurrentLocationWeatherResponse>
 
-    @GET("current.json")
-    suspend fun getDailyForecast(
+    @GET("forecast.json")
+    suspend fun getForecast(
         @Query("key") apiKey: String,
         @Query("q") query: String
     ): Response<ForecastResponse>

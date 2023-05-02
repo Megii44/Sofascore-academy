@@ -6,10 +6,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homework_5.R
 import com.example.homework_5.model.Forecast
-import com.example.homework_5.model.Hour
 
-class SequenceAdapter(private var sequenceWeatherData: List<Hour>) :
-    RecyclerView.Adapter<SequenceAdapter.SequenceViewHolder>() {
+class SequenceRecyclerAdapter(private var sequenceWeatherData: List<Forecast>) :
+    RecyclerView.Adapter<SequenceRecyclerAdapter.SequenceViewHolder>() {
 
     class SequenceViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val time: TextView = view.findViewById(R.id.time_item_hour)
@@ -25,8 +24,8 @@ class SequenceAdapter(private var sequenceWeatherData: List<Hour>) :
 
     override fun onBindViewHolder(holder: SequenceViewHolder, position: Int) {
         val sequenceWeather = sequenceWeatherData[position]
-        holder.time.text = sequenceWeather.time.toString()
-        holder.temperature.text = "${sequenceWeather.temp_c}°"
+        //holder.time.text = sequenceWeather.time.toString()
+        //holder.temperature.text = "${sequenceWeather.temp_c}°"
         //holder.weatherIcon.setImageIcon(sequenceWeather.condition.icon)
     }
 
@@ -35,7 +34,7 @@ class SequenceAdapter(private var sequenceWeatherData: List<Hour>) :
     }
 
     fun updateData(newSequenceWeatherData: List<Forecast>) {
-        sequenceWeatherData = newSequenceWeatherData.first().forecastDay.first().hour
+        //sequenceWeatherData = newSequenceWeatherData.first().forecastDay.first().hour
         notifyDataSetChanged()
     }
 }

@@ -1,7 +1,5 @@
 package com.example.homework_5.model
 
-import java.sql.Time
-
 data class ForecastResponse(
     val location: Location,
     val current: Current,
@@ -9,15 +7,15 @@ data class ForecastResponse(
 ) : java.io.Serializable
 
 data class Forecast(
-    val forecastDay: List<ForecastDay>,
+    val forecastday: List<Forecastday>,
 ) : java.io.Serializable
 
-data class ForecastDay(
+data class Forecastday(
     val hour: List<Hour>
 ) : java.io.Serializable
 
 data class Hour(
-    val time: Time,
+    val time: String,
     val temp_c: Double,
     val temp_f: Double,
     val isDay: Boolean,

@@ -8,15 +8,14 @@ import com.example.homework_5.model.Forecast
 class CityViewModel : ViewModel() {
 
     // LiveData for holding recent searches
-    private val _dailyForecast = MutableLiveData<ArrayList<Forecast>>()
-    val dailyForecast: LiveData<ArrayList<Forecast>> = _dailyForecast
+    private val _forecast = MutableLiveData<ArrayList<Forecast>>()
+    public val forecast: LiveData<ArrayList<Forecast>> = _forecast
 
-    fun updateForecast(dailyForecast: Forecast?) {
-        if(dailyForecast != null) {
+    fun updateNextSevenDaysForecast(forecastData: Forecast?) {
+        if(forecastData != null) {
             val updatedList = ArrayList<Forecast>()
-            updatedList.add(dailyForecast)
-            _dailyForecast.value = updatedList
+            updatedList.add(forecastData)
+            _forecast.value = updatedList
         }
     }
-
 }
