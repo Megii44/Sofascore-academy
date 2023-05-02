@@ -1,97 +1,241 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/surface_surface0"
-    tools:context=".ui.search.SearchFragment">
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toolbar_return"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface_surface0"
+        tools:context=".ui.search.SearchFragment"
+        android:paddingBottom="48dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar_return"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="20dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/master_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="20dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_return">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_back"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_star_0"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/master_info"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/toolbar_return">
-
-    <TextView
-        android:id="@+id/title"
-        style="@style/HeadlineLargeNLv1Left"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:text="San Francisco"
-        android:paddingTop="8dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <com.example.homework_5.views.BaseCityInfoView
-        android:id="@+id/base_city_info_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:base_city_info_date="Mon, March 15"
-        app:base_city_info_time="09:32 AM (CET)"
-        app:base_city_info_description="Light Rain"
-        app:base_city_info_temperature="20"
-        app:base_city_info_icon="@drawable/ic_weather_c"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/surface_surface1"
-        app:layout_constraintTop_toBottomOf="@id/master_info"
-        app:layout_constraintStart_toStartOf="parent">
-    </View>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line">
-
-        <com.example.homework_5.views.WeatherInfoTileView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/title"
+            style="@style/HeadlineLargeNLv1Left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:weather_info_tile_title="naslov"
-            app:weather_info_tile_icon="@drawable/ic_star_0"
-            app:weather_info_tile_value="13km"
-            />
+            tools:ignore="TextSizeCheck,TextContrastCheck"
+            tools:text="San Francisco" />
+
+        <com.example.homework_5.views.BaseCityInfoView
+            android:id="@+id/base_city_info_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:base_city_info_date="Mon, March 15"
+            app:base_city_info_time="09:32 AM (CET)"
+            app:base_city_info_description="Light Rain"
+            app:base_city_info_temperature="20"
+            app:base_city_info_icon="@drawable/ic_weather_c"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/surface_surface1"
+            app:layout_constraintTop_toBottomOf="@id/master_info"
+            app:layout_constraintStart_toStartOf="parent">
+        </View>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/weather_info_tiles_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/line">
+
+            <com.example.homework_5.views.WeatherInfoTileView
+                android:id="@+id/weather_info_tile_temperature"
+                android:layout_width="0dp"
+                app:layout_constraintWidth_percent="0.33"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:weather_info_tile_title="@string/min_max"
+                app:weather_info_tile_icon="@drawable/ic_thermostat"
+                app:weather_info_tile_value="19° / 25°"
+                />
+
+            <com.example.homework_5.views.WeatherInfoTileView
+                android:id="@+id/weather_info_tile_wind"
+                android:layout_width="0dp"
+                app:layout_constraintWidth_percent="0.33"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/weather_info_tile_temperature"
+                app:layout_constraintTop_toTopOf="parent"
+                app:weather_info_tile_title="@string/wind"
+                app:weather_info_tile_icon="@drawable/ic_wind"
+                app:weather_info_tile_value="13km"
+                />
+
+            <com.example.homework_5.views.WeatherInfoTileView
+                android:id="@+id/weather_info_tile_humidity"
+                android:layout_width="0dp"
+                app:layout_constraintWidth_percent="0.33"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/weather_info_tile_wind"
+                app:layout_constraintTop_toTopOf="parent"
+                app:weather_info_tile_title="@string/humidity"
+                app:weather_info_tile_icon="@drawable/ic_humidity"
+                app:weather_info_tile_value="13km"
+                />
+
+            <com.example.homework_5.views.WeatherInfoTileView
+                android:id="@+id/weather_info_tile_pressure"
+                android:layout_width="0dp"
+                app:layout_constraintWidth_percent="0.33"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weather_info_tile_temperature"
+                app:weather_info_tile_title="@string/pressure"
+                app:weather_info_tile_icon="@drawable/ic_pressure"
+                app:weather_info_tile_value="13km"
+                />
+
+            <com.example.homework_5.views.WeatherInfoTileView
+                android:id="@+id/weather_info_tile_visibility"
+                android:layout_width="0dp"
+                app:layout_constraintWidth_percent="0.33"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/weather_info_tile_pressure"
+                app:layout_constraintTop_toBottomOf="@id/weather_info_tile_wind"
+                app:weather_info_tile_title="@string/visibility"
+                app:weather_info_tile_icon="@drawable/ic_visibility"
+                app:weather_info_tile_value="13km"
+                />
+
+            <com.example.homework_5.views.WeatherInfoTileView
+                android:id="@+id/weather_info_tile_accuracy"
+                android:layout_width="0dp"
+                app:layout_constraintWidth_percent="0.33"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/weather_info_tile_visibility"
+                app:layout_constraintTop_toBottomOf="@id/weather_info_tile_temperature"
+                app:weather_info_tile_title="@string/accuracy"
+                app:weather_info_tile_icon="@drawable/ic_accuracy"
+                app:weather_info_tile_value="13km"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/today_weather_sequence_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weather_info_tiles_container"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_round_edges_12_dp">
+
+            <TextView
+                android:id="@+id/today_headline"
+                style="@style/HeadlineSmallNLv1Left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="14dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:text="@string/today"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hourly_weather_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/today_headline"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/next_7_days_weather_sequence_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/today_weather_sequence_container"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/bg_round_edges_12_dp">
+
+            <TextView
+                android:id="@+id/next_7_days_headline"
+                style="@style/HeadlineSmallNLv1Left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="14dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:text="@string/today"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/next_7_days_weather_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/next_7_days_headline"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -38,7 +38,7 @@ class WeatherInfoTileView(context: Context, attrs: AttributeSet) : ConstraintLay
     }
 
     private fun setTitle(date: String) {
-        binding.title.text = date
+        binding.title.text = date.uppercase()
     }
 
     private fun setValue(time: String) {

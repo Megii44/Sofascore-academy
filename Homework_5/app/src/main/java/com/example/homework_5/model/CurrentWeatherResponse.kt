@@ -1,14 +1,16 @@
 package com.example.homework_5.model
 
+import java.io.Serializable
+
 data class CurrentLocationWeatherResponse(
     val location: Location,
     val current: Current,
-) : java.io.Serializable
+) : Serializable
 
-data class CurrentLocationWeather (
+data class CurrentLocationWeather(
     val location: Location,
     val current: Current,
-) : java.io.Serializable
+) : Serializable
 
 data class Current(
     val last_updated_epoch: Long,
@@ -34,10 +36,10 @@ data class Current(
     val uv: Double,
     val gust_mph: Double,
     val gust_kph: Double
-) : java.io.Serializable
+) : Serializable
 
 data class Condition(
     val text: String,
     val icon: String,
     val code: Int
-) : java.io.Serializable
+) : Serializable

@@ -14,6 +14,7 @@
     <string name="am">AM</string>
     <string name="pm">PM</string>
     <string name="min">min</string>
+    <string name="min_max" translatable="false">MIN/MAX</string>
     <string name="max">max</string>
     <string name="wind">wind</string>
     <string name="humidity">Humidity</string>

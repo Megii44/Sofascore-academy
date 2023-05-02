@@ -1,14 +1,20 @@
 package com.example.homework_5.ui.city
 
+import SequenceAdapter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.homework_5.databinding.ActivityCityBinding
 import com.example.homework_5.model.CurrentLocationWeather
+import com.example.homework_5.utils.getApiKey
 import com.google.gson.Gson
-
 class CityActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCityBinding
+    private lateinit var sequenceRecyclerView: RecyclerView
+    private lateinit var sequenceAdapter: SequenceAdapter
+    private lateinit var viewModel: CityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,5 +31,54 @@ class CityActivity : AppCompatActivity() {
 
         // Set the title to the location's name
         binding.title.text = cityWeather.location.name
+
+        // Inflate the layout for this activity
+        //val baseCityBinding = BaseCityInfoViewBinding.inflate(layoutInflater)
+        //baseCityBinding.date.text = Date().toString()
+        //baseCityBinding.description.text = cityWeather.current.condition.text
+        //baseCityBinding.temperature.text = cityWeather.current.temp_c.toString()
+
+        // Initialize the ViewModel
+        viewModel = ViewModelProvider(this)[CityViewModel::class.java]
+
+        // Initialize the RecyclerView
+        //sequenceRecyclerView = binding.hourlyWeatherRecyclerView
+
+        // Set the layout manager
+        //val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        //sequenceRecyclerView.layoutManager = layoutManager
+
+        // Create the adapter with the hourly weather data
+        //val emptyList = emptyList<Hour>()
+        //sequenceAdapter = SequenceAdapter(emptyList)
+
+        // Set the adapter to the RecyclerView
+        //sequenceRecyclerView.adapter = sequenceAdapter
+
+        // Observe the data from the ViewModel and update the UI accordingly
+        //viewModel.dailyForecast.observe(this, Observer { sequenceWeatherData ->
+            // Update the adapter with the new data
+            //sequenceAdapter.updateData(sequenceWeatherData)
+        //})
+
+        //getDailyForecastSequence(cityWeather.location.name)
+
+    }
+
+    private fun getDailyForecastSequence(query: String) {
+        val apiKey = getApiKey()
+
+        /*CoroutineScope(Dispatchers.Main).launch {
+            val response = Network().getService().getDailyForecast(apiKey, query)
+            if (response.isSuccessful) {
+                val forecastResponse = response.body()
+                val hourlyForecast = forecastResponse?.let { (it.forecast) }
+                if(hourlyForecast != null) {
+                    viewModel.updateForecast(hourlyForecast)
+                }
+            } else {
+                // Handle the API error call
+            }
+        }*/
     }
 }
