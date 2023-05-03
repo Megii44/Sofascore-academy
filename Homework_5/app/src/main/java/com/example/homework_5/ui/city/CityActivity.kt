@@ -1,11 +1,11 @@
 package com.example.homework_5.ui.city
 
-import SequenceRecyclerAdapter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homework_5.adapter.SequenceRecyclerAdapter
 import com.example.homework_5.databinding.ActivityCityBinding
 import com.example.homework_5.helpers.getFormattedDate
 import com.example.homework_5.helpers.getFormattedTime
@@ -57,27 +57,27 @@ class CityActivity : AppCompatActivity() {
         // Initialize the ViewModel
         viewModel = ViewModelProvider(this)[CityViewModel::class.java]
 
-        // Initialize the RecyclerView
+        // Get forecast data with API call
+        getForecast(cityWeather.location.name + "&days=8")
+
+        // Get the RecyclerView
         sequenceRecyclerView = binding.hourlyWeatherRecyclerView
 
-        // Set the layout manager
+        // Set the layout manager in RecyclerView
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         sequenceRecyclerView.layoutManager = layoutManager
 
-        // Create the adapter with the hourly weather data
-        val emptyList = emptyList<Forecast>()
-        sequenceAdapter = SequenceRecyclerAdapter(emptyList)
-
-        // Set the adapter to the RecyclerView
-        sequenceRecyclerView.adapter = sequenceAdapter
-
         // Observe the data from the ViewModel and update the UI accordingly
         viewModel.forecast.observe(this) { forecastData ->
+            // Create the adapter with the hourly weather data
+            sequenceAdapter = SequenceRecyclerAdapter(this, forecastData)
+
+            // Set the adapter to the RecyclerView
+            sequenceRecyclerView.adapter = sequenceAdapter
+
             // Update the adapter with the new data
             sequenceAdapter.updateData(forecastData)
         }
-
-        getForecast(cityWeather.location.name + "&days=8")
     }
 
     private fun getForecast(query: String) {
