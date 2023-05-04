@@ -1,5 +1,6 @@
 package com.example.homework_5.ui.my_cities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,36 +8,32 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.homework_5.adapter.RecentSearchesRecyclerAdapter
 import com.example.homework_5.databinding.FragmentMyCitiesBinding
+import com.example.homework_5.ui.city.CityActivity
+import com.google.gson.Gson
 
 class MyCitiesFragment : Fragment() {
 
-    private var _binding: FragmentMyCitiesBinding? = null
+    private lateinit var binding: FragmentMyCitiesBinding
+    private lateinit var viewModel: MyCitiesViewModel
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentMyCitiesBinding.inflate(inflater, container, false).apply {
+            (activity as AppCompatActivity)
+        }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val myCitiesViewModel =
-            ViewModelProvider(this)[MyCitiesViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[MyCitiesViewModel::class.java]
 
-        _binding = FragmentMyCitiesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        viewModel.myCities.observe(viewLifecycleOwner) { currentWeather ->
+            binding.myCitiesRecyclerView.adapter = RecentSearchesRecyclerAdapter(requireContext(), currentWeather) { selectedWeather ->
+                Intent(requireContext(), CityActivity::class.java).apply {
+                    putExtra("cityWeather", Gson().toJson(selectedWeather))
+                    startActivity(this)
+                }
+            }
+        }
 
-        val toolbar = binding.toolbar // Find the toolbar by its ID
-        (activity as AppCompatActivity).setSupportActionBar(toolbar) // Set the toolbar as the action bar
-
-
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        return binding.root
     }
 }
