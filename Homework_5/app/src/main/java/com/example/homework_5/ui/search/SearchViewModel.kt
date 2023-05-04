@@ -1,9 +1,14 @@
 package com.example.homework_5.ui.search
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.homework_5.database.CityWeatherDatabase
 import com.example.homework_5.model.CurrentLocationWeather
+import com.example.homework_5.model.CurrentLocationWeatherResponse
+import kotlinx.coroutines.launch
 
 class SearchViewModel : ViewModel() {
 
@@ -21,4 +26,10 @@ class SearchViewModel : ViewModel() {
         }
     }
 
+    fun insertCityWeatherToDb(context: Context, cityWeather: CurrentLocationWeatherResponse) {
+        viewModelScope.launch {
+            val db = CityWeatherDatabase.getDatabase(context)
+            db?.CityWeatherDao()?.insertCityWeather(cityWeather)
+        }
+    }
 }

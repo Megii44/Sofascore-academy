@@ -31,7 +31,7 @@ class SequenceRecyclerAdapter(
         holder.binding.apply {
             // Set the data you want to display for each recent search item
             // For example, set the location name in a TextView
-            timeItemHour.text = today.time
+            timeItemHour.text = today.time.split(" ")[1].split("-")[0]
             val icon = getWeatherIcon(today.condition.code)
             timeItemWeatherIcon.setImageResource(icon)
             timeItemTemperature.text = today.temp_c.toString()

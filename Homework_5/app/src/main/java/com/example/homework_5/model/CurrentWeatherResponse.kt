@@ -1,5 +1,6 @@
 package com.example.homework_5.model
 
+import androidx.room.PrimaryKey
 import java.io.Serializable
 
 data class CurrentLocationWeatherResponse(
@@ -8,6 +9,7 @@ data class CurrentLocationWeatherResponse(
 ) : Serializable
 
 data class CurrentLocationWeather(
+    @PrimaryKey
     val location: Location,
     val current: Current,
 ) : Serializable

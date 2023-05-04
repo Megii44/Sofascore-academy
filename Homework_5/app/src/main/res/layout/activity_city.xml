@@ -177,6 +177,9 @@
             app:layout_constraintTop_toBottomOf="@id/weather_info_tiles_container"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/bg_round_edges_12_dp">
 
             <TextView
@@ -210,6 +213,8 @@
             app:layout_constraintTop_toBottomOf="@id/today_weather_sequence_container"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/bg_round_edges_12_dp">
 
@@ -222,7 +227,7 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:paddingBottom="8dp"
-                android:text="@string/today"
+                android:text="@string/next_seven_days"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 

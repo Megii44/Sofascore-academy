@@ -1,5 +1,6 @@
 package com.example.homework_5.ui.search
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.homework_5.adapter.RecentSearchesRecyclerAdapter
 import com.example.homework_5.databinding.FragmentSearchBinding
 import com.example.homework_5.model.CurrentLocationWeather
+import com.example.homework_5.model.CurrentLocationWeatherResponse
 import com.example.homework_5.networking.Network
 import com.example.homework_5.ui.city.CityActivity
 import com.example.homework_5.utils.getApiKey
@@ -21,6 +23,7 @@ import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.lifecycle.viewModelScope
 
 class SearchFragment : Fragment() {
 
