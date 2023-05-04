@@ -20,8 +20,8 @@
         <TextView
             android:id="@+id/date"
             style="@style/HeadlineSmallNLv1Left"
-            android:layout_width="144dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Mon, March 15" />
@@ -29,8 +29,8 @@
         <TextView
             android:id="@+id/time"
             style="@style/HeadlineSmallNLv1Left"
-            android:layout_width="144dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/date"
             tools:text="09:32 AM (CET)" />
@@ -38,12 +38,13 @@
         <TextView
             android:id="@+id/description"
             style="@style/BodyMediumNLv2Left"
-            android:layout_width="144dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:paddingTop="2dp"
             android:paddingBottom="3dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/time"
+            tools:ignore="TextContrastCheck"
             tools:text="Light Rain" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
