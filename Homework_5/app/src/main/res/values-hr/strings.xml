@@ -10,7 +10,7 @@
     <string name="icon">Ikona</string>
     <string name="cancel_button">Odustani</string>
     <string name="ok_button">OK</string>
-    <string name="distance">Udaljenost</string>
+    <string name="distance">Udaljenost: %1$d km</string>
     <string name="am">AM</string>
     <string name="pm">PM</string>
     <string name="min">min</string>

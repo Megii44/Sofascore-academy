@@ -1,6 +1,5 @@
 package com.example.homework_5.ui.search
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -14,16 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.homework_5.adapter.RecentSearchesRecyclerAdapter
 import com.example.homework_5.databinding.FragmentSearchBinding
-import com.example.homework_5.model.CurrentLocationWeather
-import com.example.homework_5.model.CurrentLocationWeatherResponse
-import com.example.homework_5.networking.Network
 import com.example.homework_5.ui.city.CityActivity
-import com.example.homework_5.utils.getApiKey
 import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import androidx.lifecycle.viewModelScope
 
 class SearchFragment : Fragment() {
 
@@ -61,36 +52,14 @@ class SearchFragment : Fragment() {
                     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                         val query = s.toString().trim()
-                        if (query.length >= 3) searchLocations(query, adapter)
+                        if (query.length >= 3) viewModel.searchLocations(query, adapter)
                     }
                     override fun afterTextChanged(s: Editable) {}
                 })
 
                 setOnItemClickListener { _, _, position, _ ->
-                    getCurrentWeatherForLocation(adapter.getItem(position)?.trim().orEmpty())
+                    viewModel.getCurrentWeatherForLocation(adapter.getItem(position)?.trim().orEmpty())
                 }
-            }
-        }
-    }
-
-    private fun searchLocations(query: String, adapter: ArrayAdapter<String>) {
-        CoroutineScope(Dispatchers.Main).launch {
-            val response = Network().getService().searchLocations(getApiKey(), query)
-            if (response.isSuccessful) {
-                response.body()?.map { it.name }?.let { locationNames ->
-                    adapter.clear()
-                    adapter.addAll(locationNames)
-                    adapter.notifyDataSetChanged()
-                }
-            }
-        }
-    }
-
-    private fun getCurrentWeatherForLocation(query: String) {
-        if (query.isNotBlank()) {
-            CoroutineScope(Dispatchers.Main).launch {
-                val response = Network().getService().getCurrentWeatherForLocation(getApiKey(), query)
-                response.body()?.let { viewModel.addRecentSearch(CurrentLocationWeather(location = it.location, current = it.current)) }
             }
         }
     }

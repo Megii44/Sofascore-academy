@@ -10,7 +10,7 @@
     <string name="icon">Icon</string>
     <string name="cancel_button">Cancel</string>
     <string name="ok_button">OK</string>
-    <string name="distance">Distance</string>
+    <string name="distance">Distance: %1$d km</string>
     <string name="am">AM</string>
     <string name="pm">PM</string>
     <string name="min">min</string>

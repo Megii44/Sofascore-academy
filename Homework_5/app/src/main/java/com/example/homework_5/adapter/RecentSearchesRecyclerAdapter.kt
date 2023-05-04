@@ -35,9 +35,10 @@ class RecentSearchesRecyclerAdapter(
             // For example, set the location name in a TextView
             title.text = recentSearch.location.name
             label1.text = fromLatLonToDMS(recentSearch.location.lat, recentSearch.location.lon)
-            label2.text = R.string.distance.toString() + ": 8542" + "km"
-            temperature.text = recentSearch.current.temp_c.toString() + "°"
-
+            val distance = 8542
+            label2.text = context.getString(R.string.distance, distance)
+            val degree = "°"
+            temperature.text = recentSearch.current.temp_c.toString() + degree
             val icon = getWeatherIcon(recentSearch.current.condition.code)
             weatherIcon.setImageResource(icon)
         }
