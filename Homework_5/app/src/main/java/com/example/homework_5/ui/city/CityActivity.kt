@@ -54,6 +54,20 @@ class CityActivity : AppCompatActivity() {
         baseCityInfoView.setIcon(icon)
         baseCityInfoView.setDescription(cityWeather.current.condition.text)
 
+        // Set values for weather info tiles
+        val temperatureWeatherInfoTile = binding.weatherInfoTileTemperature
+        temperatureWeatherInfoTile.setValue(cityWeather.current.temp_c.toString())
+        val windWeatherInfoTile = binding.weatherInfoTileWind
+        windWeatherInfoTile.setValue(cityWeather.current.wind_kph.toString())
+        val humidityWeatherInfoTile = binding.weatherInfoTileHumidity
+        humidityWeatherInfoTile.setValue(cityWeather.current.humidity.toString())
+        val pressureWeatherInfoTile = binding.weatherInfoTilePressure
+        pressureWeatherInfoTile.setValue(cityWeather.current.pressure_in.toString())
+        val visibilityWeatherInfoTile = binding.weatherInfoTileVisibility
+        visibilityWeatherInfoTile.setValue(cityWeather.current.vis_km.toString())
+        val accuracyWeatherInfoTile = binding.weatherInfoTileAccuracy
+        accuracyWeatherInfoTile.setValue("93%")
+
         // Initialize the ViewModel
         viewModel = ViewModelProvider(this)[CityViewModel::class.java]
 
