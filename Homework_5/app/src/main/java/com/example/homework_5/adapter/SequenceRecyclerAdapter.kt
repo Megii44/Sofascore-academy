@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homework_5.R
 import com.example.homework_5.databinding.TimeItemViewBinding
-import com.example.homework_5.helpers.getWeatherIcon
-import com.example.homework_5.model.Forecast
+import com.example.homework_5.helpers.getFormattedTemperature
+import com.example.homework_5.model.TimeItem
 
 class SequenceRecyclerAdapter(
     private val context: Context,
-    private var sequenceWeatherData: List<Forecast>
+    private var sequenceWeatherData: List<TimeItem>,
     ) : RecyclerView.Adapter<SequenceRecyclerAdapter.SequenceViewHolder>() {
 
     class SequenceViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -25,24 +25,22 @@ class SequenceRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: SequenceViewHolder, position: Int) {
-        val today = sequenceWeatherData.first().forecastday.first().hour[position]
-        //val nextSevenDays = sequenceWeatherData.first().forecastday[position]
+        val data = sequenceWeatherData[position]
 
         holder.binding.apply {
             // Set the data you want to display for each recent search item
             // For example, set the location name in a TextView
-            timeItemHour.text = today.time.split(" ")[1].split("-")[0]
-            val icon = getWeatherIcon(today.condition.code)
-            timeItemWeatherIcon.setImageResource(icon)
-            timeItemTemperature.text = today.temp_c.toString()
+            timeItemHour.text = data.hour.uppercase()
+            timeItemWeatherIcon.setImageResource(data.icon)
+            timeItemTemperature.text = getFormattedTemperature(data.temp_c.toInt())
         }
     }
 
     override fun getItemCount(): Int {
-        return sequenceWeatherData.first().forecastday.first().hour.size
+        return sequenceWeatherData.size
     }
 
-    fun updateData(newSequenceWeatherData: List<Forecast>) {
+    fun updateData(newSequenceWeatherData: List<TimeItem>) {
         sequenceWeatherData = newSequenceWeatherData
         notifyDataSetChanged()
     }

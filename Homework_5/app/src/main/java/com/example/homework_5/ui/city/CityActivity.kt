@@ -7,11 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homework_5.adapter.SequenceRecyclerAdapter
 import com.example.homework_5.databinding.ActivityCityBinding
-import com.example.homework_5.helpers.getFormattedDate
-import com.example.homework_5.helpers.getFormattedTime
-import com.example.homework_5.helpers.getWeatherIcon
+import com.example.homework_5.helpers.*
 import com.example.homework_5.model.CurrentLocationWeather
-import com.example.homework_5.model.Forecast
+import com.example.homework_5.model.TimeItem
 import com.example.homework_5.networking.Network
 import com.example.homework_5.utils.getApiKey
 import com.google.gson.Gson
@@ -23,8 +21,10 @@ import java.util.*
 class CityActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCityBinding
-    private lateinit var sequenceRecyclerView: RecyclerView
-    private lateinit var sequenceAdapter: SequenceRecyclerAdapter
+    private lateinit var todaySequenceRecyclerView: RecyclerView
+    private lateinit var nextSevenDaysSequenceRecyclerView: RecyclerView
+    private lateinit var todaySequenceAdapter: SequenceRecyclerAdapter
+    private lateinit var nextSevenDaysSequenceAdapter: SequenceRecyclerAdapter
     private lateinit var viewModel: CityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,37 +72,79 @@ class CityActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[CityViewModel::class.java]
 
         // Get forecast data with API call
-        getForecast(cityWeather.location.name + "&days=8")
+        getForecast(cityWeather.location.name, 8)
 
-        // Get the RecyclerView
-        sequenceRecyclerView = binding.hourlyWeatherRecyclerView
+        // Get the RecyclerViews
+        todaySequenceRecyclerView = binding.hourlyWeatherRecyclerView
+        nextSevenDaysSequenceRecyclerView = binding.next7DaysWeatherRecyclerView
 
-        // Set the layout manager in RecyclerView
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        sequenceRecyclerView.layoutManager = layoutManager
+        // SET TODAY WEATHER SEQUENCE
+        //
+        // Set the layout manager for the today recycler view
+        val todayLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        todaySequenceRecyclerView.layoutManager = todayLayoutManager
 
         // Observe the data from the ViewModel and update the UI accordingly
-        viewModel.forecast.observe(this) { forecastData ->
-            // Create the adapter with the hourly weather data
-            sequenceAdapter = SequenceRecyclerAdapter(this, forecastData)
+        viewModel.todayForecast.observe(this) { todayForecastData ->
+            // Create the adapter with the forecast data
+            todaySequenceAdapter = SequenceRecyclerAdapter(this, todayForecastData)
 
             // Set the adapter to the RecyclerView
-            sequenceRecyclerView.adapter = sequenceAdapter
+            todaySequenceRecyclerView.adapter = todaySequenceAdapter
 
             // Update the adapter with the new data
-            sequenceAdapter.updateData(forecastData)
+            todaySequenceAdapter.updateData(todayForecastData)
         }
+
+        // SET NEXT SEVEN DAYS WEATHER SEQUENCE
+        //
+        // Set the layout manager for the next seven days recycler view
+        val nextSevenDaysLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        nextSevenDaysSequenceRecyclerView.layoutManager = nextSevenDaysLayoutManager
+
+        // Observe the data from the ViewModel and update the UI accordingly
+        viewModel.nextSevenDaysForecast.observe(this) { nextSevenDaysForecastData ->
+            // Create the adapter with the forecast data
+            nextSevenDaysSequenceAdapter = SequenceRecyclerAdapter(this, nextSevenDaysForecastData)
+
+            // Set the adapter to the RecyclerView
+            nextSevenDaysSequenceRecyclerView.adapter = nextSevenDaysSequenceAdapter
+
+            // Update the adapter with the new data
+            nextSevenDaysSequenceAdapter.updateData(nextSevenDaysForecastData)
+        }
+
     }
 
-    private fun getForecast(query: String) {
-        if (query.isNotBlank()) {
+    private fun getForecast(locationName: String, days_: Int) {
+        if (locationName.isNotBlank()) {
             CoroutineScope(Dispatchers.Main).launch {
-                val response = Network().getService().getForecast(getApiKey(), query)
+                val response = Network().getService().getForecast(getApiKey(), locationName, days_)
                 val responseBody = response.body()
 
-                // Get 8 days prognosis - today + next 7 days
                 responseBody?.let {
-                    viewModel.updateNextSevenDaysForecast(Forecast(forecastday =  it.forecast.forecastday))
+                    // Get today's hourly forecast
+                    val todayHourlyForecast = it.forecast.forecastday[0].hour.map { hour ->
+                        TimeItem(
+                            hour = getFormattedTime(hour.time),
+                            icon = getWeatherIcon(hour.condition.code),
+                            temp_c = hour.temp_c,
+                            temp_f = hour.temp_f
+                        )
+                    }
+                    viewModel.updateTodayForecast(todayHourlyForecast)
+
+                    // Get the next 7 days forecast
+                    val nextSevenDaysForecast = it.forecast.forecastday.map { forecastday ->
+                        print(it.forecast.forecastday)
+                        TimeItem(
+                            hour = getDayOfWeekAbr(forecastday.date),
+                            icon = getWeatherIcon(forecastday.day.condition.code),
+                            temp_c = forecastday.day.avgtemp_c,
+                            temp_f = forecastday.day.avgtemp_f
+                        )
+                    }
+                    viewModel.updateNextSevenDaysForecast(nextSevenDaysForecast)
                 }
 
             }

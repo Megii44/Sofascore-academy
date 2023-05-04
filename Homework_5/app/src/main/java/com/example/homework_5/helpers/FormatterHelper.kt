@@ -1,9 +1,7 @@
 package com.example.homework_5.helpers
 
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.Icon
 import com.example.homework_5.R
-import java.util.Date
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
@@ -30,7 +28,7 @@ fun getWeatherIcon(iconCode: Int): Int {
         1180, 1183, 1240 -> R.drawable.ic_weather_lr // Light Rain
         1186, 1189, 1192, 1195, 1243, 1246 -> R.drawable.ic_weather_hr // Heavy Rain
         1087, 1273, 1276 -> R.drawable.ic_weather_t // Thunder
-        1063, 1240 -> R.drawable.ic_weather_s // Rain with a little sun
+        1063 -> R.drawable.ic_weather_s // Rain with a little sun
         1003 -> R.drawable.ic_weather_lc // Cloudy with a little sun
         1000 -> R.drawable.ic_weather_c // Sunny
         else -> R.drawable.ic_weather_c // Default to Sunny if no match
@@ -46,4 +44,42 @@ fun getFormattedDate(date: Date): String {
 fun getFormattedTime(time: Date): String {
     val timeFormat = SimpleDateFormat("hh:mm a (z)", Locale.getDefault())
     return timeFormat.format(time)
+}
+
+fun getFormattedTime(time_: String): String {
+    val time = stringToDate(time_)
+    val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
+    return if(time != null) {
+        timeFormat.format(time)
+    } else {
+        ""
+    }
+}
+
+fun getDayOfWeekAbr(time_: String): String {
+    val time = stringToDate(time_)
+    if (time != null) {
+        val dayOfWeekFormat = SimpleDateFormat("EEE", Locale.getDefault())
+        return dayOfWeekFormat.format(time)
+    }
+    return ""
+}
+private fun stringToDate(dateString: String): Date? {
+    val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+    val format2 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return try {
+        format.parse(dateString)
+    } catch (e: ParseException) {
+        e.printStackTrace()
+        return try {
+            format2.parse(dateString)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            null
+        }
+    }
+}
+
+fun getFormattedTemperature(temp: Int) : String {
+    return "$temp°"
 }
