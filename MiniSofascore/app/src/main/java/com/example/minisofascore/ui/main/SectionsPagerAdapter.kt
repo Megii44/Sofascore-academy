@@ -7,8 +7,15 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.example.minisofascore.R
 
 private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1,
-    R.string.tab_text_2
+    R.string.football_title,
+    R.string.basketball_title,
+    R.string.am_football_title
+)
+
+private val TAB_ICONS = arrayOf(
+    R.drawable.ic_football,
+    R.drawable.ic_basketball,
+    R.drawable.ic_american_football
 )
 
 /**
@@ -28,8 +35,12 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
         return context.resources.getString(TAB_TITLES[position])
     }
 
+    fun getIcon(position: Int): Int {
+        return TAB_ICONS[position]
+    }
+
     override fun getCount(): Int {
-        // Show 2 total pages.
-        return 2
+        // Show 3 total pages.
+        return 3
     }
 }
