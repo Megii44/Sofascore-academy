@@ -62,6 +62,5 @@ class MainActivity : AppCompatActivity() {
         val dayAdapter = DayAdapter(dayOfWeekNames, dateOfMonthNames)
         val daysList: RecyclerView = findViewById(R.id.days_list)
         daysList.adapter = dayAdapter
-
     }
 }

@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="8dp">
+    android:background="@color/blue_bg_dark"
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/day_of_week"
