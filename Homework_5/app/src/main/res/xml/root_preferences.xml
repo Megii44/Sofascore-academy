@@ -1,0 +1,36 @@
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory>
+
+        <ListPreference
+            app:key="theme"
+            app:title="@string/language"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:useSimpleSummaryProvider="true"
+            app:layout="@layout/custom_language_preference"/>
+
+        <ListPreference
+            app:key="language"
+            app:title="@string/theme"
+            app:entries="@array/language_entries"
+            app:entryValues="@array/language_values"
+            app:useSimpleSummaryProvider="true"
+            app:layout="@layout/custom_theme_preference"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory>
+
+        <Preference
+            app:key="unit_type"
+            app:title="@string/theme"
+            app:entries="@array/unit_type_entries"
+            app:entryValues="@array/unit_type_values"
+            app:useSimpleSummaryProvider="true"
+            app:layout="@layout/custom_unit_type_preference"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

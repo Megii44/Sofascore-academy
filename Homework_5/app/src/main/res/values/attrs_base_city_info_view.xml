@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="BaseCityInfoView">
+        <attr name="base_city_info_date" format="string" />
+        <attr name="base_city_info_time" format="string" />
+        <attr name="base_city_info_description" format="string" />
+        <attr name="base_city_info_temperature" format="integer" />
+        <attr name="base_city_info_icon" format="reference" />
+    </declare-styleable>
+</resources>

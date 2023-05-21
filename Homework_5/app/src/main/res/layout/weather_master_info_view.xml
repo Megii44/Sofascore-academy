@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_city_info"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round_edges_12_dp">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/HeadlineLargeNLv1Left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:text="San Francisco"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.example.homework_5.views.BaseCityInfoView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:base_city_info_date="Mon, March 15"
+        app:base_city_info_time="09:32 AM (CET)"
+        app:base_city_info_description="Light Rain"
+        app:base_city_info_temperature="20"
+        app:base_city_info_icon="@drawable/ic_weather_c">
+
+    </com.example.homework_5.views.BaseCityInfoView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

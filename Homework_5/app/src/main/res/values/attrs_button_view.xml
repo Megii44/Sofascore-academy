@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="ButtonView">
+        <attr name="text" format="string" />
+        <attr name="background_color" format="color" />
+        <attr name="border_color" format="color" />
+        <attr name="disabled" format="boolean" />
+    </declare-styleable>
+</resources>

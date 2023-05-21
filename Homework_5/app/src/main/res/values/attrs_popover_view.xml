@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="PopoverView">
+        <attr name="popover_title" format="string" />
+        <attr name="popover_description" format="dimension" />
+        <attr name="popover_button_one_text" format="string" />
+        <attr name="popover_button_two_text" format="string" />
+    </declare-styleable>
+</resources>
