@@ -30,6 +30,7 @@
             android:background="@color/blue_bg"
             app:tabTextColor="@color/white"
             app:tabIndicatorColor="@color/white"
+            app:tabIconTint="@color/white"
             android:contentDescription="@string/tab_description" />
 
     </com.google.android.material.appbar.AppBarLayout>
