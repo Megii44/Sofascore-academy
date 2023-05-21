@@ -6,10 +6,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.homework_3.ui.home.AddProductFragment
 import com.example.homework_3.ui.products.ProductsFragment
+import com.example.homework_3.ui.settings.SettingsFragment
 
-private const val NUM_TABS = 2
+private const val NUM_TABS = 3
 
-public class ViewPagerAdapter(
+class ViewPagerAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -19,9 +20,14 @@ public class ViewPagerAdapter(
     }
 
     override fun createFragment(position: Int): Fragment {
-        return if (position == 0)
-            AddProductFragment()
-        else
-            ProductsFragment()
+        return when (position) {
+            0 -> AddProductFragment()
+            1 -> {
+                ProductsFragment()
+            }
+            else -> {
+                SettingsFragment()
+            }
+        }
     }
 }

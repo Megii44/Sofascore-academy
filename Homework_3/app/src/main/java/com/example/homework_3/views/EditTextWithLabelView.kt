@@ -1,6 +1,7 @@
 package com.example.homework_3.views
 
 import android.content.Context
+import android.text.SpannableStringBuilder
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -42,6 +43,11 @@ class EditTextWithLabelView(context: Context, attrs: AttributeSet) : ConstraintL
 
     fun getEditTextValue(): String {
         return binding.customEditText.text.toString()
+    }
+
+    fun setEditTextValue(str: String) {
+        val editableStr = SpannableStringBuilder(str)
+        binding.customEditText.text = editableStr
     }
 
     fun validate(): Boolean {

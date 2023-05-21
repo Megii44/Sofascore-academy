@@ -1,0 +1,30 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/input_style"
+    android:layout_marginBottom="24dp"
+    android:focusable="true">
+
+    <Spinner
+        android:id="@+id/preference_theme_spinner"
+        style="@style/BodyLargeNLv1Left"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:entries="@array/theme_entries"
+        android:spinnerMode="dropdown"
+        android:paddingTop="26dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="gravity"/>
+
+    <TextView
+        style="@style/AssistiveSecondaryLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/theme"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="8dp" /> <!-- Added space above TextView -->
+
+</FrameLayout>

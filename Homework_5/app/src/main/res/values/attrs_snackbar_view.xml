@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="SnackbarView">
+        <attr name="snackbar_text" format="string" />
+        <attr name="snackbar_background_color" format="color" />
+    </declare-styleable>
+</resources>

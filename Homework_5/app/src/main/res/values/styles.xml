@@ -1,0 +1,35 @@
+<resources>
+
+    <style name="Widget.Theme.Homework_5.BaseCityInfoView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.CityInfoOneLabelView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.CityInfoTwoLabelsView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.CityItemView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.ListedInfoView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.PopoverView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.SnackbarView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.TimeItemView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.WeatherInfoTileView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.WeatherMasterInfoView" parent=""></style>
+
+    <style name="Widget.Theme.Homework_5.ButtonView" parent=""></style>
+
+    <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColorHint">@color/neutrals_n_lv_2</item>
+    </style>
+
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Widget.Button</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">88dp</item>
+    </style>
+
+</resources>

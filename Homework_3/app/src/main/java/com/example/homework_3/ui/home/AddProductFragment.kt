@@ -63,7 +63,7 @@ class AddProductFragment : Fragment() {
                     binding.brandInput.getEditTextValue(), binding.categoryInput.getEditTextValue(),
                     binding.productTypeInput.getEditTextValue(), binding.styleInput.getEditTextValue(),
                     binding.colorInput.getEditTextValue(), selectedRadioButton,
-                    size, binding.priceInput.getEditTextValue())
+                    size, binding.priceInput.getEditTextValue(), binding.productImageInput.getEditTextValue())
 
                 viewModel.addProduct(product = newProduct)
 

@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">Moja vremenska prognoza</string>
+    <string name="title_settings">Postavke</string>
+    <string name="title_search">Pretraži</string>
+    <string name="title_my_cities">Moji gradovi</string>
+    <string name="search_hint">Pretraži gradove</string>
+    <string name="recent">Nedavno</string>
+    <string name="star_icon">Ikona zvijezde</string>
+    <string name="weather_icon">Ikona vremena</string>
+    <string name="icon">Ikona</string>
+    <string name="cancel_button">Odustani</string>
+    <string name="ok_button">OK</string>
+    <string name="distance">Udaljenost: %1$d km</string>
+    <string name="am">AM</string>
+    <string name="pm">PM</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="wind">vjetar</string>
+    <string name="humidity">Vlažnost</string>
+    <string name="pressure">Tlak</string>
+    <string name="visibility">Vidljivost</string>
+    <string name="accuracy">Preciznost</string>
+    <string name="today">Danas</string>
+    <string name="next_seven_days">Sljedećih 7 dana</string>
+
+    <string name="january">Siječanj</string>
+    <string name="february">Veljača</string>
+    <string name="march">Ožujak</string>
+    <string name="april">Travanj</string>
+    <string name="may">Svibanj</string>
+    <string name="june">Lipanj</string>
+    <string name="july">Srpanj</string>
+    <string name="august">Kolovoz</string>
+    <string name="september">Rujan</string>
+    <string name="october">Listopad</string>
+    <string name="november">Studeni</string>
+    <string name="december">Prosinac</string>
+
+    <string name="monday">Ponedjeljak</string>
+    <string name="tuesday">Utorak</string>
+    <string name="wednesday">Srijeda</string>
+    <string name="thursday">Četvrtak</string>
+    <string name="friday">Petak</string>
+    <string name="saturday">Subota</string>
+    <string name="sunday">Nedjelja</string>
+
+    <string name="monday_abr">PON</string>
+    <string name="tuesday_abr">UTO</string>
+    <string name="wednesday_abr">SRI</string>
+    <string name="thursday_abr">ČET</string>
+    <string name="friday_abr">PET</string>
+    <string name="saturday_abr">SUB</string>
+    <string name="sunday_abr">NED</string>
+
+    <string name="view_more">Vidi više</string>
+
+    <string name="language">Jezik</string>
+    <string name="city">Grad</string>
+    <string name="choose_unit_type">Izaberi mjerni sustav</string>
+    <string name="metric">Metrički</string>
+    <string name="imperial">Imperijski</string>
+    <string name="about">O aplikaciji</string>
+    <string name="more_info">Više informacija</string>
+    <string name="clear_cities_list">Očisti listu mojih gradova</string>
+    <string name="clear_recent_list">Očisti listu nedavne pretrage</string>
+
+    <string name="class_2023">Class 2023</string>
+    <string name="sofascore_academy">Sofascore akademija</string>
+
+    <string name="cool_weather_app">Super Cool Weather App</string>
+    <string name="metaweather">metaweather</string>
+    <string name="developer">Developer</string>
+
+    <string name="clear_recent_list_description">Ako izbrišete popis nedavnih pretraga, vaš će početni zaslon biti prazan.</string>
+    <string name="cancel">Odustani</string>
+    <string name="clear">Očisti</string>
+
+    <string name="cleared_recent_search_list">Popis nedavnih pretraga je očišćen.</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Poruke</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Tvoj po</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="light">Svjetlo</string>
+    <string name="dark">Tamno</string>
+    <string name="theme">Tema</string>
+
+    <string name="croatian">Hrvatski</string>
+    <string name="english">Engleski</string>
+
+    <string name="choose_language">Odaberi jezik</string>
+    <string name="choose_theme">Odaberi temu</string>
+    <string name="settings">Postavke</string>
+
+    <string name="popover_title">Popover Naslov</string>
+    <string name="popover_description">This is popover placeholder text, lorem ipsum dolor sit amet.</string>
+
+    <string name="about_short_text">Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis.</string>
+
+</resources>
