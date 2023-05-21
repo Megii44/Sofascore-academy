@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
+        val viewPager: ViewPager = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
+        val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
 
         // Set tab icons
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         val days = mutableListOf<LocalDate>()
 
-// add past week
+        // add past week
         for (i in 6 downTo 1) {
             days.add(LocalDate.now().minusDays(i.toLong()))
         }
@@ -59,8 +59,10 @@ class MainActivity : AppCompatActivity() {
 
         val dateOfMonthNames = days.map { it.format(DateTimeFormatter.ofPattern("dd.MM")) }
 
-        val dayAdapter = DayAdapter(dayOfWeekNames, dateOfMonthNames)
-        val daysList: RecyclerView = findViewById(R.id.days_list)
+        val dayAdapter = DayAdapter(dayOfWeekNames, dateOfMonthNames) { position ->
+            viewPager.currentItem = position
+        }
+        val daysList: RecyclerView = binding.daysList
         daysList.adapter = dayAdapter
     }
 }
