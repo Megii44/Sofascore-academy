@@ -12,8 +12,9 @@ class Product(
     var color: String,
     var material: String,
     var size: SizeEnum,
-    var price: String
-) {
+    var price: String,
+    var productImageUrl: String,
+) :java.io.Serializable {
     override fun toString(): String {
         return "Name=$name\nDescription=$description\nBrand=$brand\n" +
                 "Category=$category\nProduct type=$productType\nStyle=$style\n" +

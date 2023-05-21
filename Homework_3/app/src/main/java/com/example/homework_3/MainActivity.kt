@@ -1,7 +1,9 @@
 package com.example.homework_3
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.homework_3.adapter.ViewPagerAdapter
 import com.example.homework_3.databinding.ActivityMainBinding
@@ -34,6 +36,11 @@ class MainActivity : AppCompatActivity() {
         productsTab.setText(R.string.products)
         tabLayout.addTab(productsTab)
 
+        val settingsTab = tabLayout.newTab()
+        settingsTab.setIcon(R.drawable.ic_settings)
+        settingsTab.setText(R.string.settings)
+        tabLayout.addTab(settingsTab)
+
         viewPager2.adapter = adapter
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
@@ -59,4 +66,5 @@ class MainActivity : AppCompatActivity() {
             }
         }))
     }
+
 }
