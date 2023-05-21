@@ -11,15 +11,17 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.MiniSofascore.AppBarOverlay">
 
-        <TextView
-            android:id="@+id/title"
+        <ImageView
+            android:id="@+id/logo_with_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="?actionBarSize"
             android:padding="@dimen/appbar_padding"
+            android:src="@drawable/ic_sofascore_lockup"
             android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:contentDescription="@string/logo"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -27,7 +29,8 @@
             android:layout_height="wrap_content"
             android:background="@color/blue_bg"
             app:tabTextColor="@color/white"
-            app:tabIndicatorColor="@color/white"/>
+            app:tabIndicatorColor="@color/white"
+            android:contentDescription="@string/tab_description" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -35,6 +38,7 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:contentDescription="@string/app_bar_view_pager"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

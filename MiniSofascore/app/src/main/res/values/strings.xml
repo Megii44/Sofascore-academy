@@ -5,4 +5,7 @@
     <string name="football_title">Football</string>
     <string name="basketball_title">Basketball</string>
     <string name="am_football_title">Am. Football</string>
+    <string name="tab_description">Top app bar with 3 tabs</string>
+    <string name="app_bar_view_pager">App bar view pager</string>
+    <string name="logo">Logo</string>
 </resources>
