@@ -33,6 +33,13 @@
             app:tabIconTint="@color/white"
             android:contentDescription="@string/tab_description" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/days_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
