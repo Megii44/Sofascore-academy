@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.minisofascore.adapters.EventAdapter
+import com.example.minisofascore.adapters.EventsRecyclerAdapter
+import com.example.minisofascore.data.models.EventResponse
 import com.example.minisofascore.databinding.FragmentFootballBinding
 
 class FootballFragment : Fragment() {
@@ -19,11 +20,14 @@ class FootballFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[FootballViewModel::class.java]
 
-        viewModel.getEvents("football","2023-05-22") // Call getEvents with your query
-
         viewModel.events.observe(viewLifecycleOwner) { events ->
-            binding.footballEventsRecyclerView.adapter = EventAdapter(requireContext(), events)
+            binding.footballEventsRecyclerView.adapter = EventsRecyclerAdapter(requireContext(),
+                events as MutableList<EventResponse>
+            )
         }
+
+        // Call getEvents with your query
+        viewModel.getEvents("football","2023-05-22")
 
         return binding.root
     }
