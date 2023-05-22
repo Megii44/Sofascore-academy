@@ -8,7 +8,6 @@ import retrofit2.http.Query
 interface MiniSofascoreApiService {
     @GET("application/json")
     suspend fun getEventsForDay(
-        @Query("key") apiKey: String,
         @Query("q") query: String
     ): Response<List<EventResponse>>
 
