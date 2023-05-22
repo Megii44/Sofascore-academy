@@ -1,33 +1,31 @@
 package com.example.minisofascore.ui.football
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.minisofascore.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.minisofascore.adapters.EventAdapter
+import com.example.minisofascore.databinding.FragmentFootballBinding
 
 class FootballFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FootballFragment()
-    }
-
+    private lateinit var binding: FragmentFootballBinding
     private lateinit var viewModel: FootballViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewModel.getEvents("")
-        return inflater.inflate(R.layout.fragment_football, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentFootballBinding.inflate(inflater, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this)[FootballViewModel::class.java]
-        // TODO: Use the ViewModel
+
+        viewModel.getEvents("football","2023-05-22") // Call getEvents with your query
+
+        viewModel.events.observe(viewLifecycleOwner) { events ->
+            binding.footballEventsRecyclerView.adapter = EventAdapter(requireContext(), events)
+        }
+
+        return binding.root
     }
 
 }

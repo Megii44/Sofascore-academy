@@ -6,7 +6,7 @@
     tools:context=".ui.football.FootballFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/football_events_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
