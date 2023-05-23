@@ -41,19 +41,15 @@ class EventsRecyclerAdapter(
             scoreTeam1.text = event.homeScore.total.toString()
             scoreTeam2.text = event.awayScore.total.toString()
 
-            val homeTeamLogo = event.homeTeam.logo
-            if(homeTeamLogo != null) {
-                Glide.with(logoTeam1.context)
-                    .load(homeTeamLogo)
-                    .into(logoTeam1)
-            }
+            val homeTeamLogo = "https://academy.dev.sofascore.com/team/" + event.homeTeam.id.toString() + "/image"
+            Glide.with(logoTeam1.context)
+                .load(homeTeamLogo)
+                .into(logoTeam1)
 
-            val awayTeamLogo = event.awayTeam.logo
-            if(awayTeamLogo != null) {
-                Glide.with(logoTeam2.context)
-                    .load(awayTeamLogo)
-                    .into(logoTeam2)
-            }
+            val awayTeamLogo = "https://academy.dev.sofascore.com/team/" + event.awayTeam.id.toString() + "/image"
+            Glide.with(logoTeam2.context)
+                .load(awayTeamLogo)
+                .into(logoTeam2)
 
             startTime.text = OffsetDateTime.parse(event.startDate).format(DateTimeFormatter.ofPattern("HH:mm"))
             overTime.text = event.status

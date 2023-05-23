@@ -14,7 +14,6 @@
             android:id="@+id/start_time"
             android:layout_width="56dp"
             android:layout_height="wrap_content"
-            android:text="13:00"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/over_time"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,29 +24,48 @@
             android:id="@+id/over_time"
             android:layout_width="56dp"
             android:layout_height="wrap_content"
-            android:text="FT"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/start_time"
             app:layout_constraintVertical_bias="0.5" />
 
+        <View
+            android:id="@+id/line"
+            android:layout_height="50dp"
+            android:layout_width="2dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/start_time"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+        </View>
+
         <ImageView
             android:id="@+id/logo_team_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/logo"
             android:src="@drawable/ic_football"
-            app:layout_constraintStart_toEndOf="@id/start_time"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/logo_team_2"
+            app:layout_constraintStart_toEndOf="@id/line"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
 
         <ImageView
             android:id="@+id/logo_team_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:contentDescription="@string/logo"
             android:src="@drawable/ic_football"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/start_time"
-            app:layout_constraintTop_toBottomOf="@id/logo_team_1" />
+            app:layout_constraintStart_toEndOf="@id/line"
+            app:layout_constraintTop_toBottomOf="@+id/logo_team_1"
+            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
 
         <TextView
             android:id="@+id/title_team_1"
@@ -55,11 +73,11 @@
             android:layout_height="wrap_content"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:text="Manchester United"
             app:layout_constraintBottom_toTopOf="@+id/title_team_2"
             app:layout_constraintStart_toEndOf="@id/logo_team_1"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginStart="10dp"/>
 
         <TextView
             android:id="@+id/title_team_2"
@@ -67,30 +85,30 @@
             android:layout_height="wrap_content"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:text="Barcelona"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/logo_team_2"
             app:layout_constraintTop_toBottomOf="@+id/title_team_1"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginStart="10dp"/>
 
         <TextView
             android:id="@+id/score_team_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
             app:layout_constraintBottom_toTopOf="@+id/score_team_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginEnd="10dp"/>
 
         <TextView
             android:id="@+id/score_team_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/score_team_1"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginEnd="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

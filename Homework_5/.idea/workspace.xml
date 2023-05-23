@@ -12,8 +12,6 @@
     <list default="true" id="5df29d69-2bc5-44e0-8f31-d3e929df3cca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/adapters/EventsRecyclerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/adapters/EventsRecyclerAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/data/models/AllEventsResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/data/models/AllEventsResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/football/FootballViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/football/FootballViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/sample_time_box.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/sample_time_box.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
