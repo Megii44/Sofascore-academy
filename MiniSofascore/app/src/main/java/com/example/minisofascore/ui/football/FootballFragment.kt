@@ -27,7 +27,7 @@ class FootballFragment : Fragment() {
         }
 
         // Call getEvents with your query
-        viewModel.getEvents("football","2023-05-22")
+        viewModel.getEvents("football","2023-05-23")
 
         return binding.root
     }

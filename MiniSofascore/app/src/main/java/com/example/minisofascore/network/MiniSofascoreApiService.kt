@@ -13,4 +13,9 @@ interface MiniSofascoreApiService {
         @Path("date") date: String
     ): Response<List<EventResponse>>
 
+    @GET("team/{id}/image")
+    suspend fun getTeamLogo(
+        @Path("id") teamId: Int,
+    ): Response<String>
+
 }

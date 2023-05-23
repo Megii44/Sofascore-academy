@@ -25,7 +25,8 @@ data class Tournament(
 data class Team(
     val id: Int,
     val name: String,
-    val country: Country
+    val country: Country,
+    val logo: String,
 )
 
 data class Sport(
