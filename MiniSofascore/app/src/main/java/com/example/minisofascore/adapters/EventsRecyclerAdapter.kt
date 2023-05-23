@@ -42,14 +42,18 @@ class EventsRecyclerAdapter(
             scoreTeam2.text = event.awayScore.total.toString()
 
             val homeTeamLogo = event.homeTeam.logo
-            Glide.with(logoTeam1.context)
-                .load(homeTeamLogo)
-                .into(logoTeam1)
+            if(homeTeamLogo != null) {
+                Glide.with(logoTeam1.context)
+                    .load(homeTeamLogo)
+                    .into(logoTeam1)
+            }
 
             val awayTeamLogo = event.awayTeam.logo
-            Glide.with(logoTeam2.context)
-                .load(awayTeamLogo)
-                .into(logoTeam2)
+            if(awayTeamLogo != null) {
+                Glide.with(logoTeam2.context)
+                    .load(awayTeamLogo)
+                    .into(logoTeam2)
+            }
 
             startTime.text = OffsetDateTime.parse(event.startDate).format(DateTimeFormatter.ofPattern("HH:mm"))
             overTime.text = event.status
