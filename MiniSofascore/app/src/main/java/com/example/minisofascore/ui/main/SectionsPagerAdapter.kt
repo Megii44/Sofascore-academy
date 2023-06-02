@@ -4,8 +4,8 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.minisofascore.R
 import com.example.minisofascore.ui.american_football.AmericanFootballFragment
 import com.example.minisofascore.ui.basketball.BasketballFragment
@@ -24,20 +24,23 @@ private val TAB_ICONS = arrayOf(
     R.drawable.ic_american_football
 )
 
-class SectionsPagerAdapter(private val context: Context, fm: FragmentManager, private val dates: List<LocalDate>) :
-    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class SectionsPagerAdapter(
+    private val context: Context,
+    private var date: LocalDate,
+    private var sportPosition: Int
+) : FragmentStateAdapter(context as FragmentActivity) {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun getItem(position: Int): Fragment {
-        return when(position) {
-            0 -> FootballFragment.newInstance(dates[position])
-            1 -> BasketballFragment.newInstance(dates[position])
-            2 -> AmericanFootballFragment.newInstance(dates[position])
+    override fun createFragment(position: Int): Fragment {
+        return when (position) {
+            0 -> FootballFragment.newInstance(date)
+            1 -> BasketballFragment.newInstance(date)
+            2 -> AmericanFootballFragment.newInstance(date)
             else -> throw IllegalArgumentException("Invalid section index")
         }
     }
 
-    override fun getPageTitle(position: Int): CharSequence {
+    fun getPageTitle(position: Int): CharSequence {
         return context.resources.getString(TAB_TITLES[position])
     }
 
@@ -45,7 +48,16 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager, pr
         return TAB_ICONS[position]
     }
 
-    override fun getCount(): Int {
+    override fun getItemCount(): Int {
         return TAB_TITLES.size
+    }
+
+    fun updateDateAndSport(date: LocalDate, sportPosition: Int) {
+        this.date = date
+        this.sportPosition = sportPosition
+
+        // Notify the ViewPager that the data set has changed.
+        // This will cause the ViewPager to refresh its views.
+        notifyDataSetChanged()
     }
 }

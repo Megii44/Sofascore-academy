@@ -5,11 +5,12 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.minisofascore.adapters.DayAdapter
 import com.example.minisofascore.databinding.ActivityMainBinding
 import com.example.minisofascore.ui.main.SectionsPagerAdapter
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -48,20 +49,26 @@ class MainActivity : AppCompatActivity() {
 
         val dateOfMonthNames = days.map { it.format(DateTimeFormatter.ofPattern("dd.MM")) }
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager, days)
-        val viewPager: ViewPager = binding.viewPager
+        var sectionsPagerAdapter = SectionsPagerAdapter(this, days[0], 0)
+        val viewPager: ViewPager2 = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
-        tabs.setupWithViewPager(viewPager)
 
-        // Set tab icons
-        for (i in 0 until tabs.tabCount) {
-            tabs.getTabAt(i)?.setIcon(sectionsPagerAdapter.getIcon(i))
-        }
+        // Link TabLayout and ViewPager2
+        TabLayoutMediator(tabs, viewPager) { tab, position ->
+            tab.text = sectionsPagerAdapter.getPageTitle(position)
+            tab.setIcon(sectionsPagerAdapter.getIcon(position))
+        }.attach()
 
         val dayAdapter = DayAdapter(dayOfWeekNames, dateOfMonthNames) { position ->
-            viewPager.currentItem = position
+            // Get the selected date and sport
+            val selectedDate = days[position]
+            val sportPosition = viewPager.currentItem
+
+            // Update the SectionsPagerAdapter
+            sectionsPagerAdapter.updateDateAndSport(selectedDate, sportPosition)
         }
+
         val daysList: RecyclerView = binding.daysList
         daysList.adapter = dayAdapter
     }
