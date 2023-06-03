@@ -31,13 +31,17 @@ class SectionsPagerAdapter(
 ) : FragmentStateAdapter(context as FragmentActivity) {
 
     @RequiresApi(Build.VERSION_CODES.O)
+    private val fragmentFactories = mapOf(
+        0 to { FootballFragment.newInstance(date) },
+        1 to { BasketballFragment.newInstance(date) },
+        2 to { AmericanFootballFragment.newInstance(date) }
+    )
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> FootballFragment.newInstance(date)
-            1 -> BasketballFragment.newInstance(date)
-            2 -> AmericanFootballFragment.newInstance(date)
-            else -> throw IllegalArgumentException("Invalid section index")
-        }
+        val fragmentFactory = fragmentFactories[position]
+            ?: throw IllegalArgumentException("Invalid section index")
+        return fragmentFactory()
     }
 
     fun getPageTitle(position: Int): CharSequence {
@@ -50,6 +54,18 @@ class SectionsPagerAdapter(
 
     override fun getItemCount(): Int {
         return TAB_TITLES.size
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun getItemId(position: Int): Long {
+        return date.toEpochDay() * 31 + position
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun containsItem(itemId: Long): Boolean {
+        val position = (itemId % 31).toInt()
+        val date = LocalDate.ofEpochDay(itemId / 31)
+        return position in TAB_TITLES.indices && this.date == date
     }
 
     fun updateDateAndSport(date: LocalDate, sportPosition: Int) {
