@@ -8,4 +8,5 @@
     <string name="tab_description">Top app bar with 3 tabs</string>
     <string name="app_bar_view_pager">App bar view pager</string>
     <string name="logo">Logo</string>
+    <string name="no_events_for_selected_day">No events for selected day</string>
 </resources>

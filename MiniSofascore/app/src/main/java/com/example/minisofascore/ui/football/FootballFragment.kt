@@ -23,15 +23,12 @@ class FootballFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFootballBinding.inflate(inflater, container, false)
 
-        val date = arguments?.getSerializable(ARG_DATE) as LocalDate
+        val date = LocalDate.parse(arguments?.getString(ARG_DATE))
+
+        // Display the selected day
+        binding.selectedDayText.text = date.format(DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy"))
 
         viewModel = ViewModelProvider(this)[FootballViewModel::class.java]
-
-        viewModel.events.observe(viewLifecycleOwner) { events ->
-            binding.footballEventsRecyclerView.adapter = EventsRecyclerAdapter(requireContext(),
-                events as MutableList<EventResponse>
-            )
-        }
 
         // Format the LocalDate to a string (using your desired date format)
         val dateString = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
@@ -39,8 +36,29 @@ class FootballFragment : Fragment() {
         // Call getEvents with your query
         viewModel.getEvents("football", dateString)
 
+        viewModel.events.observe(viewLifecycleOwner) { events ->
+            // Show no events text view if there are no events
+            if (events.isEmpty()) {
+                binding.noEventsText.visibility = View.VISIBLE
+            } else {
+                binding.noEventsText.visibility = View.GONE
+                binding.footballEventsRecyclerView.adapter = EventsRecyclerAdapter(requireContext(),
+                    events as MutableList<EventResponse>
+                )
+            }
+        }
+
+        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
+        }
+
         return binding.root
     }
+
 
     companion object {
         private const val ARG_DATE = "date"
@@ -49,7 +67,7 @@ class FootballFragment : Fragment() {
         fun newInstance(date: LocalDate): FootballFragment {
             val fragment = FootballFragment()
             val args = Bundle()
-            args.putSerializable(ARG_DATE, date)
+            args.putString(ARG_DATE, date.toString())
             fragment.arguments = args
             return fragment
         }

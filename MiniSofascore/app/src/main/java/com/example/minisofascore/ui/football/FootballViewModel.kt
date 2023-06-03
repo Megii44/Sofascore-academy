@@ -12,33 +12,38 @@ class FootballViewModel : ViewModel() {
     private val _events = MutableLiveData<List<EventResponse>>()
     val events: LiveData<List<EventResponse>> get() = _events
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
+
+    private val network = Network()
+
     fun getEvents(sport: String, date: String) {
+        _loading.value = true
+
         CoroutineScope(Dispatchers.IO).launch {
-            val response = Network().getService().getEventsForDay(sport, date)
+            val response = network.getService().getEventsForDay(sport, date)
             if (response.isSuccessful) {
                 response.body()?.let { body ->
-                    // For each event
+                    // Immediately post the events
+                    _events.postValue(body)
+                    // For each event, asynchronously fetch logos
                     for (event in body) {
-                        // Get the logo for each team
-                        coroutineScope {
-                            val homeLogoDeferred = async { getTeamLogo(event.homeTeam) }
-                            val awayLogoDeferred = async { getTeamLogo(event.awayTeam) }
-
-                            // Wait for the logo fetching to complete
-                            homeLogoDeferred.await()
-                            awayLogoDeferred.await()
+                        launch {
+                            getTeamLogo(event.homeTeam)
+                            getTeamLogo(event.awayTeam)
+                            // After each logo is fetched, post the updated events
+                            _events.postValue(body)
                         }
                     }
-                    // Post the updated events
-                    _events.postValue(body)
                 }
             }
+            _loading.postValue(false)
         }
     }
 
     private suspend fun getTeamLogo(team: Team) {
         try {
-            val response = Network().getService().getTeamLogo(team.id)
+            val response = network.getService().getTeamLogo(team.id)
             if (response.isSuccessful) {
                 response.body()?.let { logoUrl ->
                     team.logo = logoUrl
@@ -48,6 +53,5 @@ class FootballViewModel : ViewModel() {
             // Handle the exception here
         }
     }
-
-
 }
+
