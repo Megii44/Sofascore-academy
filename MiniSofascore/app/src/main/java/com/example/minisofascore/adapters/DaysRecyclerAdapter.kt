@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minisofascore.databinding.DayItemBinding
 
-class DayAdapter(
+class DaysRecyclerAdapter(
     private val dayOfWeekNames: List<String>,
     private val dateOfMonthNames: List<String>,
     private val onDayClicked: (position: Int) -> Unit
-) : RecyclerView.Adapter<DayAdapter.DayViewHolder>() {
+) : RecyclerView.Adapter<DaysRecyclerAdapter.DayViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayViewHolder {
         val binding = DayItemBinding.inflate(
@@ -37,11 +37,18 @@ class DayAdapter(
     inner class DayViewHolder(val binding: DayItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                val position = adapterPosition
+                val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     onDayClicked(position)
+
+                    // Access TextView text
+                    val date = dateOfMonthNames[position]
+
+                    // Update selected day in main activity view model
+
                 }
             }
         }
     }
+
 }
