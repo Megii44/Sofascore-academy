@@ -9,4 +9,6 @@
     <string name="app_bar_view_pager">App bar view pager</string>
     <string name="logo">Logo</string>
     <string name="no_events_for_selected_day">No events for selected day</string>
+    <string name="icon_trophy">Trophy icon</string>
+    <string name="icon_settings">Settings icon</string>
 </resources>
