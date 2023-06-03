@@ -11,6 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniSofascore"
         tools:targetApi="31">
+
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".ui.leagues.LeaguesActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"

@@ -1,7 +1,9 @@
 package com.example.minisofascore.ui.main
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -9,6 +11,8 @@ import com.example.minisofascore.adapters.DaysRecyclerAdapter
 import com.example.minisofascore.adapters.SectionsPagerAdapter
 import com.example.minisofascore.data.enums.SportEnum
 import com.example.minisofascore.databinding.ActivityMainBinding
+import com.example.minisofascore.ui.leagues.LeaguesActivity
+import com.example.minisofascore.ui.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -60,6 +64,18 @@ class MainActivity : AppCompatActivity() {
             viewModel.selectedDay.value?.let { day ->
                 updateFragment(day, sport)
             }
+        }
+
+        val iconTrophy = binding.iconTrophy
+        iconTrophy.setOnClickListener {
+            val intent = Intent(this, LeaguesActivity::class.java)
+            startActivity(intent)
+        }
+
+        val iconSettings: ImageView = binding.iconSettings
+        iconSettings.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
         }
     }
 
