@@ -19,7 +19,8 @@ data class Tournament(
     val name: String,
     val slug: String,
     val sport: Sport,
-    val country: Country
+    val country: Country,
+    var logo: String?,
 )
 
 data class Team(

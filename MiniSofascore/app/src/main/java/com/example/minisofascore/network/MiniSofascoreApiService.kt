@@ -24,4 +24,8 @@ interface MiniSofascoreApiService {
         @Path("slug") sport: String,
     ): Response<List<Tournament>>
 
+    @GET("tournament/{id}/image")
+    suspend fun getTournamentLogo(
+        @Path("id") tournamentId: Int,
+    ): Response<String>
 }

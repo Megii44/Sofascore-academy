@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.minisofascore.R
 import com.example.minisofascore.data.models.Tournament
 
@@ -26,8 +27,10 @@ class LeaguesRecyclerAdapter : RecyclerView.Adapter<LeaguesRecyclerAdapter.Leagu
     override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {
         val league = leagues[position]
         holder.leagueName.text = league.name
-        // val logo = ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_football)
-        // holder.leagueLogo.setImageDrawable(logo)
+
+        Glide.with(holder.itemView)
+            .load(league.logo)
+            .into(holder.leagueLogo)
     }
 
     override fun getItemCount(): Int {
