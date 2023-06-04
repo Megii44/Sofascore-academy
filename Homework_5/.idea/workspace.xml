@@ -10,19 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df29d69-2bc5-44e0-8f31-d3e929df3cca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/adapters/LeaguesRecyclerAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/data/repositories/LeaguesRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/leagues/LeaguesViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/leagues/LeaguesViewModelFactory.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/league_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/american_football/AmericanFootballFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/american_football/AmericanFootballFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/basketball/BasketballFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/basketball/BasketballFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/football/FootballFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/football/FootballFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/main/SectionsPagerAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/main/SectionsPagerAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/network/MiniSofascoreApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/network/MiniSofascoreApiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/leagues/LeaguesActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/leagues/LeaguesActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/activity_leagues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/activity_leagues.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Admin\.android\avd\Pixel_6_with_Map.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Admin\.android\avd\Pixel_6_Pro_API_33.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -87,7 +91,7 @@
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
     "last_directory_selection": "C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/res/drawable",
-    "last_opened_file_path": "C:/Users/Admin/OneDrive/Desktop/Magda/CleanApp/CleanApp-Android"
+    "last_opened_file_path": "C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5"
   },
   "keyToStringList": {
     "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt_BaseCityInfoView_DIMENSIONS": [
