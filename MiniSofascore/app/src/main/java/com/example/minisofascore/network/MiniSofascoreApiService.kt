@@ -21,7 +21,7 @@ interface MiniSofascoreApiService {
 
     @GET("sport/{slug}/tournaments")
     suspend fun getLeagues(
-        @Path("sport") sport: String,
+        @Path("slug") sport: String,
     ): Response<List<Tournament>>
 
 }
