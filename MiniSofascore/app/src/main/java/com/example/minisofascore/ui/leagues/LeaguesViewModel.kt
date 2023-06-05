@@ -17,7 +17,7 @@ class LeaguesViewModel(private val leaguesRepository: LeaguesRepository) : ViewM
         fetchLeagues("football")
     }
 
-    private fun fetchLeagues(sport: String) {
+    fun fetchLeagues(sport: String) {
         viewModelScope.launch {
             try {
                 Log.d("LeaguesViewModel", "Fetching leagues for $sport")
