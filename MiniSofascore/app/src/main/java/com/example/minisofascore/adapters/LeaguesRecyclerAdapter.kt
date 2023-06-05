@@ -28,8 +28,10 @@ class LeaguesRecyclerAdapter : RecyclerView.Adapter<LeaguesRecyclerAdapter.Leagu
         val league = leagues[position]
         holder.leagueName.text = league.name
 
+        val logoUrl = "https://academy.dev.sofascore.com/tournament/" + league.id + "/image"
+
         Glide.with(holder.itemView)
-            .load(league.logo)
+            .load(logoUrl)
             .into(holder.leagueLogo)
     }
 
