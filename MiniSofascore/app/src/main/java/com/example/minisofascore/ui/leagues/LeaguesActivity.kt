@@ -1,6 +1,7 @@
 package com.example.minisofascore.ui.leagues
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.minisofascore.adapters.LeaguesSectionsPagerAdapter
@@ -22,6 +23,13 @@ class LeaguesActivity : AppCompatActivity() {
         binding = ActivityLeaguesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Set title and back arrow in the action bar
+        supportActionBar?.apply {
+            title = "Leagues"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
         // Create the repository instance
         val leaguesRepository = LeaguesRepository()
 
@@ -32,6 +40,7 @@ class LeaguesActivity : AppCompatActivity() {
         // Initialize ViewPager2
         initViewPager()
     }
+
 
     private fun initViewPager() {
         // Initialize ViewPager2
@@ -48,4 +57,16 @@ class LeaguesActivity : AppCompatActivity() {
             }
         }.attach()
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
 }
