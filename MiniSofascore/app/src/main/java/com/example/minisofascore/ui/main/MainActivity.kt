@@ -17,6 +17,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.example.minisofascore.ui.events.EventsFragment
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -63,7 +64,6 @@ class MainActivity : AppCompatActivity() {
         binding.daysList.apply {
             adapter = daysRecyclerAdapter
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-
         }
 
         binding.daysList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -78,15 +78,19 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
-
-
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                viewModel.selectSport(SportEnum.values()[position].ordinal)
+                val sportEnum = SportEnum.values()[position]
+                viewModel.selectSport(sportEnum.ordinal)
+
+                val eventFragment = sectionsPagerAdapter.getCurrentFragment(position) as? EventsFragment
+
+                viewModel.selectedDay.value?.let { eventFragment?.viewModel?.updateDateAndSport(it, sportEnum) }
+
                 super.onPageSelected(position)
             }
         })
+
 
         viewModel.selectedDay.observe(this) { day ->
             viewModel.selectedSport.value?.let { sport ->

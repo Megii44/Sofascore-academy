@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.minisofascore.R
+import com.example.minisofascore.data.enums.SportEnum
 import com.example.minisofascore.ui.events.EventsFragment
 import java.time.LocalDate
 
@@ -30,9 +31,9 @@ class SectionsPagerAdapter(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private val fragmentFactories = mapOf(
-        0 to { EventsFragment.newInstance(date, "football") },
-        1 to { EventsFragment.newInstance(date, "basketball") },
-        2 to { EventsFragment.newInstance(date, "american_football") }
+        0 to { EventsFragment.newInstance(date, SportEnum.Football) },
+        1 to { EventsFragment.newInstance(date, SportEnum.Basketball) },
+        2 to { EventsFragment.newInstance(date, SportEnum.AmericanFootball) }
     )
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -57,6 +58,11 @@ class SectionsPagerAdapter(
     @RequiresApi(Build.VERSION_CODES.O)
     override fun getItemId(position: Int): Long {
         return date.toEpochDay() * 31 + position
+    }
+
+    fun getCurrentFragment(position: Int): Fragment? {
+        val fragmentTag = "f$position"
+        return (context as FragmentActivity).supportFragmentManager.findFragmentByTag(fragmentTag)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
