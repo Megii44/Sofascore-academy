@@ -1,9 +1,6 @@
 package com.example.minisofascore.ui.main
 
-import android.content.Intent
 import android.os.Build
-import android.os.Bundle
-import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +11,10 @@ import com.example.minisofascore.databinding.ActivityMainBinding
 import com.example.minisofascore.ui.leagues.LeaguesActivity
 import com.example.minisofascore.ui.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayoutMediator
+import android.content.Intent
+import android.os.Bundle
+import android.widget.ImageView
+import androidx.viewpager2.widget.ViewPager2
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -46,23 +47,26 @@ class MainActivity : AppCompatActivity() {
 
         val dateOfMonthNames = days.map { it.format(DateTimeFormatter.ofPattern("dd.MM")) }
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, days[0], 0)
+        val sectionsPagerAdapter = SectionsPagerAdapter(this, days[0], SportEnum.Football.ordinal)
         setupViewPagerWithTabs(sectionsPagerAdapter)
 
         val daysRecyclerAdapter = DaysRecyclerAdapter(dayOfWeekNames, dateOfMonthNames) { position ->
             val selectedDate = days[position]
-            val sportPosition = binding.viewPager.currentItem
-
-            sectionsPagerAdapter.updateDateAndSport(selectedDate, sportPosition)
             viewModel.selectDay(selectedDate)
-            // viewModel.selectSport(position) // Commented out as this could be incorrect. You might need to find another way to select the sport
         }
 
         binding.daysList.adapter = daysRecyclerAdapter
 
-        viewModel.selectedSport.observe(this) { sport ->
-            viewModel.selectedDay.value?.let { day ->
-                updateFragment(day, sport)
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                viewModel.selectSport(SportEnum.values()[position].ordinal)
+                super.onPageSelected(position)
+            }
+        })
+
+        viewModel.selectedDay.observe(this) { day ->
+            viewModel.selectedSport.value?.let { sport ->
+                sectionsPagerAdapter.updateDateAndSport(day, sport)
             }
         }
 
@@ -86,10 +90,5 @@ class MainActivity : AppCompatActivity() {
             tab.text = sectionsPagerAdapter.getPageTitle(position)
             tab.setIcon(sectionsPagerAdapter.getIcon(position))
         }.attach()
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun updateFragment(day: LocalDate, sport: Int) {
-        binding.viewPager.setCurrentItem(sport, true)
     }
 }
