@@ -25,7 +25,7 @@ class EventsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[EventsViewModel::class.java]
 
-        val sport = arguments?.getString("sportType")?.toInt()
+        val sport = arguments?.getInt(ARG_SPORT)?.let { SportEnum.values()[it] }
         val date = getArgumentsDate()
 
         if (date != null) {
@@ -35,7 +35,7 @@ class EventsFragment : Fragment() {
         }
 
         if (sport != null) {
-            viewModel.selectSport(sport)
+            viewModel.selectSport(sport.ordinal)
         } else {
             viewModel.selectSport(SportEnum.Football.ordinal)
         }
@@ -85,11 +85,12 @@ class EventsFragment : Fragment() {
             val fragment = EventsFragment()
             val args = Bundle()
             args.putString(ARG_DATE, date.toString())
-            args.putString(ARG_SPORT, sport.toString())
+            args.putInt(ARG_SPORT, sport.ordinal)
             fragment.arguments = args
             return fragment
         }
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getArgumentsDate(): LocalDate? {
