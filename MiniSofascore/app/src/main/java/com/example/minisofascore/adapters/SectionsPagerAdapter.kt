@@ -7,9 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.minisofascore.R
-import com.example.minisofascore.ui.american_football.AmericanFootballFragment
-import com.example.minisofascore.ui.basketball.BasketballFragment
-import com.example.minisofascore.ui.football.FootballFragment
+import com.example.minisofascore.ui.events.EventsFragment
 import java.time.LocalDate
 
 private val TAB_TITLES = arrayOf(
@@ -32,9 +30,9 @@ class SectionsPagerAdapter(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private val fragmentFactories = mapOf(
-        0 to { FootballFragment.newInstance(date) },
-        1 to { BasketballFragment.newInstance(date) },
-        2 to { AmericanFootballFragment.newInstance(date) }
+        0 to { EventsFragment.newInstance(date, "football") },
+        1 to { EventsFragment.newInstance(date, "basketball") },
+        2 to { EventsFragment.newInstance(date, "american_football") }
     )
 
     @RequiresApi(Build.VERSION_CODES.O)
