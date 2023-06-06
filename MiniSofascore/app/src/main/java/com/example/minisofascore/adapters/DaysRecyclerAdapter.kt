@@ -16,9 +16,28 @@ class DaysRecyclerAdapter(
     private var dateOfMonthNames: MutableList<String>,
     private val onDayClicked: (position: Int) -> Unit
 ) : RecyclerView.Adapter<DaysRecyclerAdapter.DayViewHolder>() {
+    private var recyclerView: RecyclerView? = null
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        this.recyclerView = recyclerView
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun loadMoreDays() {
+    fun loadMorePastDays() {
+        val firstDate = days.first()
+        val newDays = (1..7).map { firstDate.minusDays(it.toLong()) }
+        days.addAll(0, newDays)
+        dayOfWeekNames.addAll(0, newDays.map {
+            if (it == LocalDate.now()) "TODAY"
+            else it.dayOfWeek.toString().take(3).uppercase(Locale.ROOT)
+        })
+        dateOfMonthNames.addAll(0, newDays.map { it.format(DateTimeFormatter.ofPattern("dd.MM")) })
+        notifyItemRangeInserted(0, newDays.size)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun loadMoreFutureDays() {
         val lastDate = days.last()
         val newDays = (1..7).map { lastDate.plusDays(it.toLong()) }
         days.addAll(newDays)
@@ -33,7 +52,9 @@ class DaysRecyclerAdapter(
     private fun addDays(newDays: List<LocalDate>) {
         val initialSize = days.size
         days.addAll(newDays)
-        notifyItemRangeInserted(initialSize, newDays.size)
+        recyclerView?.post {
+            notifyItemRangeInserted(initialSize, newDays.size)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayViewHolder {

@@ -70,13 +70,18 @@ class MainActivity : AppCompatActivity() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val totalItemCount = recyclerView.layoutManager?.itemCount ?: 0
+                val firstVisibleItemPosition = (recyclerView.layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition() ?: 0
                 val lastVisibleItemPosition = (recyclerView.layoutManager as? LinearLayoutManager)?.findLastVisibleItemPosition() ?: 0
 
                 if (totalItemCount <= (lastVisibleItemPosition + 2)) {
-                    daysRecyclerAdapter.loadMoreDays()
+                    daysRecyclerAdapter.loadMoreFutureDays()
+                }
+                if (firstVisibleItemPosition <= 2) {
+                    daysRecyclerAdapter.loadMorePastDays()
                 }
             }
         })
+
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
