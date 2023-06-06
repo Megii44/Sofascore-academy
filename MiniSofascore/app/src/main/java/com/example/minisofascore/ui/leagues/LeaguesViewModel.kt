@@ -16,8 +16,11 @@ class LeaguesViewModel(private val leaguesRepository: LeaguesRepository) : ViewM
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
-    init {
-        fetchLeagues("football")
+    private val _selectedSport = MutableLiveData<Int>()
+    val selectedSport: LiveData<Int> = _selectedSport
+
+    fun selectSport(sport: Int) {
+        _selectedSport.value = sport
     }
 
     fun fetchLeagues(sport: String) {

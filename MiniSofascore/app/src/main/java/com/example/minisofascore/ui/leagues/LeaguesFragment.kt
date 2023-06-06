@@ -1,11 +1,9 @@
 package com.example.minisofascore.ui.leagues
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.minisofascore.adapters.LeaguesRecyclerAdapter
@@ -31,7 +29,13 @@ class LeaguesFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)[LeaguesViewModel::class.java]
 
         // Get sport argument
-        val sport = arguments?.getString("sport") ?: "football"
+        val position = arguments?.getInt(ARG_SPORT, 0)
+        val sport = SportEnum.values().getOrElse(position ?: 0) { SportEnum.Football }
+
+        // Select sport
+        if (position != null) {
+            viewModel.selectSport(position)
+        }
 
         // Initialize the adapter
         leaguesAdapter = LeaguesRecyclerAdapter()
@@ -40,7 +44,7 @@ class LeaguesFragment : Fragment() {
         binding.leaguesRecyclerView.adapter = leaguesAdapter
 
         // Fetch leagues
-        viewModel.fetchLeagues(sport)
+        viewModel.fetchLeagues(sport.toString())
 
         // Observe the LiveData
         viewModel.leagues.observe(viewLifecycleOwner) { leagues ->
@@ -67,11 +71,10 @@ class LeaguesFragment : Fragment() {
     companion object {
         private const val ARG_SPORT = "sport"
 
-        @RequiresApi(Build.VERSION_CODES.O)
         fun newInstance(sport: SportEnum): LeaguesFragment {
             val fragment = LeaguesFragment()
             val args = Bundle()
-            args.putString(ARG_SPORT, sport.ordinal.toString())
+            args.putInt(ARG_SPORT, sport.ordinal)
             fragment.arguments = args
             return fragment
         }
