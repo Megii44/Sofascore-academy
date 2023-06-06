@@ -1,15 +1,40 @@
 package com.example.minisofascore.adapters
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minisofascore.databinding.DayItemBinding
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class DaysRecyclerAdapter(
-    private val dayOfWeekNames: List<String>,
-    private val dateOfMonthNames: List<String>,
+    private var days: MutableList<LocalDate>,
+    private var dayOfWeekNames: MutableList<String>,
+    private var dateOfMonthNames: MutableList<String>,
     private val onDayClicked: (position: Int) -> Unit
 ) : RecyclerView.Adapter<DaysRecyclerAdapter.DayViewHolder>() {
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun loadMoreDays() {
+        val lastDate = days.last()
+        val newDays = (1..7).map { lastDate.plusDays(it.toLong()) }
+        days.addAll(newDays)
+        dayOfWeekNames.addAll(newDays.map {
+            if (it == LocalDate.now()) "TODAY"
+            else it.dayOfWeek.toString().take(3).uppercase(Locale.ROOT)
+        })
+        dateOfMonthNames.addAll(newDays.map { it.format(DateTimeFormatter.ofPattern("dd.MM")) })
+        notifyItemRangeInserted(days.size - newDays.size, newDays.size)
+    }
+
+    private fun addDays(newDays: List<LocalDate>) {
+        val initialSize = days.size
+        days.addAll(newDays)
+        notifyItemRangeInserted(initialSize, newDays.size)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayViewHolder {
         val binding = DayItemBinding.inflate(
@@ -21,17 +46,24 @@ class DaysRecyclerAdapter(
         return DayViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: DayViewHolder, position: Int) {
-        val dayOfWeekName = dayOfWeekNames[position]
-        val dateOfMonthName = dateOfMonthNames[position]
+        val date = days[position]
+        val dayOfWeekName = if (date == LocalDate.now()) "TODAY" else date.dayOfWeek.toString().take(3).uppercase(Locale.ROOT)
+        val dateOfMonthName = date.format(DateTimeFormatter.ofPattern("dd.MM"))
 
         holder.binding.dayOfWeek.text = dayOfWeekName
         holder.binding.dateOfMonth.text = dateOfMonthName
+
+        // Load more days when we reach the end of the list
+        if (position == days.size - 1) {
+            val newDays = (1..14).map { days.last().plusDays(it.toLong()) }
+            addDays(newDays)
+        }
     }
 
     override fun getItemCount(): Int {
-        // assuming both lists have the same size
-        return dayOfWeekNames.size
+        return days.size
     }
 
     inner class DayViewHolder(val binding: DayItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -40,15 +72,8 @@ class DaysRecyclerAdapter(
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     onDayClicked(position)
-
-                    // Access TextView text
-                    val date = dateOfMonthNames[position]
-
-                    // Update selected day in main activity view model
-
                 }
             }
         }
     }
-
 }

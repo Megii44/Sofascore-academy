@@ -14,6 +14,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -50,12 +52,34 @@ class MainActivity : AppCompatActivity() {
         val sectionsPagerAdapter = SectionsPagerAdapter(this, days[0], SportEnum.Football.ordinal)
         setupViewPagerWithTabs(sectionsPagerAdapter)
 
-        val daysRecyclerAdapter = DaysRecyclerAdapter(dayOfWeekNames, dateOfMonthNames) { position ->
+        val daysRecyclerAdapter = DaysRecyclerAdapter(
+            days as MutableList<LocalDate>, dayOfWeekNames as MutableList<String>,
+            dateOfMonthNames as MutableList<String>
+        ) { position ->
             val selectedDate = days[position]
             viewModel.selectDay(selectedDate)
         }
 
-        binding.daysList.adapter = daysRecyclerAdapter
+        binding.daysList.apply {
+            adapter = daysRecyclerAdapter
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+
+        }
+
+        binding.daysList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val totalItemCount = recyclerView.layoutManager?.itemCount ?: 0
+                val lastVisibleItemPosition = (recyclerView.layoutManager as? LinearLayoutManager)?.findLastVisibleItemPosition() ?: 0
+
+                if (totalItemCount <= (lastVisibleItemPosition + 2)) {
+                    daysRecyclerAdapter.loadMoreDays()
+                }
+            }
+        })
+
+
+
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

@@ -6,9 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.minisofascore.R
-import com.example.minisofascore.ui.american_football.AmericanFootballFragment
 import com.example.minisofascore.ui.football.FootballFragment
-import com.example.minisofascore.ui.basketball.BasketballFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.football_title,
@@ -32,8 +30,6 @@ class LeaguesSectionsPagerAdapter(private val context: Context, fm: FragmentMana
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> FootballFragment()
-            1 -> BasketballFragment()
-            2 -> AmericanFootballFragment()
             else -> throw IllegalArgumentException("Invalid tab position: $position")
         }
     }

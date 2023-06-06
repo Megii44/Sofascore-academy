@@ -7,15 +7,30 @@ import com.example.minisofascore.data.models.EventResponse
 import com.example.minisofascore.data.models.Team
 import com.example.minisofascore.network.Network
 import kotlinx.coroutines.*
+import java.time.LocalDate
 
 class EventsViewModel : ViewModel() {
     private val _events = MutableLiveData<List<EventResponse>>()
     val events: LiveData<List<EventResponse>> get() = _events
 
+    private val _selectedSport = MutableLiveData<Int>()
+    val selectedSport: LiveData<Int> = _selectedSport
+
+    private val _selectedDay = MutableLiveData<LocalDate>()
+    val selectedDay: LiveData<LocalDate> = _selectedDay
+
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
     private val network = Network()
+
+    fun selectSport(sport: Int) {
+        _selectedSport.value = sport
+    }
+
+    fun selectDay(day: LocalDate) {
+        _selectedDay.value = day
+    }
 
     fun getEvents(sport: String, date: String) {
         _loading.value = true
