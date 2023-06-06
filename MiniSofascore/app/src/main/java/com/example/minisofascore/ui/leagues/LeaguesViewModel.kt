@@ -13,6 +13,9 @@ class LeaguesViewModel(private val leaguesRepository: LeaguesRepository) : ViewM
     private val _leagues = MutableLiveData<List<Tournament>>()
     val leagues: LiveData<List<Tournament>> get() = _leagues
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
+
     init {
         fetchLeagues("football")
     }

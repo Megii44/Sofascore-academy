@@ -1,6 +1,8 @@
 package com.example.minisofascore.adapters
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -28,8 +30,13 @@ class LeaguesSectionsPagerAdapter(private val context: Context, fm: FragmentMana
         return TAB_TITLES.size
     }
 
+    fun getIcon(position: Int): Int {
+        return TAB_ICONS[position]
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun createFragment(position: Int): Fragment {
-        val sport = getSportForPosition(position).toString().lowercase()
+        val sport = getSportForPosition(position)
         return LeaguesFragment.newInstance(sport)
     }
 
