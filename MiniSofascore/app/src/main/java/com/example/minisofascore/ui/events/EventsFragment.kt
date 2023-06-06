@@ -52,6 +52,8 @@ class EventsFragment : Fragment() {
                     events as MutableList<EventResponse>
                 )
             }
+            // Update the number of events text
+            binding.eventsCountText.text = "${events.size} Events"
         }
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
@@ -70,8 +72,10 @@ class EventsFragment : Fragment() {
         viewModel.selectedDay.observe(viewLifecycleOwner) { selectedDate ->
             val selectedSport = SportEnum.values().getOrElse(viewModel.selectedSport.value ?: 0) { SportEnum.Football }
             viewModel.getEvents(selectedSport.toString(), selectedDate.toString())
+            // Update the selected day text
+            val dateFormatter = DateTimeFormatter.ofPattern("EEE, dd.MM.yyyy.")
+            binding.selectedDayText.text = selectedDate.format(dateFormatter)
         }
-
 
         return binding.root
     }
