@@ -8,12 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.minisofascore.R
 import com.example.minisofascore.adapters.IncidentRecyclerAdapter
-import com.example.minisofascore.data.models.Incident
+import com.example.minisofascore.data.repositories.EventDetailsRepository
 import com.example.minisofascore.databinding.ActivityEventDetailsBinding
 import com.example.minisofascore.ui.events.EventCache
 import com.example.minisofascore.ui.utils.checkEventStatus
@@ -22,12 +21,21 @@ import java.time.format.DateTimeFormatter
 
 class EventDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventDetailsBinding
+    private lateinit var viewModel: EventDetailsViewModel
+    private lateinit var incidentAdapter: IncidentRecyclerAdapter
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEventDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Create the repository instance
+        val eventDetailsRepository = EventDetailsRepository()
+
+        // Initialize the ViewModel using the custom factory
+        val viewModelFactory = EventDetailsViewModelFactory(eventDetailsRepository)
+        viewModel = ViewModelProvider(this, viewModelFactory)[EventDetailsViewModel::class.java]
 
         val selectedEvent = EventCache.selectedEvent
 
@@ -114,26 +122,27 @@ class EventDetailsActivity : AppCompatActivity() {
             }
         }
 
-        // Consider fetching incidents from a data source instead of hardcoding
-        val incidents = getIncidents()  // You should have this function defined elsewhere
-
-        val incidentAdapter = IncidentRecyclerAdapter()
+        // initialize the incident adapter
+        incidentAdapter = IncidentRecyclerAdapter()
 
         // Set the adapter on your RecyclerView
         val recyclerView = binding.incidentsRecyclerView
         recyclerView.adapter = incidentAdapter
 
-        // Populate the adapter with data
-        incidentAdapter.submitList(incidents)
+        // Set observer on the incidents LiveData in the ViewModel
+        viewModel.incidents.observe(this) { incidents ->
+            // Populate the adapter with data
+            incidentAdapter.submitList(incidents)
+        }
+
+        // Fetch the incidents for the selected event
+        selectedEvent?.let {
+            viewModel.fetchIncidents(it.id)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
-    }
-
-    private fun getIncidents(): List<Incident> {
-        // Replace this with your actual data source
-        return emptyList()
     }
 }

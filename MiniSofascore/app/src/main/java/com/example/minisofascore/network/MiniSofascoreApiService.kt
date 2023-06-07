@@ -1,6 +1,7 @@
 package com.example.minisofascore.network
 
 import com.example.minisofascore.data.models.EventResponse
+import com.example.minisofascore.data.models.Incident
 import com.example.minisofascore.data.models.Tournament
 import retrofit2.Response
 import retrofit2.http.GET
@@ -28,4 +29,9 @@ interface MiniSofascoreApiService {
     suspend fun getTournamentLogo(
         @Path("id") tournamentId: Int,
     ): Response<String>
+
+    @GET("event/{id}/incidents")
+    suspend fun getIncidentsForEvent(
+        @Path("id") eventId: Int,
+    ): Response<List<Incident>>
 }
