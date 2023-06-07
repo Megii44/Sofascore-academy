@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.minisofascore.adapters.IncidentAdapter
 import com.example.minisofascore.data.models.Incident
 import com.example.minisofascore.databinding.ActivityEventDetailsBinding
+import com.example.minisofascore.ui.events.EventCache
 
 class EventDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventDetailsBinding
@@ -14,6 +15,8 @@ class EventDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEventDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val selectedEvent = EventCache.selectedEvent
 
         // Set up the toolbar
         setSupportActionBar(binding.toolbar)

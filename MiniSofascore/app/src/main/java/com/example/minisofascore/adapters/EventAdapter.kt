@@ -1,6 +1,7 @@
 package com.example.minisofascore.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import com.bumptech.glide.Glide
 import com.example.minisofascore.R
 import com.example.minisofascore.data.models.EventResponse
 import com.example.minisofascore.databinding.SampleTimeBoxBinding
+import com.example.minisofascore.ui.event.EventDetailsActivity
+import com.example.minisofascore.ui.events.EventCache
 import java.time.OffsetDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -56,8 +59,16 @@ class EventAdapter(
             startTime.text = formattedTime
 
             overTime.text = event.status
+
+            // Set click listener for the event item
+            holder.itemView.setOnClickListener {
+                EventCache.selectedEvent = event
+                val intent = Intent(context, EventDetailsActivity::class.java)
+                context.startActivity(intent)
+            }
         }
     }
+
 
     override fun getItemCount(): Int {
         return events.size
