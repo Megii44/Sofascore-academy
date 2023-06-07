@@ -2,9 +2,12 @@ package com.example.minisofascore.ui.team
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.minisofascore.R
 import com.example.minisofascore.databinding.ActivityTeamDetailsBinding
 import com.example.minisofascore.ui.team.details.TeamDetailsFragment
 import com.example.minisofascore.ui.team.matches.TeamMatchesFragment
@@ -20,12 +23,30 @@ class TeamDetailsActivity : AppCompatActivity() {
         binding = ActivityTeamDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set title and back arrow in the action bar
-        supportActionBar?.apply {
-            title = ""
-            setDisplayHomeAsUpEnabled(true)
-            setDisplayShowHomeEnabled(true)
+        // Inflate custom toolbar layout and add it to the toolbar
+        val actionBarLayout = layoutInflater.inflate(R.layout.custom_action_bar, null)
+        binding.teamDetailsToolbar.addView(actionBarLayout)
+
+        // Now set the toolbar as support action bar
+        setSupportActionBar(binding.teamDetailsToolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        // Set toolbar title
+        val title = "njnj"
+        val actionBarTitle = actionBarLayout.findViewById<View>(R.id.action_bar_title)
+        if (actionBarTitle is TextView) {
+            actionBarTitle.text = title
         }
+
+        // Set toolbar image
+        val actionBarImage = actionBarLayout.findViewById<View>(R.id.action_bar_image)
+        //if (actionBarImage is ImageView) {
+        //    Glide.with(this)
+        //      .load(tournamentLogoUrl)
+        //    .into(actionBarImage)
+        //}
 
         val teamId = intent.getStringExtra("team_id") ?: ""
 
@@ -44,7 +65,8 @@ class TeamDetailsActivity : AppCompatActivity() {
             }
         }
 
-        TabLayoutMediator(binding.tabLayout, viewPager) { tab, position ->
+        val tabLayout = binding.tabLayout
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> "Team Details"
                 1 -> "Matches"
