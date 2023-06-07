@@ -1,6 +1,7 @@
 package com.example.minisofascore.ui.team
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -18,6 +19,13 @@ class TeamDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTeamDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Set title and back arrow in the action bar
+        supportActionBar?.apply {
+            title = ""
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
 
         val teamId = intent.getStringExtra("team_id") ?: ""
 
@@ -45,5 +53,15 @@ class TeamDetailsActivity : AppCompatActivity() {
                 else -> null
             }
         }.attach()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
