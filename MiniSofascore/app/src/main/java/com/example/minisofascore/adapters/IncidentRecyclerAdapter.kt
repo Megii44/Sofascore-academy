@@ -43,6 +43,9 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                         side = incident.scoringTeam
                         type = incident.time.toString() + "'"
                         score = incident.homeScore.toString() + " - " + incident.awayScore.toString()
+
+                        awayIncidentSubtitle.visibility = View.INVISIBLE
+                        incidentSubtitle.visibility = View.INVISIBLE
                     }
                     IncidentTypeEnum.Period.toString() -> {
                         title = incident.player?.name
@@ -78,6 +81,7 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                     incidentSubtitle.visibility = View.INVISIBLE
                     incidentImageView.visibility = View.INVISIBLE
                     incidentScore.visibility = View.INVISIBLE
+                    line.visibility = View.INVISIBLE
                 } else {
                     incidentType.text = type
                     incidentTitle.text = title
@@ -90,6 +94,12 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                     awayIncidentSubtitle.visibility = View.INVISIBLE
                     awayIncidentImageView.visibility = View.INVISIBLE
                     awayIncidentScore.visibility = View.INVISIBLE
+                    awayLine.visibility = View.INVISIBLE
+                }
+
+                if(incident.type == IncidentTypeEnum.Goal.toString()) {
+                    awayIncidentSubtitle.visibility = View.INVISIBLE
+                    incidentSubtitle.visibility = View.INVISIBLE
                 }
             }
         }
