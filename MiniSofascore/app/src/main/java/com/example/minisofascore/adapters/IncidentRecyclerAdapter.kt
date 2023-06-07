@@ -28,7 +28,11 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                     IncidentTypeEnum.Card.toString() -> {
                         title = incident.player?.name
                         subtitle = "Foul"
-                        logoResId = R.drawable.ic_card_yellow
+                        logoResId = if(incident.color == "red") {
+                            R.drawable.ic_card_red
+                        } else {
+                            R.drawable.ic_card_yellow
+                        }
                         side = incident.teamSide
                         type = incident.time.toString() + "'"
                     }

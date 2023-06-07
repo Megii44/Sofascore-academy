@@ -10,6 +10,7 @@ data class Incident(
     val time: Int,
     val type: String,
     val teamSide: String,
+    val color: String,
 )
 
 data class Player(

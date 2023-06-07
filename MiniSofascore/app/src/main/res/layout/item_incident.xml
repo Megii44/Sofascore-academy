@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_incident"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -34,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:paddingTop="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/line"
             app:layout_constraintHorizontal_bias="0.5"
@@ -55,56 +57,72 @@
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView
-        android:id="@+id/incident_title"
-        style="@style/Body"
-        android:layout_width="192dp"
+        android:id="@+id/incident_score"
+        style="@style/Headline1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/incident_subtitle"
         app:layout_constraintStart_toEndOf="@id/line"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView
-        android:id="@+id/incident_subtitle"
+        android:id="@+id/incident_title"
         style="@style/Body"
-        android:layout_width="192dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/incident_score"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/incident_subtitle"
+        style="@style/Micro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:paddingTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/line"
         app:layout_constraintTop_toBottomOf="@+id/incident_title"
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView
-        android:id="@+id/away_incident_title"
-        style="@style/Body"
-        android:layout_width="192dp"
+        android:id="@+id/away_incident_score"
+        style="@style/Headline1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/away_line"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/away_incident_title"
+        style="@style/Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
         android:textAlignment="textEnd"
         app:layout_constraintBottom_toTopOf="@+id/incident_subtitle"
-        app:layout_constraintEnd_toEndOf="@id/away_line"
+        app:layout_constraintEnd_toStartOf="@id/away_incident_score"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/away_incident_subtitle"
-        style="@style/Body"
-        android:layout_width="192dp"
+        style="@style/Micro"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
+        android:paddingTop="2dp"
         android:textAlignment="textEnd"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/away_line"
+        app:layout_constraintEnd_toStartOf="@id/away_incident_score"
         app:layout_constraintTop_toBottomOf="@+id/incident_title"
         app:layout_constraintVertical_bias="0.5" />
 
@@ -118,6 +136,7 @@
         app:layout_constraintEnd_toStartOf="@id/away_incident_info"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
+
 
     <LinearLayout
         android:id="@+id/away_incident_info"
@@ -144,6 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:paddingTop="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/away_line"
