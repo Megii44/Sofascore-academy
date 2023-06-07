@@ -72,12 +72,24 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                     awayIncidentSubtitle.text = subtitle
                     logoResId?.let { awayIncidentImageView.setImageResource(it) }
                     awayIncidentScore.text = score
+
+                    incidentType.visibility = View.INVISIBLE
+                    incidentTitle.visibility = View.INVISIBLE
+                    incidentSubtitle.visibility = View.INVISIBLE
+                    incidentImageView.visibility = View.INVISIBLE
+                    incidentScore.visibility = View.INVISIBLE
                 } else {
                     incidentType.text = type
                     incidentTitle.text = title
                     incidentSubtitle.text = subtitle
                     logoResId?.let { incidentImageView.setImageResource(it) }
                     incidentScore.text = score
+
+                    awayIncidentType.visibility = View.INVISIBLE
+                    awayIncidentTitle.visibility = View.INVISIBLE
+                    awayIncidentSubtitle.visibility = View.INVISIBLE
+                    awayIncidentImageView.visibility = View.INVISIBLE
+                    awayIncidentScore.visibility = View.INVISIBLE
                 }
             }
         }
