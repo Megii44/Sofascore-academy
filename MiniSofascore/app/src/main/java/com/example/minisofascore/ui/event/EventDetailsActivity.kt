@@ -88,12 +88,14 @@ class EventDetailsActivity : AppCompatActivity() {
                     binding.timeText.text = dateTime.format(timeFormatter)
                     binding.homeTeamScore.visibility = View.INVISIBLE
                     binding.awayTeamScore.visibility = View.INVISIBLE
+                    binding.middleDash.visibility = View.INVISIBLE
                     binding.matchStatusTextView.text = "Match Not Started"
                 }
                 1 -> {
                     // Event is currently in play
                     binding.homeTeamScore.setTextColor(Color.RED)
                     binding.awayTeamScore.setTextColor(Color.RED)
+                    binding.middleDash.setTextColor(Color.RED)
                     binding.homeTeamScore.text = it.homeScore.total.toString()
                     binding.awayTeamScore.text = it.awayScore.total.toString()
                     binding.dateText.visibility = View.INVISIBLE
