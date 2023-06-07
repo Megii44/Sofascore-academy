@@ -23,6 +23,7 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                 @DrawableRes var logoResId: Int? = null
                 var side: String? = null
                 var type: String? = null
+                var score: String? = null
 
                 when (incident.type) {
                     IncidentTypeEnum.Card.toString() -> {
@@ -42,6 +43,9 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                         logoResId = R.drawable.ic_football_green
                         side = incident.scoringTeam
                         type = incident.time.toString() + "'"
+                        score = incident.homeScore.toString() + " - " + incident.awayScore.toString()
+                        incidentSubtitle.visibility = View.INVISIBLE
+                        awayIncidentSubtitle.visibility = View.INVISIBLE
                     }
                     IncidentTypeEnum.Period.toString() -> {
                         title = incident.player?.name
@@ -58,6 +62,7 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                     awayIncidentTitle.text = title
                     awayIncidentSubtitle.text = subtitle
                     logoResId.let { awayIncidentImageView.setImageResource(it) }
+                    awayIncidentScore.text = score
 
                     incidentType.visibility = View.INVISIBLE
                     incidentTitle.visibility = View.INVISIBLE
@@ -69,6 +74,7 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                     incidentTitle.text = title
                     incidentSubtitle.text = subtitle
                     logoResId.let { incidentImageView.setImageResource(it) }
+                    incidentScore.text = score
 
                     awayIncidentType.visibility = View.INVISIBLE
                     awayIncidentTitle.visibility = View.INVISIBLE
