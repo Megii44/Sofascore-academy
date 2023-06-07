@@ -11,8 +11,8 @@ import com.example.minisofascore.data.models.Incident
 class IncidentAdapter(private val incidents: List<Incident>) : RecyclerView.Adapter<IncidentAdapter.IncidentViewHolder>() {
 
     class IncidentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val titleTextView: TextView = view.findViewById(R.id.league_name)
-        val teamTextView: TextView = view.findViewById(R.id.awayTeamName)
+        //val titleTextView: TextView = view.findViewById(R.id.league_name)
+        //val teamTextView: TextView = view.findViewById(R.id.awayTeamName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IncidentViewHolder {
@@ -22,8 +22,8 @@ class IncidentAdapter(private val incidents: List<Incident>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: IncidentViewHolder, position: Int) {
         val incident = incidents[position]
-        holder.titleTextView.text = incident.type
-        holder.teamTextView.text = incident.scoringTeam
+        //holder.titleTextView.text = incident.type
+        //holder.teamTextView.text = incident.scoringTeam
     }
 
     override fun getItemCount(): Int {
