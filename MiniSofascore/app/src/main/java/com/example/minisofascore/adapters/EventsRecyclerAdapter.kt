@@ -28,22 +28,31 @@ class EventsRecyclerAdapter(
         return EventsViewHolder(view)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: EventsViewHolder, position: Int) {
         val (tournament, events) = eventsGroupedByTournament[position]
         holder.binding.tournamentName.text = tournament // set your tournament TextView
-        holder.binding.countryName.text = events[position].tournament.country.name
-        val logoUrl = "https://academy.dev.sofascore.com/tournament/" + events[position].tournament.id + "/image"
 
-        Glide.with(holder.itemView)
-            .load(logoUrl)
-            .into(holder.binding.tournamentLogo)
+        // check if event, tournament and country objects are not null before accessing name and id
+        val event = events.getOrNull(position)
+        val countryName = event?.tournament?.country?.name
+        val tournamentId = event?.tournament?.id
+        if (countryName != null) {
+            holder.binding.countryName.text = countryName
+        }
+
+        if (tournamentId != null) {
+            val logoUrl = "https://academy.dev.sofascore.com/tournament/$tournamentId/image"
+            Glide.with(holder.itemView)
+                .load(logoUrl)
+                .into(holder.binding.tournamentLogo)
+        }
 
         // Set the RecyclerView adapter for the list of events
         val eventAdapter = EventAdapter(context, events)
         holder.binding.eventsRecyclerView.layoutManager = LinearLayoutManager(context)
         holder.binding.eventsRecyclerView.adapter = eventAdapter
     }
+
 
     override fun getItemCount(): Int {
         return eventsGroupedByTournament.size
