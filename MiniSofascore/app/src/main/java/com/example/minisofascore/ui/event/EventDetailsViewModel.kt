@@ -19,13 +19,13 @@ class EventDetailsViewModel(private val eventDetailsRepository: EventDetailsRepo
     fun fetchIncidents(eventId: Int) {
         viewModelScope.launch {
             try {
-                Log.d("LeaguesViewModel", "Fetching incidents for event with id $eventId")
+                Log.d("EventDetailsViewModel", "Fetching incidents for event with id $eventId")
                 val fetchedIncidents = eventDetailsRepository.getIncidents(eventId)
-                Log.d("LeaguesViewModel", "Fetched ${fetchedIncidents.size} incidents")
+                Log.d("EventDetailsViewModel", "Fetched ${fetchedIncidents.size} incidents")
                 _incidents.value = fetchedIncidents
             } catch (e: Exception) {
                 // Handle or report the error
-                Log.e("LeaguesViewModel", "Error fetching leagues", e)
+                Log.e("EventDetailsViewModel", "Error fetching incidents", e)
             }
         }
     }

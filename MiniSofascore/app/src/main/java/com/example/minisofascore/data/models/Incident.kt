@@ -8,7 +8,8 @@ data class Incident(
     val goalType: String,
     val id: Int,
     val time: Int,
-    val type: String
+    val type: String,
+    val teamSide: String,
 )
 
 data class Player(
