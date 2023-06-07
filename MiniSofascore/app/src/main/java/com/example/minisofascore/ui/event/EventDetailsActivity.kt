@@ -38,11 +38,6 @@ class EventDetailsActivity : AppCompatActivity() {
         val actionBarLayout = layoutInflater.inflate(R.layout.custom_action_bar, null)
         binding.toolbar.addView(actionBarLayout)
 
-        val actionBarBack = actionBarLayout.findViewById<View>(R.id.action_bar_back)
-        actionBarBack.setOnClickListener {
-            onBackPressed()
-        }
-
         // Set team names, logos, and scores
         selectedEvent?.let {
             val tournamentId = selectedEvent.tournament.id
