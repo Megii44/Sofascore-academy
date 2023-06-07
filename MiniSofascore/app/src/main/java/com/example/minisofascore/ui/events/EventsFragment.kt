@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.example.minisofascore.adapters.EventsRecyclerAdapter
 import com.example.minisofascore.data.enums.SportEnum
-import com.example.minisofascore.data.models.EventResponse
 import com.example.minisofascore.databinding.FragmentEventsBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -42,18 +41,17 @@ class EventsFragment : Fragment() {
 
         viewModel.getEvents(null, null)
 
-        viewModel.events.observe(viewLifecycleOwner) { events ->
-            // Show no events text view if there are no events
-            if (events.isEmpty()) {
+        viewModel.eventsGroupedByTournament.observe(viewLifecycleOwner) { eventsGrouped ->
+            if (eventsGrouped.isEmpty()) {
                 binding.noEventsText.visibility = View.VISIBLE
             } else {
                 binding.noEventsText.visibility = View.GONE
                 binding.footballEventsRecyclerView.adapter = EventsRecyclerAdapter(requireContext(),
-                    events as MutableList<EventResponse>
+                    eventsGrouped
                 )
             }
             // Update the number of events text
-            binding.eventsCountText.text = "${events.size} Events"
+            binding.eventsCountText.text = "${eventsGrouped.size} Events"
         }
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
@@ -103,5 +101,4 @@ class EventsFragment : Fragment() {
             LocalDate.parse(it, DateTimeFormatter.ISO_DATE)
         }
     }
-
 }

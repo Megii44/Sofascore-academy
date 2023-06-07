@@ -7,62 +7,51 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.minisofascore.R
 import com.example.minisofascore.data.models.EventResponse
-import com.example.minisofascore.databinding.SampleTimeBoxBinding
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
+import com.example.minisofascore.databinding.ItemTournamentBinding
 
 class EventsRecyclerAdapter(
     private val context: Context,
-    private var events: MutableList<EventResponse>,
+    private var eventsGroupedByTournament: List<Pair<String, List<EventResponse>>>
 ) : RecyclerView.Adapter<EventsRecyclerAdapter.EventsViewHolder>() {
 
-    class EventsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = SampleTimeBoxBinding.bind(view)
+    inner class EventsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemTournamentBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.sample_time_box, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_tournament, parent, false)
         return EventsViewHolder(view)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: EventsViewHolder, position: Int) {
-        val event = events[position]
+        val (tournament, events) = eventsGroupedByTournament[position]
+        holder.binding.tournamentName.text = tournament // set your tournament TextView
+        holder.binding.countryName.text = events[position].tournament.country.name
+        val logoUrl = "https://academy.dev.sofascore.com/tournament/" + events[position].tournament.id + "/image"
 
-        holder.binding.apply {
-            // Set the data you want to display for each recent search item
-            // For example, set the location name in a TextView
-            titleTeam1.text = event.homeTeam.name
-            titleTeam2.text = event.awayTeam.name
-            scoreTeam1.text = event.homeScore.total.toString()
-            scoreTeam2.text = event.awayScore.total.toString()
+        Glide.with(holder.itemView)
+            .load(logoUrl)
+            .into(holder.binding.tournamentLogo)
 
-            val homeTeamLogo = "https://academy.dev.sofascore.com/team/" + event.homeTeam.id.toString() + "/image"
-            Glide.with(logoTeam1.context)
-                .load(homeTeamLogo)
-                .into(logoTeam1)
-
-            val awayTeamLogo = "https://academy.dev.sofascore.com/team/" + event.awayTeam.id.toString() + "/image"
-            Glide.with(logoTeam2.context)
-                .load(awayTeamLogo)
-                .into(logoTeam2)
-
-            startTime.text = OffsetDateTime.parse(event.startDate).format(DateTimeFormatter.ofPattern("HH:mm"))
-            overTime.text = event.status
-        }
+        // Set the RecyclerView adapter for the list of events
+        val eventAdapter = EventAdapter(context, events)
+        holder.binding.eventsRecyclerView.layoutManager = LinearLayoutManager(context)
+        holder.binding.eventsRecyclerView.adapter = eventAdapter
     }
 
     override fun getItemCount(): Int {
-        return events.size
+        return eventsGroupedByTournament.size
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun clear() {
-        events.clear()
+    fun updateData(newData: List<Pair<String, List<EventResponse>>>) {
+        this.eventsGroupedByTournament = newData
         notifyDataSetChanged()
     }
 }

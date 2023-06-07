@@ -15,8 +15,8 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class EventsViewModel : ViewModel() {
-    private val _events = MutableLiveData<List<EventResponse>>()
-    val events: LiveData<List<EventResponse>> get() = _events
+    private val _eventsGroupedByTournament = MutableLiveData<List<Pair<String, List<EventResponse>>>>()
+    val eventsGroupedByTournament: LiveData<List<Pair<String, List<EventResponse>>>> get() = _eventsGroupedByTournament
 
     private val _selectedSport = MutableLiveData<Int>()
     val selectedSport: LiveData<Int> = _selectedSport
@@ -56,15 +56,17 @@ class EventsViewModel : ViewModel() {
             val response = network.getService().getEventsForDay(selectedSport, selectedDate)
             if (response.isSuccessful) {
                 response.body()?.let { body ->
-                    // Immediately post the events
-                    _events.postValue(body)
+                    // Group events by tournament
+                    val groupedEvents = body.groupBy { it.tournament.name }.map { it.key to it.value }
+                    // Immediately post the grouped events
+                    _eventsGroupedByTournament.postValue(groupedEvents)
                     // For each event, asynchronously fetch logos
                     for (event in body) {
                         launch {
                             getTeamLogo(event.homeTeam)
                             getTeamLogo(event.awayTeam)
-                            // After each logo is fetched, post the updated events
-                            _events.postValue(body)
+                            // After each logo is fetched, post the updated grouped events
+                            _eventsGroupedByTournament.postValue(groupedEvents)
                         }
                     }
                 }
