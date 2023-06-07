@@ -34,8 +34,8 @@
             android:id="@+id/incident_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:paddingTop="2dp"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/line"
             app:layout_constraintHorizontal_bias="0.5"
@@ -62,10 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/incident_subtitle"
+        android:textColor="@color/dark_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/line"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/dark_gray"
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView
@@ -74,10 +74,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:textColor="@color/dark_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/incident_score"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/dark_gray"
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView
@@ -88,7 +88,7 @@
         android:layout_marginStart="10dp"
         android:paddingTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/line"
+        app:layout_constraintStart_toEndOf="@id/incident_score"
         app:layout_constraintTop_toBottomOf="@+id/incident_title"
         app:layout_constraintVertical_bias="0.5" />
 
@@ -107,12 +107,12 @@
     <TextView
         android:id="@+id/away_incident_title"
         style="@style/Body"
-        android:textColor="@color/dark_gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:textAlignment="textEnd"
-        app:layout_constraintBottom_toTopOf="@+id/incident_subtitle"
+        android:textColor="@color/dark_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/away_incident_score"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
@@ -166,8 +166,8 @@
             android:id="@+id/away_incident_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:paddingTop="2dp"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/away_line"

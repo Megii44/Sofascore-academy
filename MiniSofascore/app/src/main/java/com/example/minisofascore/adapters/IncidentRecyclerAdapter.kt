@@ -17,7 +17,6 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
         RecyclerView.ViewHolder(binding.root) {
         fun bind(incident: Incident) {
             with(binding) {
-                incidentType.text = incident.type.toString()
                 var title: String? = null
                 var subtitle: String? = null
                 @DrawableRes var logoResId: Int? = null
@@ -44,8 +43,6 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                         side = incident.scoringTeam
                         type = incident.time.toString() + "'"
                         score = incident.homeScore.toString() + " - " + incident.awayScore.toString()
-                        incidentSubtitle.visibility = View.INVISIBLE
-                        awayIncidentSubtitle.visibility = View.INVISIBLE
                     }
                     IncidentTypeEnum.Period.toString() -> {
                         title = incident.player?.name
@@ -57,30 +54,30 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                     else -> throw IllegalArgumentException("Unexpected incident type: ${incident.type}")
                 }
 
+                // Reset visibility for all views
+                incidentType.visibility = View.VISIBLE
+                incidentTitle.visibility = View.VISIBLE
+                incidentSubtitle.visibility = View.VISIBLE
+                incidentImageView.visibility = View.VISIBLE
+                line.visibility = View.VISIBLE
+                awayIncidentType.visibility = View.VISIBLE
+                awayIncidentTitle.visibility = View.VISIBLE
+                awayIncidentSubtitle.visibility = View.VISIBLE
+                awayIncidentImageView.visibility = View.VISIBLE
+                awayLine.visibility = View.VISIBLE
+
                 if (side == "away") {
                     awayIncidentType.text = type
                     awayIncidentTitle.text = title
                     awayIncidentSubtitle.text = subtitle
-                    logoResId.let { awayIncidentImageView.setImageResource(it) }
+                    logoResId?.let { awayIncidentImageView.setImageResource(it) }
                     awayIncidentScore.text = score
-
-                    incidentType.visibility = View.INVISIBLE
-                    incidentTitle.visibility = View.INVISIBLE
-                    incidentSubtitle.visibility = View.INVISIBLE
-                    incidentImageView.visibility = View.INVISIBLE
-                    line.visibility = View.INVISIBLE
                 } else {
                     incidentType.text = type
                     incidentTitle.text = title
                     incidentSubtitle.text = subtitle
-                    logoResId.let { incidentImageView.setImageResource(it) }
+                    logoResId?.let { incidentImageView.setImageResource(it) }
                     incidentScore.text = score
-
-                    awayIncidentType.visibility = View.INVISIBLE
-                    awayIncidentTitle.visibility = View.INVISIBLE
-                    awayIncidentSubtitle.visibility = View.INVISIBLE
-                    awayIncidentImageView.visibility = View.INVISIBLE
-                    awayLine.visibility = View.INVISIBLE
                 }
             }
         }
