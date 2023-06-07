@@ -22,6 +22,7 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                 var subtitle: String? = null
                 @DrawableRes var logoResId: Int? = null
                 var side: String? = null
+                var type: String? = null
 
                 when (incident.type) {
                     IncidentTypeEnum.Card.toString() -> {
@@ -29,24 +30,27 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                         subtitle = "Foul"
                         logoResId = R.drawable.ic_card_yellow
                         side = incident.teamSide
+                        type = incident.time.toString() + "'"
                     }
                     IncidentTypeEnum.Goal.toString() -> {
                         title = incident.player?.name
                         subtitle = "${incident.time}'"
                         logoResId = R.drawable.ic_football_green
                         side = incident.scoringTeam
+                        type = incident.time.toString() + "'"
                     }
                     IncidentTypeEnum.Period.toString() -> {
                         title = incident.player?.name
                         subtitle = "Argument"
                         logoResId = R.drawable.ic_football_green
                         side = ""
+                        type = incident.time.toString() + "'"
                     }
                     else -> throw IllegalArgumentException("Unexpected incident type: ${incident.type}")
                 }
 
                 if (side == "away") {
-                    awayIncidentType.text = incident.type
+                    awayIncidentType.text = type
                     awayIncidentTitle.text = title
                     awayIncidentSubtitle.text = subtitle
                     logoResId.let { awayIncidentImageView.setImageResource(it) }
@@ -57,7 +61,7 @@ class IncidentRecyclerAdapter(private val incidents: MutableList<Incident> = mut
                     incidentImageView.visibility = View.INVISIBLE
                     line.visibility = View.INVISIBLE
                 } else {
-                    incidentType.text = incident.type
+                    incidentType.text = type
                     incidentTitle.text = title
                     incidentSubtitle.text = subtitle
                     logoResId.let { incidentImageView.setImageResource(it) }
