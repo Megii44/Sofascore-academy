@@ -2,12 +2,15 @@ package com.example.minisofascore.ui.event
 
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.minisofascore.R
 import com.example.minisofascore.adapters.IncidentAdapter
 import com.example.minisofascore.data.models.Incident
 import com.example.minisofascore.databinding.ActivityEventDetailsBinding
@@ -30,9 +33,40 @@ class EventDetailsActivity : AppCompatActivity() {
         // Set up the toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        val actionBarLayout = layoutInflater.inflate(R.layout.custom_action_bar, null)
+        binding.toolbar.addView(actionBarLayout)
+
+        val actionBarBack = actionBarLayout.findViewById<View>(R.id.action_bar_back)
+        actionBarBack.setOnClickListener {
+            onBackPressed()
+        }
 
         // Set team names, logos, and scores
         selectedEvent?.let {
+            val tournamentId = selectedEvent.tournament.id
+            val tournamentLogoUrl = "https://academy.dev.sofascore.com/tournament/${tournamentId}/image"
+            val sport = selectedEvent.tournament.sport.name
+            val country = selectedEvent.tournament.country.name
+            val tournament = selectedEvent.tournament.name
+            val round = "Round " + selectedEvent.round
+
+            // Set toolbar title
+            val title = "${sport}, ${country}, ${tournament}, $round"
+            val actionBarTitle = actionBarLayout.findViewById<View>(R.id.action_bar_title)
+            if (actionBarTitle is TextView) {
+                actionBarTitle.text = title
+            }
+
+            // Set toolbar image
+            val actionBarImage = actionBarLayout.findViewById<View>(R.id.action_bar_image)
+            if (actionBarImage is ImageView) {
+                Glide.with(this)
+                    .load(tournamentLogoUrl)
+                    .into(actionBarImage)
+            }
+
             binding.homeTeamName.text = it.homeTeam.name
             binding.awayTeamName.text = it.awayTeam.name
 
