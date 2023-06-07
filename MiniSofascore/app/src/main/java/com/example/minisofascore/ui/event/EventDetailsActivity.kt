@@ -16,6 +16,7 @@ import com.example.minisofascore.adapters.IncidentRecyclerAdapter
 import com.example.minisofascore.data.repositories.EventDetailsRepository
 import com.example.minisofascore.databinding.ActivityEventDetailsBinding
 import com.example.minisofascore.ui.events.EventCache
+import com.example.minisofascore.ui.team.TeamCache
 import com.example.minisofascore.ui.team.TeamDetailsActivity
 import com.example.minisofascore.ui.utils.checkEventStatus
 import java.time.LocalDateTime
@@ -88,14 +89,16 @@ class EventDetailsActivity : AppCompatActivity() {
                 .into(binding.awayTeamLogo)
 
             binding.homeTeamLogo.setOnClickListener {
+                TeamCache.selectedTeam = selectedEvent.homeTeam
                 val intent = Intent(this, TeamDetailsActivity::class.java)
-                intent.putExtra("teamId", selectedEvent.homeTeam.id)
+                intent.putExtra("team", selectedEvent.homeTeam)
                 startActivity(intent)
             }
 
             binding.awayTeamLogo.setOnClickListener {
+                TeamCache.selectedTeam = selectedEvent.awayTeam
                 val intent = Intent(this, TeamDetailsActivity::class.java)
-                intent.putExtra("teamId", selectedEvent.awayTeam.id)
+                intent.putExtra("team", selectedEvent.awayTeam)
                 startActivity(intent)
             }
 

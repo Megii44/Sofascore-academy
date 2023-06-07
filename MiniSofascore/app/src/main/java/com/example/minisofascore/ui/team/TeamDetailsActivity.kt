@@ -3,11 +3,14 @@ package com.example.minisofascore.ui.team
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.bumptech.glide.Glide
 import com.example.minisofascore.R
+import com.example.minisofascore.data.models.Team
 import com.example.minisofascore.databinding.ActivityTeamDetailsBinding
 import com.example.minisofascore.ui.team.details.TeamDetailsFragment
 import com.example.minisofascore.ui.team.matches.TeamMatchesFragment
@@ -23,6 +26,9 @@ class TeamDetailsActivity : AppCompatActivity() {
         binding = ActivityTeamDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Get team id
+        val team: Team? = TeamCache.selectedTeam
+
         // Inflate custom toolbar layout and add it to the toolbar
         val actionBarLayout = layoutInflater.inflate(R.layout.custom_action_bar, null)
         binding.teamDetailsToolbar.addView(actionBarLayout)
@@ -34,21 +40,21 @@ class TeamDetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // Set toolbar title
-        val title = "njnj"
+        val title = team?.name
         val actionBarTitle = actionBarLayout.findViewById<View>(R.id.action_bar_title)
         if (actionBarTitle is TextView) {
             actionBarTitle.text = title
         }
 
         // Set toolbar image
-        val actionBarImage = actionBarLayout.findViewById<View>(R.id.action_bar_image)
-        //if (actionBarImage is ImageView) {
-        //    Glide.with(this)
-        //      .load(tournamentLogoUrl)
-        //    .into(actionBarImage)
-        //}
+        val teamLogoUrl = "https://academy.dev.sofascore.com/team/${team?.id}/image"
 
-        val teamId = intent.getStringExtra("team_id") ?: ""
+        val actionBarImage = actionBarLayout.findViewById<View>(R.id.action_bar_image)
+        if (actionBarImage is ImageView) {
+            Glide.with(this)
+              .load(teamLogoUrl)
+            .into(actionBarImage)
+        }
 
         val viewPager = binding.viewPager
         viewPager.adapter = object : FragmentStateAdapter(this) {
@@ -56,10 +62,10 @@ class TeamDetailsActivity : AppCompatActivity() {
 
             override fun createFragment(position: Int): Fragment {
                 return when (position) {
-                    0 -> TeamDetailsFragment.newInstance(teamId)
-                    1 -> TeamMatchesFragment.newInstance(teamId)
-                    2 -> TeamStandingsFragment.newInstance(teamId)
-                    3 -> TeamSquadFragment.newInstance(teamId)
+                    0 -> TeamDetailsFragment.newInstance(team?.id.toString())
+                    1 -> TeamMatchesFragment.newInstance(team?.id.toString())
+                    2 -> TeamStandingsFragment.newInstance(team?.id.toString())
+                    3 -> TeamSquadFragment.newInstance(team?.id.toString())
                     else -> Fragment() // return an empty fragment
                 }
             }
