@@ -1,5 +1,6 @@
 package com.example.minisofascore.ui.event
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.example.minisofascore.adapters.IncidentRecyclerAdapter
 import com.example.minisofascore.data.repositories.EventDetailsRepository
 import com.example.minisofascore.databinding.ActivityEventDetailsBinding
 import com.example.minisofascore.ui.events.EventCache
+import com.example.minisofascore.ui.team.TeamDetailsActivity
 import com.example.minisofascore.ui.utils.checkEventStatus
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -84,6 +86,18 @@ class EventDetailsActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(awayTeamLogoUrl)
                 .into(binding.awayTeamLogo)
+
+            binding.homeTeamLogo.setOnClickListener {
+                val intent = Intent(this, TeamDetailsActivity::class.java)
+                intent.putExtra("teamId", selectedEvent.homeTeam.id)
+                startActivity(intent)
+            }
+
+            binding.awayTeamLogo.setOnClickListener {
+                val intent = Intent(this, TeamDetailsActivity::class.java)
+                intent.putExtra("teamId", selectedEvent.awayTeam.id)
+                startActivity(intent)
+            }
 
             val startTime = it.startDate
 

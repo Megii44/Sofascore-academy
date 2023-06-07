@@ -12,7 +12,7 @@
         android:theme="@style/Theme.MiniSofascore"
         tools:targetApi="31">
         <activity
-            android:name=".TeamDetailsActivity"
+            android:name=".ui.team.TeamDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.event.EventDetailsActivity"
