@@ -9,9 +9,10 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.minisofascore.R
-import com.example.minisofascore.adapters.IncidentAdapter
+import com.example.minisofascore.adapters.IncidentRecyclerAdapter
 import com.example.minisofascore.data.models.Incident
 import com.example.minisofascore.databinding.ActivityEventDetailsBinding
 import com.example.minisofascore.ui.events.EventCache
@@ -113,12 +114,17 @@ class EventDetailsActivity : AppCompatActivity() {
             }
         }
 
-        // Set up the incidents RecyclerView
         // Consider fetching incidents from a data source instead of hardcoding
-        val incidents = getIncidents()
-        val incidentAdapter = IncidentAdapter(incidents)
-        binding.incidentsRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.incidentsRecyclerView.adapter = incidentAdapter
+        val incidents = getIncidents()  // You should have this function defined elsewhere
+
+        val incidentAdapter = IncidentRecyclerAdapter()
+
+        // Set the adapter on your RecyclerView
+        val recyclerView = binding.incidentsRecyclerView
+        recyclerView.adapter = incidentAdapter
+
+        // Populate the adapter with data
+        incidentAdapter.submitList(incidents)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -128,18 +134,6 @@ class EventDetailsActivity : AppCompatActivity() {
 
     private fun getIncidents(): List<Incident> {
         // Replace this with your actual data source
-        return listOf(
-            Incident(
-                player = "Julián Álvarez",
-                scoringTeam = "away",
-                homeScore = 0,
-                awayScore = 1,
-                goalType = "regular",
-                id = 2888,
-                time = 8,
-                type = "goal"
-            ),
-            // more incidents...
-        )
+        return emptyList()
     }
 }
