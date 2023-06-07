@@ -12,6 +12,7 @@ import com.example.minisofascore.R
 import com.example.minisofascore.data.models.EventResponse
 import com.example.minisofascore.databinding.SampleTimeBoxBinding
 import java.time.OffsetDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 class EventAdapter(
@@ -49,7 +50,11 @@ class EventAdapter(
                 .load(awayTeamLogo)
                 .into(logoTeam2)
 
-            startTime.text = OffsetDateTime.parse(event.startDate).format(DateTimeFormatter.ofPattern("HH:mm"))
+            val offsetDateTime = OffsetDateTime.parse(event.startDate)
+            val zonedDateTime = offsetDateTime.atZoneSameInstant(ZoneId.of("CET"))
+            val formattedTime = zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+            startTime.text = formattedTime
+
             overTime.text = event.status
         }
     }
