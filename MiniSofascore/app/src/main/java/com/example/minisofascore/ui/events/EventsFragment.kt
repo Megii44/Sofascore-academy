@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import com.example.minisofascore.R
 import com.example.minisofascore.adapters.recycler.EventsRecyclerAdapter
 import com.example.minisofascore.data.enums.SportEnum
 import com.example.minisofascore.databinding.FragmentEventsBinding
@@ -51,7 +52,7 @@ class EventsFragment : Fragment() {
                 )
             }
             // Update the number of events text
-            binding.eventsCountText.text = "${eventsGrouped.size} Events"
+            binding.eventsCountText.text = resources.getString(R.string.events_count_text, eventsGrouped.sumOf { it.second.size })
         }
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->

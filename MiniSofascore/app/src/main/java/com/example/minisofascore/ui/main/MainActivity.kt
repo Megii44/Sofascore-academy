@@ -13,6 +13,7 @@ import com.example.minisofascore.ui.settings.SettingsActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -39,7 +40,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.selectDay(today)
         viewModel.selectSport(SportEnum.Football.ordinal)
 
-        val days = (-6..7).map { today.plusDays(it.toLong()) }
+        val days = (6 downTo 1).map { today.minusDays(it.toLong()) } +
+                listOf(today) +
+                (1..7).map { today.plusDays(it.toLong()) }
 
         val dayOfWeekNames = days.map {
             if (it == today) getString(R.string.today).uppercase()
@@ -52,32 +55,34 @@ class MainActivity : AppCompatActivity() {
         setupViewPagerWithTabs(sectionsPagerAdapter)
 
         val daysRecyclerAdapter = DaysRecyclerAdapter(
-            days.toMutableList(), dayOfWeekNames.toMutableList(), dateOfMonthNames.toMutableList()
+            days as MutableList<LocalDate>, dayOfWeekNames as MutableList<String>,
+            dateOfMonthNames as MutableList<String>
         ) { position ->
             val selectedDate = days[position]
             viewModel.selectDay(selectedDate)
         }
 
-        with(binding.daysList) {
+        binding.daysList.apply {
             adapter = daysRecyclerAdapter
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    val layoutManager = layoutManager as LinearLayoutManager
-                    val totalItemCount = layoutManager.itemCount
-                    val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
-                    val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
-
-                    if (totalItemCount <= (lastVisibleItemPosition + 2)) {
-                        daysRecyclerAdapter.loadMoreFutureDays()
-                    }
-                    if (firstVisibleItemPosition <= 2) {
-                        daysRecyclerAdapter.loadMorePastDays()
-                    }
-                }
-            })
         }
+
+        binding.daysList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val totalItemCount = recyclerView.layoutManager?.itemCount ?: 0
+                val firstVisibleItemPosition = (recyclerView.layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition() ?: 0
+                val lastVisibleItemPosition = (recyclerView.layoutManager as? LinearLayoutManager)?.findLastVisibleItemPosition() ?: 0
+
+                if (totalItemCount <= (lastVisibleItemPosition + 2)) {
+                    daysRecyclerAdapter.loadMoreFutureDays()
+                }
+                if (firstVisibleItemPosition <= 2) {
+                    daysRecyclerAdapter.loadMorePastDays()
+                }
+            }
+        })
+
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -92,18 +97,21 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+
         viewModel.selectedDay.observe(this) { day ->
             viewModel.selectedSport.value?.let { sport ->
                 sectionsPagerAdapter.updateDateAndSport(day, sport)
             }
         }
 
-        binding.iconTrophy.setOnClickListener {
+        val iconTrophy = binding.iconTrophy
+        iconTrophy.setOnClickListener {
             val intent = Intent(this, LeaguesActivity::class.java)
             startActivity(intent)
         }
 
-        binding.iconSettings.setOnClickListener {
+        val iconSettings: ImageView = binding.iconSettings
+        iconSettings.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
