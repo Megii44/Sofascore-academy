@@ -4,8 +4,8 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.minisofascore.adapters.DaysRecyclerAdapter
-import com.example.minisofascore.adapters.SectionsPagerAdapter
+import com.example.minisofascore.adapters.recycler.DaysRecyclerAdapter
+import com.example.minisofascore.adapters.pager.SectionsPagerAdapter
 import com.example.minisofascore.data.enums.SportEnum
 import com.example.minisofascore.databinding.ActivityMainBinding
 import com.example.minisofascore.ui.leagues.LeaguesActivity

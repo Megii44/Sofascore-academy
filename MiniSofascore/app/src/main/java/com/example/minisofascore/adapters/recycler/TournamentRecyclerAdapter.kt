@@ -1,11 +1,10 @@
-package com.example.minisofascore.adapters
+package com.example.minisofascore.adapters.recycler
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minisofascore.R
 import com.example.minisofascore.data.models.Tournament

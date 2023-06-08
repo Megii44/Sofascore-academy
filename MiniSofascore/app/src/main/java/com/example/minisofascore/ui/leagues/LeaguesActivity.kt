@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.minisofascore.adapters.LeaguesSectionsPagerAdapter
+import com.example.minisofascore.adapters.pager.LeaguesSectionsPagerAdapter
 import com.example.minisofascore.data.enums.SportEnum
 import com.example.minisofascore.data.repositories.LeaguesRepository
 import com.example.minisofascore.databinding.ActivityLeaguesBinding

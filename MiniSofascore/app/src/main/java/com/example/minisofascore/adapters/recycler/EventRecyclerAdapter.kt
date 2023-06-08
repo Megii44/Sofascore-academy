@@ -1,4 +1,4 @@
-package com.example.minisofascore.adapters
+package com.example.minisofascore.adapters.recycler
 
 import android.content.Context
 import android.content.Intent
@@ -18,10 +18,10 @@ import java.time.OffsetDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-class EventAdapter(
+class EventRecyclerAdapter(
     private val context: Context,
     private var events: List<EventResponse>
-) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+) : RecyclerView.Adapter<EventRecyclerAdapter.EventViewHolder>() {
 
     class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = SampleTimeBoxBinding.bind(view)

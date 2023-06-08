@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import com.example.minisofascore.adapters.EventsRecyclerAdapter
+import com.example.minisofascore.adapters.recycler.EventsRecyclerAdapter
 import com.example.minisofascore.data.enums.SportEnum
 import com.example.minisofascore.databinding.FragmentEventsBinding
 import java.time.LocalDate

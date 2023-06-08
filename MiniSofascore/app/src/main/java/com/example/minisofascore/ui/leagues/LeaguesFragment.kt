@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.minisofascore.adapters.LeaguesRecyclerAdapter
+import com.example.minisofascore.adapters.recycler.LeaguesRecyclerAdapter
 import com.example.minisofascore.data.enums.SportEnum
 import com.example.minisofascore.data.repositories.LeaguesRepository
 import com.example.minisofascore.databinding.FragmentLeaguesBinding

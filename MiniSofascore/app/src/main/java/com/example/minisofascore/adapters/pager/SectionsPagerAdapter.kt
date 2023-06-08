@@ -1,4 +1,4 @@
-package com.example.minisofascore.adapters
+package com.example.minisofascore.adapters.pager
 
 import android.content.Context
 import android.os.Build

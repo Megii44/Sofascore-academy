@@ -1,4 +1,4 @@
-package com.example.minisofascore.adapters
+package com.example.minisofascore.adapters.recycler
 
 import android.os.Build
 import android.view.LayoutInflater

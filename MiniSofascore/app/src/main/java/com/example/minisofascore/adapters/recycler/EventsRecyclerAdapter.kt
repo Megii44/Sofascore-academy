@@ -1,4 +1,4 @@
-package com.example.minisofascore.adapters
+package com.example.minisofascore.adapters.recycler
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.minisofascore.R
+import com.example.minisofascore.adapters.recycler.EventRecyclerAdapter
 import com.example.minisofascore.data.models.EventResponse
 import com.example.minisofascore.databinding.ItemTournamentBinding
 
@@ -46,7 +47,7 @@ class EventsRecyclerAdapter(
         }
 
         // Set the RecyclerView adapter for the list of events
-        val eventAdapter = EventAdapter(context, events)
+        val eventAdapter = EventRecyclerAdapter(context, events)
         holder.binding.eventsRecyclerView.layoutManager = LinearLayoutManager(context)
         holder.binding.eventsRecyclerView.adapter = eventAdapter
     }

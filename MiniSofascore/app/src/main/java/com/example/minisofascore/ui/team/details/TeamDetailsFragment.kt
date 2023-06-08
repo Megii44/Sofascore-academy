@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.minisofascore.R
-import com.example.minisofascore.adapters.TournamentRecyclerAdapter
+import com.example.minisofascore.adapters.recycler.TournamentRecyclerAdapter
 import com.example.minisofascore.data.repositories.CountryRepository
 import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.FragmentTeamDetailsBinding

@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.minisofascore.R
-import com.example.minisofascore.adapters.IncidentRecyclerAdapter
+import com.example.minisofascore.adapters.recycler.IncidentRecyclerAdapter
 import com.example.minisofascore.data.repositories.EventDetailsRepository
 import com.example.minisofascore.databinding.ActivityEventDetailsBinding
 import com.example.minisofascore.ui.events.EventCache
