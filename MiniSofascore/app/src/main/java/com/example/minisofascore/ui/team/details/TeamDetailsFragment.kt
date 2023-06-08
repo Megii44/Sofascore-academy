@@ -4,94 +4,102 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.minisofascore.R
 import com.example.minisofascore.data.repositories.CountryRepository
 import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
 import com.example.minisofascore.ui.team.TeamCache
 import com.example.minisofascore.ui.team.TeamViewModelFactory
+import kotlinx.coroutines.launch
 
 class TeamDetailsFragment : Fragment() {
     private lateinit var binding: FragmentTeamDetailsBinding
     private lateinit var viewModel: TeamDetailsViewModel
+    private val teamRepository by lazy { TeamRepository() }
+    private val countryRepository by lazy { CountryRepository() }
+    private val viewModelFactory by lazy { TeamViewModelFactory(teamRepository, countryRepository) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentTeamDetailsBinding.inflate(inflater, container, false)
-
-        // Initialize the ViewModel
-        val teamRepository = TeamRepository()
-        val countryRepository = CountryRepository()
-        val viewModelFactory = TeamViewModelFactory(teamRepository, countryRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[TeamDetailsViewModel::class.java]
 
         val teamId = TeamCache.selectedTeam?.id
-        if (teamId != null) {
-            viewModel.fetchTeamDetails(teamId)
-            viewModel.fetchTeamPlayers(teamId)
-            viewModel.fetchTeamTournaments(teamId)
-            viewModel.fetchNextMatch(teamId)
+        teamId?.let { id ->
+            lifecycleScope.launch {
+                viewModel.apply {
+                    fetchTeamDetails(id)
+                    fetchTeamPlayers(id)
+                    fetchTeamTournaments(id)
+                    fetchNextMatch(id)
+                }
+            }
         }
 
+        setupObservers()
+
+        return binding.root
+    }
+
+    private fun setupObservers() {
         viewModel.teamDetails.observe(viewLifecycleOwner) { team ->
             val coach = getString(R.string.coach) + ": " + team?.managerName
             val country = team?.country?.name
             val venue = team?.venue
 
-            if (country != null) {
-                viewModel.fetchCountryFlag(country)
+            with(binding) {
+                coachNameTextView.text = coach
+                coachCountryNameTextView.text = country
+                stadiumTextView.text = venue
+                loadImage("https://academy.dev.sofascore.com/player/1/image", coachImageView)
             }
-
-            binding.coachNameTextView.text = coach
-            binding.coachCountryNameTextView.text = country
-            binding.stadiumTextView.text = venue
-        }
-
-        viewModel.countryFlag.observe(viewLifecycleOwner) { countryFlag ->
-            // Display the country flag
-            // TODO: You need to update this to use the actual flag information
-            //binding.coachCountryImageView.setImageBitmap(countryFlag.flags.svg)
         }
 
         viewModel.teamPlayers.observe(viewLifecycleOwner) { players ->
-            val playersCount = players?.size
-
-            binding.teamPlayersCountTextView.text = playersCount?.toString()
-            // You can calculate foreignPlayersCount here if needed
+            binding.teamPlayersCountTextView.text = players?.size?.toString()
+            // Calculate foreignPlayersCount here if needed
             // binding.foreignPlayersCountTextView.text = foreignPlayersCount?.toString()
         }
 
-        viewModel.teamTournaments.observe(viewLifecycleOwner) { tournaments ->
-            // Do something with tournaments if needed
-        }
-
         viewModel.teamEvents.observe(viewLifecycleOwner) { events ->
-            val nextMatch = events?.first()
+            events?.first()?.let { event ->
+                with(binding) {
+                    countryName.text = event.tournament.country.name
+                    tournamentName.text = event.tournament.name
+                    startTime.text = event.startDate
+                    overTime.text = event.status
+                    titleTeam1.text = event.homeTeam.name
+                    titleTeam2.text = event.awayTeam.name
 
-            binding.countryName.text = nextMatch?.tournament?.country?.name
-            binding.tournamentName.text = nextMatch?.tournament?.name
-            binding.startTime.text = nextMatch?.startDate
-            binding.overTime.text = nextMatch?.status
-            binding.titleTeam1.text = nextMatch?.homeTeam?.name
-            binding.titleTeam2.text = nextMatch?.awayTeam?.name
+                    loadImage("https://academy.dev.sofascore.com/tournament/${event.tournament.id}/image", tournamentLogo)
+                    loadImage("https://academy.dev.sofascore.com/team/${event.homeTeam.id}/image", logoTeam1)
+                    loadImage("https://academy.dev.sofascore.com/team/${event.awayTeam.id}/image", logoTeam2)
+                }
+            }
         }
+    }
 
-        return binding.root
+    private fun loadImage(url: String, imageView: ImageView) {
+        Glide.with(requireContext())
+            .load(url)
+            .into(imageView)
     }
 
     companion object {
         private const val ARG_TEAM_ID = "team_id"
         fun newInstance(teamId: String): TeamDetailsFragment {
-            val fragment = TeamDetailsFragment()
-            val args = Bundle()
-            args.putInt(ARG_TEAM_ID, teamId.toInt())
-            fragment.arguments = args
-            return fragment
+            return TeamDetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_TEAM_ID, teamId.toInt())
+                }
+            }
         }
     }
 }

@@ -51,7 +51,7 @@ class TeamDetailsViewModel(
                 _teamPlayers.value = fetchedPlayers
             } catch (e: Exception) {
                 // Handle or report the error
-                Log.e("TeamDetailsViewModel", "Error fetching leagues", e)
+                Log.e("TeamDetailsViewModel", "Error fetching team players", e)
             }
         }
     }
@@ -65,7 +65,7 @@ class TeamDetailsViewModel(
                 _teamTournaments.value = fetchedTournaments
             } catch (e: Exception) {
                 // Handle or report the error
-                Log.e("TeamDetailsViewModel", "Error fetching leagues", e)
+                Log.e("TeamDetailsViewModel", "Error fetching tournaments", e)
             }
         }
     }
