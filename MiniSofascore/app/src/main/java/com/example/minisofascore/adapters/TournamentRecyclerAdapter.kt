@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minisofascore.R
 import com.example.minisofascore.data.models.Tournament
@@ -26,9 +27,13 @@ class TournamentRecyclerAdapter(
 
     override fun onBindViewHolder(holder: TournamentViewHolder, position: Int) {
         val tournament = tournaments[position]
+
         holder.tournamentName.text = tournament.name
+
+        val tournamentLogoUrl = "https://academy.dev.sofascore.com/tournament/" + tournament.id + "/image"
+
         Glide.with(holder.itemView.context)
-            .load(tournament.logo)
+            .load(tournamentLogoUrl)
             .into(holder.tournamentLogo)
     }
 
