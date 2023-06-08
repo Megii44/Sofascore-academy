@@ -8,8 +8,10 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.minisofascore.R
+import com.example.minisofascore.adapters.TournamentRecyclerAdapter
 import com.example.minisofascore.data.repositories.CountryRepository
 import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
@@ -20,6 +22,7 @@ import kotlinx.coroutines.launch
 class TeamDetailsFragment : Fragment() {
     private lateinit var binding: FragmentTeamDetailsBinding
     private lateinit var viewModel: TeamDetailsViewModel
+    private lateinit var tournamentAdapter: TournamentRecyclerAdapter
     private val teamRepository by lazy { TeamRepository() }
     private val countryRepository by lazy { CountryRepository() }
     private val viewModelFactory by lazy { TeamViewModelFactory(teamRepository, countryRepository) }
@@ -30,6 +33,13 @@ class TeamDetailsFragment : Fragment() {
     ): View {
         binding = FragmentTeamDetailsBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this, viewModelFactory)[TeamDetailsViewModel::class.java]
+
+        // Initialize the adapter
+        tournamentAdapter = TournamentRecyclerAdapter(emptyList())
+
+        // Set the adapter for your RecyclerView
+        binding.tournamentsRecyclerView.adapter = tournamentAdapter
+        binding.tournamentsRecyclerView.layoutManager = LinearLayoutManager(context)
 
         val teamId = TeamCache.selectedTeam?.id
         teamId?.let { id ->
@@ -83,6 +93,10 @@ class TeamDetailsFragment : Fragment() {
                     loadImage("https://academy.dev.sofascore.com/team/${event.awayTeam.id}/image", logoTeam2)
                 }
             }
+        }
+
+        viewModel.teamTournaments.observe(viewLifecycleOwner) { tournaments ->
+            tournamentAdapter.updateTournaments(tournaments)
         }
     }
 

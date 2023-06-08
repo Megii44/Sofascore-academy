@@ -10,16 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df29d69-2bc5-44e0-8f31-d3e929df3cca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/adapters/LeaguesRecyclerAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/data/repositories/LeaguesRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/leagues/LeaguesViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/leagues/LeaguesViewModelFactory.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/league_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/tournament_info_tile.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/network/MiniSofascoreApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/network/MiniSofascoreApiService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/leagues/LeaguesActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/java/com/example/minisofascore/ui/leagues/LeaguesActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/activity_leagues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/activity_leagues.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/fragment_team_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MiniSofascore/app/src/main/res/layout/fragment_team_details.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,59 +56,59 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "android-custom-viewC:/Users/Admin/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/SearchView.java_SELECTED": "SearchView",
-    "android-custom-viewC:/Users/Admin/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
-    "android-custom-viewC:/Users/Admin/AppData/Local/Android/Sdk/sources/android-33/android/widget/AutoCompleteTextView.java_SELECTED": "AutoCompleteTextView",
-    "android-custom-viewC:/Users/Admin/AppData/Local/Android/Sdk/sources/android-33/android/widget/TextView.java_SELECTED": "TextView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfo.kt_SELECTED": "BaseCityInfo",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt_SELECTED": "BaseCityInfoView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/Button.kt_SELECTED": "ListedInfoView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ButtonView.kt_SELECTED": "ButtonView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabel.kt_SELECTED": "CityInfoOneLabel",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabelView.kt_SELECTED": "CityInfoOneLabelView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabels.kt_SELECTED": "CityInfoTwoLabels",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabelsView.kt_SELECTED": "CityInfoTwoLabelsView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityItemView.kt_SELECTED": "CityItemView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt_SELECTED": "ListedInfoView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/PopoverView.kt_SELECTED": "PopoverView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/SnackbarView.kt_SELECTED": "SnackbarView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/TimeItemView.kt_SELECTED": "TimeItemView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt_SELECTED": "WeatherInfoTileView",
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/WeatherMasterInfoView.kt_SELECTED": "WeatherMasterInfoView",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "last_directory_selection": "C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/res/drawable",
-    "last_opened_file_path": "C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;android-custom-viewC:/Users/Admin/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.6.1/ace9a78b961165396147e8691faa18c1b0e48e20/appcompat-1.6.1-sources.jar!/androidx/appcompat/widget/SearchView.java_SELECTED&quot;: &quot;SearchView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/AppData/Local/Android/Sdk/sources/android-33/android/widget/AutoCompleteTextView.java_SELECTED&quot;: &quot;AutoCompleteTextView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/AppData/Local/Android/Sdk/sources/android-33/android/widget/TextView.java_SELECTED&quot;: &quot;TextView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfo.kt_SELECTED&quot;: &quot;BaseCityInfo&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt_SELECTED&quot;: &quot;BaseCityInfoView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/Button.kt_SELECTED&quot;: &quot;ListedInfoView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ButtonView.kt_SELECTED&quot;: &quot;ButtonView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabel.kt_SELECTED&quot;: &quot;CityInfoOneLabel&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabelView.kt_SELECTED&quot;: &quot;CityInfoOneLabelView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabels.kt_SELECTED&quot;: &quot;CityInfoTwoLabels&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoTwoLabelsView.kt_SELECTED&quot;: &quot;CityInfoTwoLabelsView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityItemView.kt_SELECTED&quot;: &quot;CityItemView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt_SELECTED&quot;: &quot;ListedInfoView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/PopoverView.kt_SELECTED&quot;: &quot;PopoverView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/SnackbarView.kt_SELECTED&quot;: &quot;SnackbarView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/TimeItemView.kt_SELECTED&quot;: &quot;TimeItemView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/WeatherInfoTileView.kt_SELECTED&quot;: &quot;WeatherInfoTileView&quot;,
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/WeatherMasterInfoView.kt_SELECTED&quot;: &quot;WeatherMasterInfoView&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/res/drawable&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5&quot;
   },
-  "keyToStringList": {
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt_BaseCityInfoView_DIMENSIONS": [
-      "1080",
-      "1920"
+  &quot;keyToStringList&quot;: {
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/BaseCityInfoView.kt_BaseCityInfoView_DIMENSIONS&quot;: [
+      &quot;1080&quot;,
+      &quot;1920&quot;
     ],
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ButtonView.kt_ButtonView_DIMENSIONS": [
-      "1080",
-      "1920"
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ButtonView.kt_ButtonView_DIMENSIONS&quot;: [
+      &quot;1080&quot;,
+      &quot;1920&quot;
     ],
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabelView.kt_CityInfoOneLabelView_DIMENSIONS": [
-      "1080",
-      "1920"
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/CityInfoOneLabelView.kt_CityInfoOneLabelView_DIMENSIONS&quot;: [
+      &quot;1080&quot;,
+      &quot;1920&quot;
     ],
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt_ListedInfoView_DIMENSIONS": [
-      "1080",
-      "1920"
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/ListedInfoView.kt_ListedInfoView_DIMENSIONS&quot;: [
+      &quot;1080&quot;,
+      &quot;1920&quot;
     ],
-    "android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/TimeItemView.kt_TimeItemView_DIMENSIONS": [
-      "1080",
-      "1920"
+    &quot;android-custom-viewC:/Users/Admin/OneDrive/Desktop/Magda/Sofascore/Sofascore-academy/Homework_5/app/src/main/java/com/example/homework_5/views/TimeItemView.kt_TimeItemView_DIMENSIONS&quot;: [
+      &quot;1080&quot;,
+      &quot;1920&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="android.template.-1223283905">
       <recent name="com.example.homework_5.views" />
