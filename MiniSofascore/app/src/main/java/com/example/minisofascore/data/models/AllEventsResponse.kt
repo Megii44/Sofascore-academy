@@ -28,6 +28,8 @@ data class Team(
     val name: String,
     val country: Country,
     var logo: String,
+    val managerName: String,
+    val venue: String,
 ): java.io.Serializable
 
 data class Sport(
