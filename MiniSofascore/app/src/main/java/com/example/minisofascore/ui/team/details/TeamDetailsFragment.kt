@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.minisofascore.R
+import com.example.minisofascore.data.repositories.CountryRepository
 import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
 import com.example.minisofascore.ui.team.TeamCache
@@ -25,7 +26,8 @@ class TeamDetailsFragment : Fragment() {
 
         // Initialize the ViewModel
         val teamRepository = TeamRepository()
-        val viewModelFactory = TeamViewModelFactory(teamRepository)
+        val countryRepository = CountryRepository()
+        val viewModelFactory = TeamViewModelFactory(teamRepository, countryRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[TeamDetailsViewModel::class.java]
 
         val teamId = TeamCache.selectedTeam?.id
@@ -41,9 +43,19 @@ class TeamDetailsFragment : Fragment() {
             val country = team?.country?.name
             val venue = team?.venue
 
+            if (country != null) {
+                viewModel.fetchCountryFlag(country)
+            }
+
             binding.coachNameTextView.text = coach
             binding.coachCountryNameTextView.text = country
             binding.stadiumTextView.text = venue
+        }
+
+        viewModel.countryFlag.observe(viewLifecycleOwner) { countryFlag ->
+            // Display the country flag
+            // TODO: You need to update this to use the actual flag information
+            //binding.coachCountryImageView.setImageBitmap(countryFlag.flags.svg)
         }
 
         viewModel.teamPlayers.observe(viewLifecycleOwner) { players ->

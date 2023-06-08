@@ -5,14 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.minisofascore.data.models.EventResponse
-import com.example.minisofascore.data.models.Player
-import com.example.minisofascore.data.models.Team
-import com.example.minisofascore.data.models.Tournament
+import com.example.minisofascore.data.models.*
+import com.example.minisofascore.data.repositories.CountryRepository
 import com.example.minisofascore.data.repositories.TeamRepository
 import kotlinx.coroutines.launch
 
-class TeamDetailsViewModel(private val teamRepository: TeamRepository) : ViewModel() {
+class TeamDetailsViewModel(
+    private val teamRepository: TeamRepository,
+    private val countryRepository: CountryRepository
+) : ViewModel() {
     private val _teamDetails = MutableLiveData<Team>()
     val teamDetails: LiveData<Team> get() = _teamDetails
 
@@ -24,6 +25,9 @@ class TeamDetailsViewModel(private val teamRepository: TeamRepository) : ViewMod
 
     private val _teamEvents = MutableLiveData<List<EventResponse>>()
     val teamEvents: LiveData<List<EventResponse>> get() = _teamEvents
+
+    private val _countryFlag = MutableLiveData<CountryFlag>()
+    val countryFlag: LiveData<CountryFlag> get() = _countryFlag
 
     fun fetchTeamDetails(teamId: Int) {
         viewModelScope.launch {
@@ -76,6 +80,19 @@ class TeamDetailsViewModel(private val teamRepository: TeamRepository) : ViewMod
             } catch (e: Exception) {
                 // Handle or report the error
                 Log.e("TeamDetailsViewModel", "Error fetching matches", e)
+            }
+        }
+    }
+
+    fun fetchCountryFlag(countryName: String) {
+        viewModelScope.launch {
+            try {
+                Log.d("TeamDetailsViewModel", "Fetching flag for country $countryName")
+                val countryList = countryRepository.fetchCountryFlag(countryName)
+                _countryFlag.value = countryList[0]
+            } catch (e: Exception) {
+                // Handle or report the error
+                Log.e("TeamDetailsViewModel", "Error fetching country flag", e)
             }
         }
     }
