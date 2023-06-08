@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.minisofascore.R
 import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
 import com.example.minisofascore.ui.team.TeamCache
@@ -36,7 +37,7 @@ class TeamDetailsFragment : Fragment() {
         }
 
         viewModel.teamDetails.observe(viewLifecycleOwner) { team ->
-            val coach = team?.managerName
+            val coach = getString(R.string.coach) + ": " + team?.managerName
             val country = team?.country?.name
             val venue = team?.venue
 
