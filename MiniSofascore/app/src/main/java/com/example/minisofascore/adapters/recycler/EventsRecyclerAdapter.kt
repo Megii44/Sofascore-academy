@@ -1,65 +1,77 @@
 package com.example.minisofascore.adapters.recycler
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.minisofascore.R
-import com.example.minisofascore.adapters.recycler.EventRecyclerAdapter
 import com.example.minisofascore.data.models.EventResponse
-import com.example.minisofascore.databinding.ItemTournamentBinding
+import com.example.minisofascore.databinding.ItemEventBinding
+import com.example.minisofascore.ui.event.EventDetailsActivity
+import com.example.minisofascore.ui.events.EventCache
+import com.example.minisofascore.ui.utils.getEventStatusAbr
+import java.time.OffsetDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 class EventsRecyclerAdapter(
     private val context: Context,
-    private var eventsGroupedByTournament: List<Pair<String, List<EventResponse>>>
-) : RecyclerView.Adapter<EventsRecyclerAdapter.EventsViewHolder>() {
+    private var events: List<EventResponse>
+) : RecyclerView.Adapter<EventsRecyclerAdapter.EventViewHolder>() {
 
-    inner class EventsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = ItemTournamentBinding.bind(view)
+    class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemEventBinding.bind(view)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_tournament, parent, false)
-        return EventsViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.item_event, parent, false)
+        return EventViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: EventsViewHolder, position: Int) {
-        val (tournament, events) = eventsGroupedByTournament[position]
-        holder.binding.tournamentName.text = tournament // set your tournament TextView
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
+        val event = events[position]
 
-        // check if event, tournament and country objects are not null before accessing name and id
-        val event = events.getOrNull(position)
-        val countryName = event?.tournament?.country?.name
-        val tournamentId = event?.tournament?.id
-        if (countryName != null) {
-            holder.binding.countryName.text = countryName
+        holder.binding.apply {
+            // Set the data you want to display for each event
+            homeTeamName.text = event.homeTeam.name
+            awayTeamName.text = event.awayTeam.name
+            homeTeamScore.text = event.homeScore.total.toString()
+            awayTeamScore.text = event.awayScore.total.toString()
+
+            val homeTeamLogoUrl = "https://academy.dev.sofascore.com/team/" + event.homeTeam.id.toString() + "/image"
+            Glide.with(homeTeamLogo.context)
+                .load(homeTeamLogoUrl)
+                .into(homeTeamLogo)
+
+            val awayTeamLogoUrl = "https://academy.dev.sofascore.com/team/" + event.awayTeam.id.toString() + "/image"
+            Glide.with(awayTeamLogo.context)
+                .load(awayTeamLogoUrl)
+                .into(awayTeamLogo)
+
+            val offsetDateTime = OffsetDateTime.parse(event.startDate)
+            val zonedDateTime = offsetDateTime.atZoneSameInstant(ZoneId.of("CET"))
+            val formattedTime = zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+            startTime.text = formattedTime
+
+            status.text = getEventStatusAbr(context, event.status)
+
+            // Set click listener for the event item
+            holder.itemView.setOnClickListener {
+                EventCache.selectedEvent = event
+                val intent = Intent(context, EventDetailsActivity::class.java)
+                context.startActivity(intent)
+            }
         }
-
-        if (tournamentId != null) {
-            val logoUrl = "https://academy.dev.sofascore.com/tournament/$tournamentId/image"
-            Glide.with(holder.itemView)
-                .load(logoUrl)
-                .into(holder.binding.tournamentLogo)
-        }
-
-        // Set the RecyclerView adapter for the list of events
-        val eventAdapter = EventRecyclerAdapter(context, events)
-        holder.binding.eventsRecyclerView.layoutManager = LinearLayoutManager(context)
-        holder.binding.eventsRecyclerView.adapter = eventAdapter
     }
 
 
     override fun getItemCount(): Int {
-        return eventsGroupedByTournament.size
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateData(newData: List<Pair<String, List<EventResponse>>>) {
-        this.eventsGroupedByTournament = newData
-        notifyDataSetChanged()
+        return events.size
     }
 }

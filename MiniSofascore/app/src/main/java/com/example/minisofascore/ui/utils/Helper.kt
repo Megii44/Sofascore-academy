@@ -1,7 +1,11 @@
 package com.example.minisofascore.ui.utils
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.core.content.res.TypedArrayUtils.getString
+import com.example.minisofascore.R
+import com.example.minisofascore.data.enums.EventStatusEnum
 import com.example.minisofascore.data.enums.SportEnum
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -47,4 +51,13 @@ fun getFormattedTime(date: LocalDateTime): String {
 fun getFormattedTime(date: LocalDate): String {
     val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
     return date.format(formatter)
+}
+
+fun getEventStatusAbr(context: Context, status: String, time: String = ""): String {
+    return when (status) {
+        EventStatusEnum.InProgress.toString() -> time
+        EventStatusEnum.Finished.toString() -> context.getString(R.string.finished_abr)
+        EventStatusEnum.NotStarted.toString() -> context.getString(R.string.not_started_abr)
+        else -> ""
+    }
 }

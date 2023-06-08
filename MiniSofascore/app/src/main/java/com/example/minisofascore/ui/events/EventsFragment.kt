@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.example.minisofascore.R
-import com.example.minisofascore.adapters.recycler.EventsRecyclerAdapter
+import com.example.minisofascore.adapters.recycler.TournamentGroupedEventsRecyclerAdapter
 import com.example.minisofascore.data.enums.SportEnum
 import com.example.minisofascore.databinding.FragmentEventsBinding
 import java.time.LocalDate
@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter
 class EventsFragment : Fragment() {
     private lateinit var binding: FragmentEventsBinding
     lateinit var viewModel: EventsViewModel
+    private lateinit var recyclerAdapter: TournamentGroupedEventsRecyclerAdapter
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -47,9 +48,8 @@ class EventsFragment : Fragment() {
                 binding.noEventsText.visibility = View.VISIBLE
             } else {
                 binding.noEventsText.visibility = View.GONE
-                binding.footballEventsRecyclerView.adapter = EventsRecyclerAdapter(requireContext(),
-                    eventsGrouped
-                )
+                recyclerAdapter = TournamentGroupedEventsRecyclerAdapter(requireContext(), eventsGrouped)
+                binding.footballEventsRecyclerView.adapter = recyclerAdapter
             }
             // Update the number of events text
             binding.eventsCountText.text = resources.getString(R.string.events_count_text, eventsGrouped.sumOf { it.second.size })

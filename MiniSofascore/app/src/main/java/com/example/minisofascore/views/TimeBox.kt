@@ -5,11 +5,11 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.minisofascore.R
-import com.example.minisofascore.databinding.SampleTimeBoxBinding
+import com.example.minisofascore.databinding.ItemEventBinding
 
 class TimeBox(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
-    private val binding: SampleTimeBoxBinding
+    private val binding: ItemEventBinding
 
     private var team1: String? = null
     private var team2: String? = null
@@ -21,8 +21,8 @@ class TimeBox(context: Context, attrs: AttributeSet) : ConstraintLayout(context,
     private var overTime: Double = 0.0
 
     init {
-        val view = LayoutInflater.from(context).inflate(R.layout.sample_time_box, this, true)
-        binding = SampleTimeBoxBinding.bind(view)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_event, this, true)
+        binding = ItemEventBinding.bind(view)
         context.obtainStyledAttributes(
             attrs,
             R.styleable.TimeBox, 0, 0
@@ -54,25 +54,25 @@ class TimeBox(context: Context, attrs: AttributeSet) : ConstraintLayout(context,
 
     private fun setTeam(team: String?, index: Int) {
         if (index == 1) {
-            binding.titleTeam2.text = team
+            binding.awayTeamName.text = team
         } else {
-            binding.titleTeam1.text = team
+            binding.homeTeamName.text = team
         }
     }
 
     private fun setTeamScore(score: Int, index: Int) {
         if (index == 1) {
-            binding.scoreTeam2.text = score.toString()
+            binding.awayTeamScore.text = score.toString()
         } else {
-            binding.scoreTeam1.text = score.toString()
+            binding.homeTeamScore.text = score.toString()
         }
     }
 
     private fun setTeamLogo(logo: Drawable?, index: Int) {
         if (index == 1) {
-            binding.logoTeam2.setImageDrawable(logo)
+            binding.awayTeamLogo.setImageDrawable(logo)
         } else {
-            binding.logoTeam1.setImageDrawable(logo)
+            binding.homeTeamLogo.setImageDrawable(logo)
         }
     }
 
@@ -81,6 +81,6 @@ class TimeBox(context: Context, attrs: AttributeSet) : ConstraintLayout(context,
     }
 
     private fun setOverTime(overTime: Double) {
-        binding.overTime.text = overTime.toString()
+        binding.status.text = overTime.toString()
     }
 }

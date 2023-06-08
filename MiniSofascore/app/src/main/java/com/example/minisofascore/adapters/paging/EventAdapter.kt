@@ -9,18 +9,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minisofascore.R
 import com.example.minisofascore.data.models.EventResponse
-import com.example.minisofascore.databinding.SampleTimeBoxBinding
+import com.example.minisofascore.databinding.ItemEventBinding
 
 class EventAdapter(
     private val context: Context
 ) : PagingDataAdapter<EventResponse, EventAdapter.EventViewHolder>(EventComparator) {
 
     inner class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = SampleTimeBoxBinding.bind(view)
+        val binding = ItemEventBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.sample_time_box, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_event, parent, false)
         return EventViewHolder(view)
     }
 
