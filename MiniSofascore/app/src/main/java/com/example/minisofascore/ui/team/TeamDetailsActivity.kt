@@ -30,7 +30,7 @@ class TeamDetailsActivity : AppCompatActivity() {
         val team: Team? = TeamCache.selectedTeam
 
         // Inflate custom toolbar layout and add it to the toolbar
-        val actionBarLayout = layoutInflater.inflate(R.layout.custom_action_bar, null)
+        val actionBarLayout = layoutInflater.inflate(R.layout.toolbar_layout_team_details, null)
         binding.teamDetailsToolbar.addView(actionBarLayout)
 
         // Now set the toolbar as support action bar
@@ -41,7 +41,7 @@ class TeamDetailsActivity : AppCompatActivity() {
 
         // Set toolbar title
         val title = team?.name
-        val actionBarTitle = actionBarLayout.findViewById<View>(R.id.action_bar_title)
+        val actionBarTitle = actionBarLayout.findViewById<View>(R.id.teamNameTextView)
         if (actionBarTitle is TextView) {
             actionBarTitle.text = title
         }
@@ -49,7 +49,7 @@ class TeamDetailsActivity : AppCompatActivity() {
         // Set toolbar image
         val teamLogoUrl = "https://academy.dev.sofascore.com/team/${team?.id}/image"
 
-        val actionBarImage = actionBarLayout.findViewById<View>(R.id.action_bar_image)
+        val actionBarImage = actionBarLayout.findViewById<View>(R.id.teamLogoImageView)
         if (actionBarImage is ImageView) {
             Glide.with(this)
               .load(teamLogoUrl)
