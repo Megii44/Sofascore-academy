@@ -27,38 +27,46 @@ class TeamDetailsFragment : Fragment() {
         val viewModelFactory = TeamViewModelFactory(teamRepository)
         viewModel = ViewModelProvider(this, viewModelFactory)[TeamDetailsViewModel::class.java]
 
-        val team = TeamCache.selectedTeam
-        val teamId = team?.id
-
-        val coach = team?.managerName
-        val country = team?.country?.name
-        val venue = team?.venue
-
+        val teamId = TeamCache.selectedTeam?.id
         if (teamId != null) {
+            viewModel.fetchTeamDetails(teamId)
             viewModel.fetchTeamPlayers(teamId)
             viewModel.fetchTeamTournaments(teamId)
             viewModel.fetchNextMatch(teamId)
         }
 
-        val playersCount = viewModel.teamPlayers.value?.size
-        val foreignPlayersCount = null
+        viewModel.teamDetails.observe(viewLifecycleOwner) { team ->
+            val coach = team?.managerName
+            val country = team?.country?.name
+            val venue = team?.venue
 
-        val tournaments = viewModel.teamTournaments
-        val nextMatch = viewModel.teamEvents.value?.first()
+            binding.coachNameTextView.text = coach
+            binding.coachCountryNameTextView.text = country
+            binding.stadiumTextView.text = venue
+        }
 
-        // Display team details
-        binding.coachNameTextView.text = coach
-        binding.coachCountryNameTextView.text = country
-        binding.teamPlayersCountTextView.text = playersCount.toString()
-        binding.foreignPlayersCountTextView.text = playersCount.toString()
-        binding.stadiumTextView.text = venue
+        viewModel.teamPlayers.observe(viewLifecycleOwner) { players ->
+            val playersCount = players?.size
 
-        binding.countryName.text = nextMatch?.tournament?.country?.name
-        binding.tournamentName.text = nextMatch?.tournament?.name
-        binding.startTime.text = nextMatch?.startDate
-        binding.overTime.text = nextMatch?.status
-        binding.titleTeam1.text = nextMatch?.homeTeam?.name
-        binding.titleTeam2.text = nextMatch?.awayTeam?.name
+            binding.teamPlayersCountTextView.text = playersCount?.toString()
+            // You can calculate foreignPlayersCount here if needed
+            // binding.foreignPlayersCountTextView.text = foreignPlayersCount?.toString()
+        }
+
+        viewModel.teamTournaments.observe(viewLifecycleOwner) { tournaments ->
+            // Do something with tournaments if needed
+        }
+
+        viewModel.teamEvents.observe(viewLifecycleOwner) { events ->
+            val nextMatch = events?.first()
+
+            binding.countryName.text = nextMatch?.tournament?.country?.name
+            binding.tournamentName.text = nextMatch?.tournament?.name
+            binding.startTime.text = nextMatch?.startDate
+            binding.overTime.text = nextMatch?.status
+            binding.titleTeam1.text = nextMatch?.homeTeam?.name
+            binding.titleTeam2.text = nextMatch?.awayTeam?.name
+        }
 
         return binding.root
     }

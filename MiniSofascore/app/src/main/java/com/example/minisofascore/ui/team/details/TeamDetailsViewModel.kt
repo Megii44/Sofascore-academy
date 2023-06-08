@@ -7,11 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.minisofascore.data.models.EventResponse
 import com.example.minisofascore.data.models.Player
+import com.example.minisofascore.data.models.Team
 import com.example.minisofascore.data.models.Tournament
 import com.example.minisofascore.data.repositories.TeamRepository
 import kotlinx.coroutines.launch
 
 class TeamDetailsViewModel(private val teamRepository: TeamRepository) : ViewModel() {
+    private val _teamDetails = MutableLiveData<Team>()
+    val teamDetails: LiveData<Team> get() = _teamDetails
+
     private val _teamPlayers = MutableLiveData<List<Player>>()
     val teamPlayers: LiveData<List<Player>> get() = _teamPlayers
 
@@ -21,8 +25,18 @@ class TeamDetailsViewModel(private val teamRepository: TeamRepository) : ViewMod
     private val _teamEvents = MutableLiveData<List<EventResponse>>()
     val teamEvents: LiveData<List<EventResponse>> get() = _teamEvents
 
-    private val _loading = MutableLiveData<Boolean>()
-    val loading: LiveData<Boolean> = _loading
+    fun fetchTeamDetails(teamId: Int) {
+        viewModelScope.launch {
+            try {
+                Log.d("TeamDetailsViewModel", "Fetching details for team $teamId")
+                val team = teamRepository.getTeamDetails(teamId)
+                _teamDetails.value = team
+            } catch (e: Exception) {
+                // Handle or report the error
+                Log.e("TeamDetailsViewModel", "Error fetching team details", e)
+            }
+        }
+    }
 
     fun fetchTeamPlayers(teamId: Int) {
         viewModelScope.launch {
