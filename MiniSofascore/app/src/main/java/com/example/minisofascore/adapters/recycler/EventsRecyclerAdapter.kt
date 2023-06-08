@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.minisofascore.R
+import com.example.minisofascore.data.enums.EventStatusEnum
 import com.example.minisofascore.data.models.EventResponse
 import com.example.minisofascore.databinding.ItemEventBinding
 import com.example.minisofascore.ui.event.EventDetailsActivity
@@ -60,6 +62,12 @@ class EventsRecyclerAdapter(
             startTime.text = formattedTime
 
             status.text = getEventStatusAbr(context, event.status)
+
+            if(event.status == EventStatusEnum.InProgress.toString()) {
+                status.setTextColor(ContextCompat.getColor(context, R.color.red))
+                homeTeamScore.setTextColor(ContextCompat.getColor(context, R.color.red))
+                awayTeamScore.setTextColor(ContextCompat.getColor(context, R.color.red))
+            }
 
             // Set click listener for the event item
             holder.itemView.setOnClickListener {

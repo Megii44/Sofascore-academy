@@ -15,4 +15,5 @@
     <color name="blue_bg_dark">#1327ba</color>
     <color name="light_gray">#eff3f8</color>
     <color name="dark_gray">#121212</color>
+    <color name="red">#FF0000</color>
 </resources>

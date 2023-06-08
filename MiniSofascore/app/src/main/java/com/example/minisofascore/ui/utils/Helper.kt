@@ -55,7 +55,7 @@ fun getFormattedTime(date: LocalDate): String {
 
 fun getEventStatusAbr(context: Context, status: String, time: String = ""): String {
     return when (status) {
-        EventStatusEnum.InProgress.toString() -> time
+        EventStatusEnum.InProgress.toString() -> time.ifEmpty { "NOW" }
         EventStatusEnum.Finished.toString() -> context.getString(R.string.finished_abr)
         EventStatusEnum.NotStarted.toString() -> context.getString(R.string.not_started_abr)
         else -> ""
