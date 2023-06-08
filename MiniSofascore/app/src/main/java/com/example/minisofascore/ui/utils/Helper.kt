@@ -3,8 +3,11 @@ package com.example.minisofascore.ui.utils
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.minisofascore.data.enums.SportEnum
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 fun getSportForPosition(position: Int): SportEnum {
     return when (position) {
@@ -34,3 +37,14 @@ fun checkEventStatus(startTime: String): Int {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
+fun getFormattedTime(date: LocalDateTime): String {
+    val formatter = DateTimeFormatter.ofPattern("HH:mm")
+    return date.format(formatter)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun getFormattedTime(date: LocalDate): String {
+    val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+    return date.format(formatter)
+}

@@ -45,4 +45,5 @@
     <string name="matches">Matches</string>
     <string name="standings">Standings</string>
     <string name="squad">Squad</string>
+    <string name="today">Today</string>
 </resources>
