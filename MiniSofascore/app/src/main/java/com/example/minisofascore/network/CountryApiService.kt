@@ -7,8 +7,8 @@ import retrofit2.http.Path
 
 interface CountryApiService {
 
-    @GET("v2/name/{country_name}")
-    fun fetchCountryFlag(
+    @GET("/v2/name/{country_name}")
+    suspend fun fetchCountryFlag(
         @Path("country_name") countryName: String
     ): Response<List<CountryInfo>>
 
