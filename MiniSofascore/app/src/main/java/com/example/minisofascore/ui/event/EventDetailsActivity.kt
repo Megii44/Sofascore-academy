@@ -115,7 +115,8 @@ class EventDetailsActivity : AppCompatActivity() {
                     binding.homeTeamScore.visibility = View.INVISIBLE
                     binding.awayTeamScore.visibility = View.INVISIBLE
                     binding.middleDash.visibility = View.INVISIBLE
-                    binding.matchStatusTextView.text = it.status
+                    binding.matchStatusTextView.visibility = View.INVISIBLE
+                    binding.incidentsRecyclerView.visibility = View.INVISIBLE
                 }
                 1 -> {
                     // Event is currently in play
@@ -127,6 +128,7 @@ class EventDetailsActivity : AppCompatActivity() {
                     binding.dateText.visibility = View.INVISIBLE
                     binding.timeText.visibility = View.INVISIBLE
                     binding.matchStatusTextView.text = it.status
+                    binding.upcomingEventInfoLayout.visibility = View.INVISIBLE
                 }
                 else -> {
                     // Event has already finished
@@ -135,6 +137,7 @@ class EventDetailsActivity : AppCompatActivity() {
                     binding.dateText.visibility = View.INVISIBLE
                     binding.timeText.visibility = View.INVISIBLE
                     binding.matchStatusTextView.visibility = View.INVISIBLE
+                    binding.upcomingEventInfoLayout.visibility = View.INVISIBLE
                 }
             }
         }
