@@ -50,4 +50,5 @@
     <string name="events_count_text">%1$d Events</string>
     <string name="finished_abr">FT</string>
     <string name="not_started_abr">-</string>
+    <string name="no_players_in_this_team"></string>
 </resources>

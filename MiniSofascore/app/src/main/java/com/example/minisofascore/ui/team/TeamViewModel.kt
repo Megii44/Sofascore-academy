@@ -29,6 +29,9 @@ class TeamViewModel(
     private val _countryFlag = MutableLiveData<CountryInfo>()
     val countryFlag: LiveData<CountryInfo> get() = _countryFlag
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
+
     fun fetchTeamDetails(teamId: Int) {
         viewModelScope.launch {
             try {
