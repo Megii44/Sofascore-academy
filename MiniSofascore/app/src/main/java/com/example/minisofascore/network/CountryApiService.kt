@@ -10,6 +10,6 @@ interface CountryApiService {
     @GET("v2/name/{country_name}")
     fun fetchCountryFlag(
         @Path("country_name") countryName: String
-    ): Response<List<CountryFlag>>
+    ): Response<List<CountryInfo>>
 
 }

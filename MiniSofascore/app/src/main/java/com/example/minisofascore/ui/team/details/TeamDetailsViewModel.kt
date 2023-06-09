@@ -26,8 +26,8 @@ class TeamDetailsViewModel(
     private val _teamEvents = MutableLiveData<List<EventResponse>>()
     val teamEvents: LiveData<List<EventResponse>> get() = _teamEvents
 
-    private val _countryFlag = MutableLiveData<CountryFlag>()
-    val countryFlag: LiveData<CountryFlag> get() = _countryFlag
+    private val _countryFlag = MutableLiveData<CountryInfo>()
+    val countryFlag: LiveData<CountryInfo> get() = _countryFlag
 
     fun fetchTeamDetails(teamId: Int) {
         viewModelScope.launch {

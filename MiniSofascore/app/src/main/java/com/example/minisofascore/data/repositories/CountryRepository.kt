@@ -1,6 +1,6 @@
 package com.example.minisofascore.data.repositories
 
-import com.example.minisofascore.data.models.CountryFlag
+import com.example.minisofascore.data.models.CountryInfo
 import com.example.minisofascore.network.CountryNetwork
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 class CountryRepository {
     private val networkService = CountryNetwork().getService()
 
-    suspend fun fetchCountryFlag(countryName: String): List<CountryFlag> = withContext(Dispatchers.IO) {
+    suspend fun fetchCountryFlag(countryName: String): List<CountryInfo> = withContext(Dispatchers.IO) {
         val response = networkService.fetchCountryFlag(countryName)
         if (response.isSuccessful) {
             response.body() ?: throw Exception("Received empty response body")

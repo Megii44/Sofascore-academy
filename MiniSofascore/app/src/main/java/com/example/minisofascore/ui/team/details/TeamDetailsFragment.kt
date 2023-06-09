@@ -49,6 +49,11 @@ class TeamDetailsFragment : Fragment() {
                     fetchTeamPlayers(id)
                     fetchTeamTournaments(id)
                     fetchNextMatch(id)
+
+                    val countryName = TeamCache.selectedTeam?.country?.name
+                    if (countryName != null) {
+                        fetchCountryFlag(countryName)
+                    }
                 }
             }
         }
@@ -76,6 +81,13 @@ class TeamDetailsFragment : Fragment() {
             binding.teamPlayersCountTextView.text = players?.size?.toString()
             // Calculate foreignPlayersCount here if needed
             // binding.foreignPlayersCountTextView.text = foreignPlayersCount?.toString()
+        }
+
+        viewModel.countryFlag.observe(viewLifecycleOwner) {country ->
+            with(binding) {
+                val flagUrl = country.flags.svg
+                loadImage(flagUrl, coachCountryImageView)
+            }
         }
 
         viewModel.teamEvents.observe(viewLifecycleOwner) { events ->
