@@ -12,8 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.minisofascore.adapters.paging.TournamentAdapter
 import com.example.minisofascore.databinding.FragmentEventsBinding
-import com.example.minisofascore.ui.team.details.TeamDetailsFragment
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class TeamMatchesFragment : Fragment() {
