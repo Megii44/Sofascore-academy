@@ -26,12 +26,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/light_gray"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/light_gray">
 
             <!-- Team names, logos, and scores -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:background="@color/white"
                 android:padding="16dp"
                 android:paddingTop="24dp"
                 android:paddingBottom="24dp"
@@ -223,6 +226,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
+                android:layout_margin="8dp"
+                android:background="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/match_score_layout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
