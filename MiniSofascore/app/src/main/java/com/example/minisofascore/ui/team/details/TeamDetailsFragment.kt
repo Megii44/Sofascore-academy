@@ -14,13 +14,14 @@ import com.example.minisofascore.data.repositories.CountryRepository
 import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
 import com.example.minisofascore.ui.team.TeamCache
+import com.example.minisofascore.ui.team.TeamViewModel
 import com.example.minisofascore.ui.team.TeamViewModelFactory
 import com.example.minisofascore.ui.utils.loadImage
 import kotlinx.coroutines.launch
 
 class TeamDetailsFragment : Fragment() {
     private lateinit var binding: FragmentTeamDetailsBinding
-    private lateinit var viewModel: TeamDetailsViewModel
+    private lateinit var viewModel: TeamViewModel
     private lateinit var tournamentAdapter: TournamentRecyclerAdapter
     private val teamRepository by lazy { TeamRepository() }
     private val countryRepository by lazy { CountryRepository() }
@@ -31,7 +32,7 @@ class TeamDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTeamDetailsBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this, viewModelFactory)[TeamDetailsViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[TeamViewModel::class.java]
 
         // Initialize the adapter
         tournamentAdapter = TournamentRecyclerAdapter(emptyList())

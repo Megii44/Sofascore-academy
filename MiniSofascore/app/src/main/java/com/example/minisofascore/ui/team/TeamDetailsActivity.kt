@@ -10,27 +10,57 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.minisofascore.R
 import com.example.minisofascore.data.models.Team
+import com.example.minisofascore.data.repositories.CountryRepository
+import com.example.minisofascore.data.repositories.LeaguesRepository
+import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.ActivityTeamDetailsBinding
+import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
+import com.example.minisofascore.ui.events.EventsViewModel
+import com.example.minisofascore.ui.leagues.LeaguesViewModel
+import com.example.minisofascore.ui.leagues.LeaguesViewModelFactory
 import com.example.minisofascore.ui.team.details.TeamDetailsFragment
 import com.example.minisofascore.ui.team.matches.TeamMatchesFragment
 import com.example.minisofascore.ui.team.squad.TeamSquadFragment
 import com.example.minisofascore.ui.team.standings.TeamStandingsFragment
 import com.example.minisofascore.ui.utils.loadImage
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.launch
 
 class TeamDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTeamDetailsBinding
+    private lateinit var viewModel: TeamViewModel
+    private lateinit var teamRepository: TeamRepository
+    private lateinit var countryRepository: CountryRepository
+    private lateinit var viewModelFactory: TeamViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTeamDetailsBinding.inflate(layoutInflater)
+
+        // Create the repository instance
+        teamRepository = TeamRepository()
+        countryRepository = CountryRepository()
+
+        // Initialize the ViewModel using the custom factory
+        viewModelFactory = TeamViewModelFactory(teamRepository, countryRepository)
+        viewModel = ViewModelProvider(this, viewModelFactory)[TeamViewModel::class.java]
+
         setContentView(binding.root)
 
         // Get team id
         val team: Team? = TeamCache.selectedTeam
+        team?.let { it ->
+            lifecycleScope.launch {
+                viewModel.apply {
+                    fetchCountryFlag(it.country.name)
+                }
+            }
+        }
 
         // Inflate custom toolbar layout and add it to the toolbar
         val actionBarLayout = layoutInflater.inflate(R.layout.toolbar_layout_team_details, null)
@@ -71,10 +101,12 @@ class TeamDetailsActivity : AppCompatActivity() {
         loadImage(this, teamLogoUrl, actionBarImage)
 
         // Set country image
-        val countryFlagUrl = "https://academy.dev.sofascore.com/team/${team?.id}/image"
+        val countryImageView = actionBarLayout.findViewById<ImageView>(R.id.country_logo_image_view)
 
-        val countryImage = actionBarLayout.findViewById<ImageView>(R.id.country_logo_image_view)
-        loadImage(this, countryFlagUrl, countryImage)
+        viewModel.countryFlag.observe(this) { c ->
+            val flagUrl = c.flags.png
+            loadImage(this, flagUrl, countryImageView)
+        }
 
         val viewPager = binding.viewPager
         viewPager.adapter = object : FragmentStateAdapter(this) {
