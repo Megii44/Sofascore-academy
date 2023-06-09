@@ -51,9 +51,23 @@ fun getFormattedTime(date: LocalDateTime): String {
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun getFormattedTime(date: LocalDate): String {
+fun getFormattedDate(date: LocalDate): String {
     val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
     return date.format(formatter)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun getFormattedDate(dateTimeString: String): String {
+    val zonedDateTime = ZonedDateTime.parse(dateTimeString)
+    val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+    return formatter.format(zonedDateTime)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun getFormattedTime(dateTimeString: String): String {
+    val zonedDateTime = ZonedDateTime.parse(dateTimeString)
+    val formatter = DateTimeFormatter.ofPattern("HH:mm")
+    return formatter.format(zonedDateTime)
 }
 
 fun getEventStatusAbr(context: Context, status: String, time: String = ""): String {

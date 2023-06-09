@@ -1,14 +1,15 @@
 package com.example.minisofascore.ui.team.details
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.minisofascore.R
 import com.example.minisofascore.adapters.recycler.TournamentRecyclerAdapter
 import com.example.minisofascore.data.repositories.CountryRepository
@@ -17,6 +18,8 @@ import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
 import com.example.minisofascore.ui.team.TeamCache
 import com.example.minisofascore.ui.team.TeamViewModel
 import com.example.minisofascore.ui.team.TeamViewModelFactory
+import com.example.minisofascore.ui.utils.getFormattedDate
+import com.example.minisofascore.ui.utils.getFormattedTime
 import com.example.minisofascore.ui.utils.loadImage
 import kotlinx.coroutines.launch
 
@@ -28,6 +31,7 @@ class TeamDetailsFragment : Fragment() {
     private val countryRepository by lazy { CountryRepository() }
     private val viewModelFactory by lazy { TeamViewModelFactory(teamRepository, countryRepository) }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,6 +68,7 @@ class TeamDetailsFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setupObservers() {
         viewModel.teamDetails.observe(viewLifecycleOwner) { team ->
             val coach = getString(R.string.coach) + ": " + team?.managerName
@@ -81,7 +86,9 @@ class TeamDetailsFragment : Fragment() {
         viewModel.teamPlayers.observe(viewLifecycleOwner) { players ->
             binding.teamPlayersCountTextView.text = players?.size?.toString()
             // Calculate foreignPlayersCount here if needed
-            // binding.foreignPlayersCountTextView.text = foreignPlayersCount?.toString()
+            val country = viewModel.teamDetails.value?.country?.name?.lowercase()
+            val foreignPlayers = players.filter { player -> player.country.name.lowercase() != country?.lowercase() }
+            binding.foreignPlayersCountTextView.text = foreignPlayers.size.toString()
         }
 
         viewModel.countryFlag.observe(viewLifecycleOwner) {country ->
@@ -96,8 +103,8 @@ class TeamDetailsFragment : Fragment() {
                 with(binding) {
                     countryName.text = event.tournament.country.name
                     tournamentName.text = event.tournament.name
-                    startTime.text = event.startDate
-                    overTime.text = event.status
+                    nextMatchDate.text = getFormattedDate(event.startDate)
+                    nextMatchTime.text = getFormattedTime(event.startDate)
                     titleTeam1.text = event.homeTeam.name
                     titleTeam2.text = event.awayTeam.name
 
