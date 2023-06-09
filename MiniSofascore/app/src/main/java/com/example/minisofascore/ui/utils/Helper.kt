@@ -70,3 +70,10 @@ fun loadImage(context: Context, url: String, imageView: ImageView) {
         .load(url)
         .into(imageView)
 }
+
+fun loadRoundImage(context: Context, url: String, imageView: ImageView) {
+    Glide.with(context)
+        .load(url)
+        .circleCrop()
+        .into(imageView);
+}

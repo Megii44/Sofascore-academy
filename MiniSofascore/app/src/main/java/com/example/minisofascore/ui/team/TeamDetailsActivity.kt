@@ -16,18 +16,14 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.minisofascore.R
 import com.example.minisofascore.data.models.Team
 import com.example.minisofascore.data.repositories.CountryRepository
-import com.example.minisofascore.data.repositories.LeaguesRepository
 import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.ActivityTeamDetailsBinding
-import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
-import com.example.minisofascore.ui.events.EventsViewModel
-import com.example.minisofascore.ui.leagues.LeaguesViewModel
-import com.example.minisofascore.ui.leagues.LeaguesViewModelFactory
 import com.example.minisofascore.ui.team.details.TeamDetailsFragment
 import com.example.minisofascore.ui.team.matches.TeamMatchesFragment
 import com.example.minisofascore.ui.team.squad.TeamSquadFragment
 import com.example.minisofascore.ui.team.standings.TeamStandingsFragment
 import com.example.minisofascore.ui.utils.loadImage
+import com.example.minisofascore.ui.utils.loadRoundImage
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
 
@@ -105,7 +101,7 @@ class TeamDetailsActivity : AppCompatActivity() {
 
         viewModel.countryFlag.observe(this) { c ->
             val flagUrl = c.flags.png
-            loadImage(this, flagUrl, countryImageView)
+            loadRoundImage(this, flagUrl, countryImageView)
         }
 
         val viewPager = binding.viewPager

@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.minisofascore.R
 import com.example.minisofascore.adapters.recycler.TournamentRecyclerAdapter
@@ -37,9 +38,9 @@ class TeamDetailsFragment : Fragment() {
         // Initialize the adapter
         tournamentAdapter = TournamentRecyclerAdapter(emptyList())
 
-        // Set the adapter for your RecyclerView
+        val layoutManager = GridLayoutManager(context, 3) // '3' is the number of columns
         binding.tournamentsRecyclerView.adapter = tournamentAdapter
-        binding.tournamentsRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.tournamentsRecyclerView.layoutManager = layoutManager
 
         val teamId = TeamCache.selectedTeam?.id
         teamId?.let { id ->

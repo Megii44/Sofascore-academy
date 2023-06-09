@@ -5,7 +5,6 @@
     android:id="@+id/tournament_info_tile"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:padding="30dp"
     app:layout_constraintWidth_percent="0.33"
     app:layout_constraintStart_toStartOf="parent"
