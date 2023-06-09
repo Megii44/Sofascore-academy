@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.minisofascore.R
 import com.example.minisofascore.adapters.recycler.TournamentRecyclerAdapter
 import com.example.minisofascore.data.repositories.CountryRepository
@@ -17,6 +15,7 @@ import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
 import com.example.minisofascore.ui.team.TeamCache
 import com.example.minisofascore.ui.team.TeamViewModelFactory
+import com.example.minisofascore.ui.utils.loadImage
 import kotlinx.coroutines.launch
 
 class TeamDetailsFragment : Fragment() {
@@ -73,7 +72,7 @@ class TeamDetailsFragment : Fragment() {
                 coachNameTextView.text = coach
                 coachCountryNameTextView.text = country
                 stadiumTextView.text = venue
-                loadImage("https://academy.dev.sofascore.com/player/1/image", coachImageView)
+                loadImage(requireContext(), "https://academy.dev.sofascore.com/player/1/image", coachImageView)
             }
         }
 
@@ -85,8 +84,8 @@ class TeamDetailsFragment : Fragment() {
 
         viewModel.countryFlag.observe(viewLifecycleOwner) {country ->
             with(binding) {
-                val flagUrl = country.flags.svg
-                loadImage(flagUrl, coachCountryImageView)
+                val flagUrl = country.flags.png
+                loadImage(requireContext(), flagUrl, coachCountryImageView)
             }
         }
 
@@ -100,9 +99,9 @@ class TeamDetailsFragment : Fragment() {
                     titleTeam1.text = event.homeTeam.name
                     titleTeam2.text = event.awayTeam.name
 
-                    loadImage("https://academy.dev.sofascore.com/tournament/${event.tournament.id}/image", tournamentLogo)
-                    loadImage("https://academy.dev.sofascore.com/team/${event.homeTeam.id}/image", logoTeam1)
-                    loadImage("https://academy.dev.sofascore.com/team/${event.awayTeam.id}/image", logoTeam2)
+                    loadImage(requireContext(), "https://academy.dev.sofascore.com/tournament/${event.tournament.id}/image", tournamentLogo)
+                    loadImage(requireContext(), "https://academy.dev.sofascore.com/team/${event.homeTeam.id}/image", logoTeam1)
+                    loadImage(requireContext(), "https://academy.dev.sofascore.com/team/${event.awayTeam.id}/image", logoTeam2)
                 }
             }
         }
@@ -110,12 +109,6 @@ class TeamDetailsFragment : Fragment() {
         viewModel.teamTournaments.observe(viewLifecycleOwner) { tournaments ->
             tournamentAdapter.updateTournaments(tournaments)
         }
-    }
-
-    private fun loadImage(url: String, imageView: ImageView) {
-        Glide.with(requireContext())
-            .load(url)
-            .into(imageView)
     }
 
     companion object {

@@ -2,8 +2,11 @@ package com.example.minisofascore.ui.utils
 
 import android.content.Context
 import android.os.Build
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.res.TypedArrayUtils.getString
+import com.bumptech.glide.Glide
 import com.example.minisofascore.R
 import com.example.minisofascore.data.enums.EventStatusEnum
 import com.example.minisofascore.data.enums.SportEnum
@@ -60,4 +63,10 @@ fun getEventStatusAbr(context: Context, status: String, time: String = ""): Stri
         EventStatusEnum.NotStarted.toString() -> context.getString(R.string.not_started_abr)
         else -> ""
     }
+}
+
+fun loadImage(context: Context, url: String, imageView: ImageView) {
+    Glide.with(context)
+        .load(url)
+        .into(imageView)
 }

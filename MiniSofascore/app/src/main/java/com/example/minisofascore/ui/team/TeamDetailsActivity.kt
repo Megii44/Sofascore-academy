@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.bumptech.glide.Glide
 import com.example.minisofascore.R
 import com.example.minisofascore.data.models.Team
 import com.example.minisofascore.databinding.ActivityTeamDetailsBinding
@@ -19,6 +18,7 @@ import com.example.minisofascore.ui.team.details.TeamDetailsFragment
 import com.example.minisofascore.ui.team.matches.TeamMatchesFragment
 import com.example.minisofascore.ui.team.squad.TeamSquadFragment
 import com.example.minisofascore.ui.team.standings.TeamStandingsFragment
+import com.example.minisofascore.ui.utils.loadImage
 import com.google.android.material.tabs.TabLayoutMediator
 
 class TeamDetailsActivity : AppCompatActivity() {
@@ -67,19 +67,14 @@ class TeamDetailsActivity : AppCompatActivity() {
         // Set toolbar image
         val teamLogoUrl = "https://academy.dev.sofascore.com/team/${team?.id}/image"
 
-        val actionBarImage = actionBarLayout.findViewById<View>(R.id.team_logo_image_view)
-        if (actionBarImage is ImageView) {
-            Glide.with(this)
-                .load(teamLogoUrl)
-                .into(actionBarImage)
-        }
+        val actionBarImage = actionBarLayout.findViewById<ImageView>(R.id.team_logo_image_view)
+        loadImage(this, teamLogoUrl, actionBarImage)
 
-        val countryImage = actionBarLayout.findViewById<View>(R.id.country_logo_image_view)
-        if (countryImage is ImageView) {
-            Glide.with(this)
-                .load(teamLogoUrl)
-                .into(countryImage)
-        }
+        // Set country image
+        val countryFlagUrl = "https://academy.dev.sofascore.com/team/${team?.id}/image"
+
+        val countryImage = actionBarLayout.findViewById<ImageView>(R.id.country_logo_image_view)
+        loadImage(this, countryFlagUrl, countryImage)
 
         val viewPager = binding.viewPager
         viewPager.adapter = object : FragmentStateAdapter(this) {
