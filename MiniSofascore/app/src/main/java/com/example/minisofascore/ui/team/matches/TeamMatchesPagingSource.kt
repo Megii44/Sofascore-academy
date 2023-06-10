@@ -2,16 +2,16 @@ package com.example.minisofascore.ui.team.matches
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.minisofascore.data.models.EventResponse
+import com.example.minisofascore.data.models.Event
 import com.example.minisofascore.network.MiniSofascoreApiService
 
 class TeamEventsPagingSource(
     private val apiService: MiniSofascoreApiService,
     private val id: Int,
     private val span: String
-) : PagingSource<Int, EventResponse>() {
+) : PagingSource<Int, Event>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, EventResponse> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Event> {
         val position = params.key ?: 1
         return try {
             val response = apiService.getTeamEvents(id, span, position)
@@ -27,7 +27,7 @@ class TeamEventsPagingSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, EventResponse>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, Event>): Int? {
         return state.anchorPosition
     }
 }

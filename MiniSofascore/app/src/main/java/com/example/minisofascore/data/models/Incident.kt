@@ -12,11 +12,3 @@ data class Incident(
     val teamSide: String,
     val color: String,
 )
-
-data class Player(
-    val id: Int,
-    val name: String,
-    val slug: String,
-    val country: Country,
-    val position: String
-)

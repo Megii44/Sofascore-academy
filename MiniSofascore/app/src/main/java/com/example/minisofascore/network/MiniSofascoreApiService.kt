@@ -11,7 +11,7 @@ interface MiniSofascoreApiService {
     suspend fun getEventsForDay(
         @Path("sport") sport: String,
         @Path("date") date: String
-    ): Response<List<EventResponse>>
+    ): Response<List<Event>>
 
     @GET("team/{id}/image")
     suspend fun getTeamLogo(
@@ -48,7 +48,7 @@ interface MiniSofascoreApiService {
         @Path("id") teamId: Int,
         @Path("span") span: String,
         @Path("page") page: Int,
-    ): Response<List<EventResponse>>
+    ): Response<List<Event>>
 
     @GET("team/{id}/tournaments")
     suspend fun getTeamTournaments(

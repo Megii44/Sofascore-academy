@@ -23,8 +23,8 @@ class TeamViewModel(
     private val _teamTournaments = MutableLiveData<List<Tournament>>()
     val teamTournaments: LiveData<List<Tournament>> get() = _teamTournaments
 
-    private val _teamEvents = MutableLiveData<List<EventResponse>>()
-    val teamEvents: LiveData<List<EventResponse>> get() = _teamEvents
+    private val _teamEvents = MutableLiveData<List<Event>>()
+    val teamEvents: LiveData<List<Event>> get() = _teamEvents
 
     private val _countryFlag = MutableLiveData<CountryInfo>()
     val countryFlag: LiveData<CountryInfo> get() = _countryFlag

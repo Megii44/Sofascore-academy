@@ -1,7 +1,7 @@
 package com.example.minisofascore.ui.events
 
-import com.example.minisofascore.data.models.EventResponse
+import com.example.minisofascore.data.models.Event
 
 object EventCache {
-    var selectedEvent: EventResponse? = null
+    var selectedEvent: Event? = null
 }

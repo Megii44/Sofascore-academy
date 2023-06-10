@@ -1,6 +1,6 @@
 package com.example.minisofascore.data.repositories
 
-import com.example.minisofascore.data.models.EventResponse
+import com.example.minisofascore.data.models.Event
 import com.example.minisofascore.data.models.Player
 import com.example.minisofascore.data.models.Team
 import com.example.minisofascore.data.models.Tournament
@@ -29,7 +29,7 @@ class TeamRepository {
          }
      }
 
-    suspend fun getTeamEvents(teamId: Int, span: String, page: Int): List<EventResponse> = withContext(Dispatchers.IO) {
+    suspend fun getTeamEvents(teamId: Int, span: String, page: Int): List<Event> = withContext(Dispatchers.IO) {
         val response = networkService.getTeamEvents(teamId, span, page)
         if (response.isSuccessful) {
             response.body() ?: throw Exception("Received empty response body")

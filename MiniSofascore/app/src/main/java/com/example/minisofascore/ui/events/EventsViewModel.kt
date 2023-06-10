@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.minisofascore.data.enums.SportEnum
-import com.example.minisofascore.data.models.EventResponse
+import com.example.minisofascore.data.models.Event
 import com.example.minisofascore.data.models.Team
 import com.example.minisofascore.network.Network
 import kotlinx.coroutines.CoroutineScope
@@ -15,8 +15,8 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class EventsViewModel : ViewModel() {
-    private val _eventsGroupedByTournament = MutableLiveData<List<Pair<String, List<EventResponse>>>>()
-    val eventsGroupedByTournament: LiveData<List<Pair<String, List<EventResponse>>>> get() = _eventsGroupedByTournament
+    private val _eventsGroupedByTournament = MutableLiveData<List<Pair<String, List<Event>>>>()
+    val eventsGroupedByTournament: LiveData<List<Pair<String, List<Event>>>> get() = _eventsGroupedByTournament
 
     private val _selectedSport = MutableLiveData<Int>()
     val selectedSport: LiveData<Int> = _selectedSport
