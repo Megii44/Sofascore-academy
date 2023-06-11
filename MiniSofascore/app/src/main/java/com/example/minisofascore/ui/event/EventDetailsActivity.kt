@@ -123,8 +123,8 @@ class EventDetailsActivity : AppCompatActivity() {
                     binding.homeTeamScore.setTextColor(Color.RED)
                     binding.awayTeamScore.setTextColor(Color.RED)
                     binding.middleDash.setTextColor(Color.RED)
-                    binding.homeTeamScore.text = it.homeScore.total.toString()
-                    binding.awayTeamScore.text = it.awayScore.total.toString()
+                    binding.homeTeamScore.text = it.homeScore?.total.toString()
+                    binding.awayTeamScore.text = it.awayScore?.total.toString()
                     binding.dateText.visibility = View.INVISIBLE
                     binding.timeText.visibility = View.INVISIBLE
                     binding.matchStatusTextView.text = it.status
@@ -132,8 +132,8 @@ class EventDetailsActivity : AppCompatActivity() {
                 }
                 else -> {
                     // Event has already finished
-                    binding.homeTeamScore.text = it.homeScore.total.toString()
-                    binding.awayTeamScore.text = it.awayScore.total.toString()
+                    binding.homeTeamScore.text = it.homeScore?.total.toString()
+                    binding.awayTeamScore.text = it.awayScore?.total.toString()
                     binding.dateText.visibility = View.INVISIBLE
                     binding.timeText.visibility = View.INVISIBLE
                     binding.matchStatusTextView.visibility = View.INVISIBLE

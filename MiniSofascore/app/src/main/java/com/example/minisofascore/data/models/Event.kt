@@ -18,9 +18,9 @@ data class Event(
     val status: String,
     val startDate: String,
     @Embedded(prefix = "home_score_")
-    val homeScore: Score,
+    val homeScore: Score?,
     @Embedded(prefix = "away_score_")
-    val awayScore: Score,
-    val winnerCode: String,
+    val awayScore: Score?,
+    val winnerCode: String?,
     val round: Int
 ): java.io.Serializable

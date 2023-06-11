@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import com.example.minisofascore.data.models.Event
 import com.example.minisofascore.utils.Converters
 
-@Database(entities = [Event::class], version = 1, exportSchema = false)
+@Database(entities = [Event::class], version = 5, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class MiniSofascoreDatabase: RoomDatabase() {
 
@@ -28,6 +28,9 @@ abstract class MiniSofascoreDatabase: RoomDatabase() {
             context.applicationContext,
             MiniSofascoreDatabase::class.java,
             name = "MiniSofascoreDb.db"
-        ).build()
+        )
+        .fallbackToDestructiveMigration()
+        .build()
+
     }
 }

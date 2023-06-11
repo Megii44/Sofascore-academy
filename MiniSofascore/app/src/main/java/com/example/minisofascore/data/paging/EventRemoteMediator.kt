@@ -1,18 +1,19 @@
 package com.example.minisofascore.data.paging
 
-import androidx.lifecycle.asLiveData
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import com.example.minisofascore.data.models.Event
-import com.example.minisofascore.data.repositories.MatchRepository
-import java.io.IOException
+import com.example.minisofascore.data.source.EventLocalDataSource
+import com.example.minisofascore.data.source.EventRemoteDataSource
 import retrofit2.HttpException
+import java.io.IOException
 
 @ExperimentalPagingApi
 class EventRemoteMediator(
-    private val eventRepository: MatchRepository,
+    private val remoteDataSource: EventRemoteDataSource,
+    private val localDataSource: EventLocalDataSource,
     private val teamId: Int
 ) : RemoteMediator<Int, Event>() {
 
@@ -22,21 +23,22 @@ class EventRemoteMediator(
             val page = when (loadType) {
                 LoadType.REFRESH -> 1
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
-                LoadType.APPEND -> {
-                    val lastItem = state.lastItemOrNull()
-                        ?: return MediatorResult.Success(endOfPaginationReached = true)
-                    lastItem.id
-                }
+                LoadType.APPEND -> state.pages.size + 1
             }
 
             // Fetch data from network
-            //val response = eventRepository.getEvents(teamId, "P${page}D", page)
-            val response = eventRepository.getEvents(teamId)
+            val response = remoteDataSource.fetchEvents(teamId, "next", page)
+
+            // Clear old data on refresh
+            if (loadType == LoadType.REFRESH) {
+                localDataSource.clearEvents()
+            }
 
             // Store the data in local database
-            //eventRepository.saveEvents(response.data)
+            localDataSource.saveEvents(response)
 
-            MediatorResult.Success(endOfPaginationReached = response.asLiveData().isInitialized)
+            // End of pagination is reached when response is empty
+            MediatorResult.Success(endOfPaginationReached = response.isEmpty())
         } catch (e: IOException) {
             MediatorResult.Error(e)
         } catch (e: HttpException) {

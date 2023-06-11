@@ -5,7 +5,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.minisofascore.data.models.Event
-import com.example.minisofascore.data.paging.EventPagingSource
 import com.example.minisofascore.data.paging.EventRemoteMediator
 import com.example.minisofascore.data.source.EventLocalDataSource
 import com.example.minisofascore.data.source.EventRemoteDataSource
@@ -20,8 +19,8 @@ class MatchRepository (
     fun getEvents(teamId: Int): Flow<PagingData<Event>> {
         return Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = PAGE_SIZE),
-            remoteMediator = EventRemoteMediator(this, teamId),
-            pagingSourceFactory = { EventPagingSource(this, teamId) }
+            remoteMediator = EventRemoteMediator(remoteDataSource, localDataSource, teamId),
+            pagingSourceFactory = { localDataSource.getEvents(teamId) }
         ).flow
     }
 

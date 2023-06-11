@@ -41,9 +41,9 @@ class TeamMatchesFragment : Fragment() {
         val remoteDataSource = EventRemoteDataSource(network.getService())
         val eventRepository = localDataSource?.let { MatchRepository(remoteDataSource, it) }
         val viewModelFactory = eventRepository?.let { MatchViewModelFactory(it) }
-        if (viewModelFactory != null) {
-            viewModel = viewModelFactory.create(TeamMatchViewModel::class.java)
-        }
+
+        viewModel = viewModelFactory?.create(TeamMatchViewModel::class.java)
+            ?: throw IllegalStateException("ViewModelFactory is null")
 
         // Get the team ID from arguments
         teamId = arguments?.getInt(ARG_TEAM_ID) ?: throw IllegalArgumentException("Team ID is required")
@@ -55,6 +55,11 @@ class TeamMatchesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+        teamId?.let {
+            viewModel.getEvents(it).observe(viewLifecycleOwner) { pagingData ->
+                eventAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
+            }
+        }
     }
 
     private fun setupRecyclerView() {
