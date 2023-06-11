@@ -15,12 +15,11 @@ import com.example.minisofascore.data.source.EventLocalDataSource
 import com.example.minisofascore.data.source.EventRemoteDataSource
 import com.example.minisofascore.databinding.FragmentTeamMatchesBinding
 import com.example.minisofascore.network.Network
-import com.example.minisofascore.ui.team.TeamViewModel
 
 class TeamMatchesFragment : Fragment() {
 
     private lateinit var binding: FragmentTeamMatchesBinding
-    private lateinit var viewModel: TeamViewModel
+    private lateinit var viewModel: TeamMatchViewModel
     private val eventAdapter: EventAdapter by lazy {
         EventAdapter(requireContext())
     }
@@ -36,14 +35,15 @@ class TeamMatchesFragment : Fragment() {
         // Initialize the ViewModel
         val network = Network()
 
-        /*val localDataSource = MiniSofascoreDatabase.getDatabase(requireContext())
+        val localDataSource = MiniSofascoreDatabase.getDatabase(requireContext())
             ?.let { EventLocalDataSource(it.EventDao()) }
+
         val remoteDataSource = EventRemoteDataSource(network.getService())
         val eventRepository = localDataSource?.let { MatchRepository(remoteDataSource, it) }
         val viewModelFactory = eventRepository?.let { MatchViewModelFactory(it) }
         if (viewModelFactory != null) {
-            viewModel = viewModelFactory.create(TeamViewModel::class.java)
-        }*/
+            viewModel = viewModelFactory.create(TeamMatchViewModel::class.java)
+        }
 
         // Get the team ID from arguments
         teamId = arguments?.getInt(ARG_TEAM_ID) ?: throw IllegalArgumentException("Team ID is required")
