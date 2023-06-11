@@ -1,4 +1,4 @@
-package com.example.minisofascore.ui.utils
+package com.example.minisofascore.utils
 
 import android.content.Context
 import android.os.Build

@@ -18,9 +18,9 @@ import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
 import com.example.minisofascore.ui.team.TeamCache
 import com.example.minisofascore.ui.team.TeamViewModel
 import com.example.minisofascore.data.factories.TeamViewModelFactory
-import com.example.minisofascore.ui.utils.getFormattedDate
-import com.example.minisofascore.ui.utils.getFormattedTime
-import com.example.minisofascore.ui.utils.loadImage
+import com.example.minisofascore.utils.getFormattedDate
+import com.example.minisofascore.utils.getFormattedTime
+import com.example.minisofascore.utils.loadImage
 import kotlinx.coroutines.launch
 
 class TeamDetailsFragment : Fragment() {

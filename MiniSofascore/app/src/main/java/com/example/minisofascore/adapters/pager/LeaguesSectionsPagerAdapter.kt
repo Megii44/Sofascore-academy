@@ -9,7 +9,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.minisofascore.R
 import com.example.minisofascore.ui.leagues.LeaguesFragment
-import com.example.minisofascore.ui.utils.getSportForPosition
+import com.example.minisofascore.utils.getSportForPosition
 
 private val TAB_TITLES = arrayOf(
     R.string.football_title,

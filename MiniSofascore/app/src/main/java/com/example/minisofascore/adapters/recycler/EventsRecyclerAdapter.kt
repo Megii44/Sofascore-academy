@@ -16,7 +16,7 @@ import com.example.minisofascore.data.models.Event
 import com.example.minisofascore.databinding.ItemEventBinding
 import com.example.minisofascore.ui.event.EventDetailsActivity
 import com.example.minisofascore.ui.events.EventCache
-import com.example.minisofascore.ui.utils.getEventStatusAbr
+import com.example.minisofascore.utils.getEventStatusAbr
 import java.time.OffsetDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter

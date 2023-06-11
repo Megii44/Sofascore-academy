@@ -23,8 +23,8 @@ import com.example.minisofascore.ui.team.details.TeamDetailsFragment
 import com.example.minisofascore.ui.team.matches.TeamMatchesFragment
 import com.example.minisofascore.ui.team.squad.TeamSquadFragment
 import com.example.minisofascore.ui.team.standings.TeamStandingsFragment
-import com.example.minisofascore.ui.utils.loadImage
-import com.example.minisofascore.ui.utils.loadRoundImage
+import com.example.minisofascore.utils.loadImage
+import com.example.minisofascore.utils.loadRoundImage
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
 

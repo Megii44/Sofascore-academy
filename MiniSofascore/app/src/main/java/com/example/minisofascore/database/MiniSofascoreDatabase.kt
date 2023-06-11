@@ -4,9 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.minisofascore.data.models.Event
+import com.example.minisofascore.utils.Converters
 
 @Database(entities = [Event::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class MiniSofascoreDatabase: RoomDatabase() {
 
     abstract fun EventDao(): EventDao

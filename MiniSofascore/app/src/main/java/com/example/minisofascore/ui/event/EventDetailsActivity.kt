@@ -18,7 +18,7 @@ import com.example.minisofascore.databinding.ActivityEventDetailsBinding
 import com.example.minisofascore.ui.events.EventCache
 import com.example.minisofascore.ui.team.TeamCache
 import com.example.minisofascore.ui.team.TeamDetailsActivity
-import com.example.minisofascore.ui.utils.checkEventStatus
+import com.example.minisofascore.utils.checkEventStatus
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
