@@ -8,14 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.minisofascore.adapters.recycler.PlayersRecyclerAdapter
-import com.example.minisofascore.data.enums.SportEnum
 import com.example.minisofascore.data.repositories.CountryRepository
 import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.FragmentTeamSquadBinding
 import com.example.minisofascore.ui.team.TeamCache
 import com.example.minisofascore.ui.team.TeamViewModel
-import com.example.minisofascore.ui.team.TeamViewModelFactory
-import com.example.minisofascore.ui.team.details.TeamDetailsFragment
+import com.example.minisofascore.data.factories.TeamViewModelFactory
 
 class TeamSquadFragment : Fragment() {
     private lateinit var binding: FragmentTeamSquadBinding

@@ -1,9 +1,10 @@
-package com.example.minisofascore.ui.team
+package com.example.minisofascore.data.factories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.minisofascore.data.repositories.CountryRepository
 import com.example.minisofascore.data.repositories.TeamRepository
+import com.example.minisofascore.ui.team.TeamViewModel
 
 class TeamViewModelFactory(
     private val teamRepository: TeamRepository,

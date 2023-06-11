@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.minisofascore.R
+import com.example.minisofascore.data.factories.TeamViewModelFactory
 import com.example.minisofascore.data.models.Team
 import com.example.minisofascore.data.repositories.CountryRepository
 import com.example.minisofascore.data.repositories.TeamRepository

@@ -17,7 +17,7 @@ import com.example.minisofascore.data.repositories.TeamRepository
 import com.example.minisofascore.databinding.FragmentTeamDetailsBinding
 import com.example.minisofascore.ui.team.TeamCache
 import com.example.minisofascore.ui.team.TeamViewModel
-import com.example.minisofascore.ui.team.TeamViewModelFactory
+import com.example.minisofascore.data.factories.TeamViewModelFactory
 import com.example.minisofascore.ui.utils.getFormattedDate
 import com.example.minisofascore.ui.utils.getFormattedTime
 import com.example.minisofascore.ui.utils.loadImage
