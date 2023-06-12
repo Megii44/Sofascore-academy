@@ -24,24 +24,6 @@ class MatchRepository (
         ).flow
     }
 
-    suspend fun refreshEvents(teamId: Int, span: String, page: Int) {
-        val events = remoteDataSource.fetchEvents(teamId, span, page)
-        //localDataSource.clearEvents()
-        //localDataSource.saveEvents(events)
-    }
-
-    suspend fun fetchEvents(teamId: Int, span: String, page: Int): List<Event> {
-        return remoteDataSource.fetchEvents(teamId, span, page)
-    }
-
-    suspend fun saveEvents(events: List<Event>) {
-        //localDataSource.saveEvents(events)
-    }
-
-    suspend fun fetchEventsPage(teamId: Int, page: Int): List<Event> {
-        return remoteDataSource.fetchEvents(teamId,"next" ,page)
-    }
-
     companion object {
         private const val PAGE_SIZE = 10
     }

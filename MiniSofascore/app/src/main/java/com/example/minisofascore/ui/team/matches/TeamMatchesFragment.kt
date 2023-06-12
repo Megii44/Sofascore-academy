@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.minisofascore.adapters.paging.EventAdapter
 import com.example.minisofascore.data.factories.MatchViewModelFactory
 import com.example.minisofascore.data.repositories.MatchRepository
-import com.example.minisofascore.database.MiniSofascoreDatabase
 import com.example.minisofascore.data.source.EventLocalDataSource
 import com.example.minisofascore.data.source.EventRemoteDataSource
+import com.example.minisofascore.database.MiniSofascoreDatabase
 import com.example.minisofascore.databinding.FragmentTeamMatchesBinding
 import com.example.minisofascore.network.Network
 
@@ -20,9 +20,7 @@ class TeamMatchesFragment : Fragment() {
 
     private lateinit var binding: FragmentTeamMatchesBinding
     private lateinit var viewModel: TeamMatchViewModel
-    private val eventAdapter: EventAdapter by lazy {
-        EventAdapter(requireContext())
-    }
+    private lateinit var eventAdapter: EventAdapter
     private var teamId: Int? = null
 
     override fun onCreateView(
@@ -42,11 +40,23 @@ class TeamMatchesFragment : Fragment() {
         val eventRepository = localDataSource?.let { MatchRepository(remoteDataSource, it) }
         val viewModelFactory = eventRepository?.let { MatchViewModelFactory(it) }
 
-        viewModel = viewModelFactory?.create(TeamMatchViewModel::class.java)
-            ?: throw IllegalStateException("ViewModelFactory is null")
+        viewModel = ViewModelProvider(
+            this,
+            viewModelFactory ?: throw IllegalStateException("ViewModelFactory is null")
+        )[TeamMatchViewModel::class.java]
 
         // Get the team ID from arguments
         teamId = arguments?.getInt(ARG_TEAM_ID) ?: throw IllegalArgumentException("Team ID is required")
+
+        // Initialize the adapter
+        eventAdapter = EventAdapter(requireContext())
+
+        // Set up RecyclerView
+        // Set up the RecyclerView with LinearLayoutManager
+        binding.teamMatchesRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = eventAdapter
+        }
 
         return binding.root
     }
@@ -54,19 +64,10 @@ class TeamMatchesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView()
         teamId?.let {
             viewModel.getEvents(it).observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
             }
-        }
-    }
-
-    private fun setupRecyclerView() {
-        binding.teamMatchesRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-            adapter = eventAdapter
         }
     }
 

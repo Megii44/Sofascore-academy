@@ -30,9 +30,9 @@ class EventRemoteMediator(
             val response = remoteDataSource.fetchEvents(teamId, "next", page)
 
             // Clear old data on refresh
-            if (loadType == LoadType.REFRESH) {
-                localDataSource.clearEvents()
-            }
+            //if (loadType == LoadType.REFRESH) {
+            //    localDataSource.clearEvents()
+            //}
 
             // Store the data in local database
             localDataSource.saveEvents(response)
