@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Mini Sofascore</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="football_title">Football</string>
+    <string name="basketball_title">Basketball</string>
+    <string name="am_football_title">Am. Football</string>
+    <string name="tab_description">Top app bar with 3 tabs</string>
+    <string name="app_bar_view_pager">App bar view pager</string>
+    <string name="logo">Logo</string>
+    <string name="no_events_for_selected_day">No events for selected day</string>
+    <string name="icon_trophy">Trophy icon</string>
+    <string name="icon_settings">Settings icon</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_tabbed_leagues">TabbedLeaguesActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="team_info">Team Info</string>
+    <string name="coach_image">Coach Image</string>
+    <string name="coach">Coach</string>
+    <string name="total_players">Total Players</string>
+    <string name="foreign_players">Foreign Players</string>
+    <string name="tournaments">Tournaments</string>
+    <string name="venue">Venue</string>
+    <string name="stadium">Stadium</string>
+    <string name="next_match">Next match</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="details">Details</string>
+    <string name="matches">Matches</string>
+    <string name="standings">Standings</string>
+    <string name="squad">Squad</string>
+    <string name="today">Today</string>
+    <string name="events">Events</string>
+    <string name="events_count_text">%1$d Events</string>
+    <string name="finished_abr">FT</string>
+    <string name="not_started_abr">-</string>
+    <string name="no_players_in_this_team"></string>
+</resources>
